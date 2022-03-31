@@ -15,9 +15,10 @@ h1 {
     margin: auto;
     height: 600px;
     width: 400px;
-    background-color: #ededed;
+    background-color: #b0e2ff;
     border-radius: 18px;
     padding: 0.1px;
+    box-shadow: 0px 0px 20px -7px grey;
 }
 
 .buttoncontainer {
@@ -41,15 +42,15 @@ h1 {
 .but {
     border-radius: 60px;
     border: 2px solid white;
-    background-color: #ffe6e6;
+    background-color: #e6f8ff;
     font-weight: 600;
     font-size: x-large;
 }
 .but:hover {
-    background-color: #ffdddd;
+    background-color: #fff2f2;
 }
 .but:active {
-    background-color: #ffe6e6;
+    background-color: #e6f8ff;
 }
 
 .display {
@@ -79,7 +80,8 @@ h1 {
 }
 
 #output {
-    border-top: 5px solid #ededed;
+    border: 2.1px solid #b0e2ff;
+    border-radius: 12px;
     text-align: right;
     padding: 10px 14px 10px 0px;
 }
