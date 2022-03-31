@@ -85,3 +85,12 @@ h1 {
     text-align: right;
     padding: 10px 14px 10px 0px;
 }
+
+footer {
+    position: fixed;
+    bottom: 5px;
+    right: 10px;
+    text-align: right;
+    font-size: x-large;
+    color: #a7a7a7;
+}
