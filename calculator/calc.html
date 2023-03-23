@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calc.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <h1>Calculator</h1>
+    <div class="container">
+        <div class="display">
+            <input id="ip" value="">
+            <div style="border: 2.1px solid #b0e2ff; border-radius: 11px; overflow: hidden;"><div id="output">0</div></div>
+        </div>
+        <div class="buttoncontainer">
+            <button class="but" onclick="insert(7)">7</button>
+            <button class="but" onclick="insert(8)">8</button>
+            <button class="but" onclick="insert(9)">9</button>
+            <button class="but" onclick="insert('+')">+</button>
+            <button class="but" onclick="insert(4)">4</button>
+            <button class="but" onclick="insert(5)">5</button>
+            <button class="but" onclick="insert(6)">6</button>
+            <button class="but" onclick="insert('-')">-</button>
+            <button class="but" onclick="insert(1)">1</button>
+            <button class="but" onclick="insert(2)">2</button>
+            <button class="but" onclick="insert(3)">3</button>
+            <button class="but" onclick="insert('/')">÷</button>
+            <button class="but" onclick="document.getElementById('ip').value = ' ';document.getElementById('output').innerHTML = '0'">AC</button>
+            <button class="but" onclick="insert(0)">0</button>
+            <button id = "eq" class="but" onclick="equal()">=</button>
+            <button class="but" onclick="insert('*')">×</button>
+        </div>
+    </div>
+    <footer>
+        &copy; Soham Waghmare
+    </footer>
+</body>
+<script src="calc.js"></script>
+</html>

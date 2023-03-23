@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 </head>
+
 <body>
     <h1>Welcome</h1>
     <p id="desc">You have many things to look and experience. <br>Click any of the below buttons to see my projects!</p>
     <div class="links">
-        <a id="calc" href="calc.html" target="_blank">Calculator</a>
+        <a id="calc" href="/calculator/calc.html">Calculator</a>
     </div>
-<!--     temp -->
+    <!--     temp -->
     <div class="links">
-        <a href="test3d/index3d.html" target="_blank">3D Website</a>
+        <a href="test3d/index3d.html">3D Website</a><span
+            style="opacity: 50%; margin: 0 6px; user-select: none;">(Test)</span>
     </div>
-<!--     temp -->
-    
+    <!--     temp -->
+
     <footer>
         &copy; Soham Waghmare
     </footer>
 </body>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+    @font-face {
+        font-family: 'Rubik';
+        src: url("/fonts/Rubik-VariableFont_wght.ttf");
+        font-weight: 350;
+    }
+
     * {
         box-sizing: border-box;
         font-family: 'Rubik', sans-serif;
         color: #545454;
         line-height: 1.5;
     }
+
     body {
         padding: 0 10%;
     }
+
     #desc {
         text-align: center;
         font-size: large;
     }
+
     h1 {
         font-size: 70px;
         text-align: center;
         word-wrap: break-word;
     }
+
     .links {
         display: flex;
         flex-wrap: wrap;
@@ -50,6 +62,7 @@
         justify-content: center;
         align-items: flex-start;
     }
+
     #calc {
         width: 200px;
         height: 200px;
@@ -66,19 +79,25 @@
         margin: 25px;
         flex-shrink: 0;
     }
+
     #calc:hover {
         background-color: #e6f8ff;
     }
+
     #calc:active {
         background-color: #d7f4ff;
     }
+
     footer {
-    position: fixed;
-    bottom: 5px;
-    right: 10px;
-    text-align: right;
-    font-size: x-large;
-    color: #a7a7a7;
-}
+        position: fixed;
+        bottom: 5px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        text-align: center;
+        font-size: large;
+        color: #a7a7a7;
+        user-select: none;
+    }
 </style>
+
 </html>
