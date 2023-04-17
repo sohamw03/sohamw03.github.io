@@ -19,3 +19,13 @@ andar.addEventListener("keydown", function (e) {
         equal();
     }
 });
+
+const button = document.querySelector('.but');
+
+button.addEventListener('touchstart', function() {
+  this.classList.add('active');
+});
+
+button.addEventListener('touchend', function() {
+  this.classList.remove('active');
+});

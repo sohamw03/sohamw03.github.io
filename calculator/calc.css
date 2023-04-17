@@ -31,33 +31,35 @@ h1 {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 15px;
     margin: 15px;
-    /* border: 1px solid rgb(129, 129, 129); */
     height: 62.5%;
+    align-items: center;
+    justify-content: center;
 }
-
-/* .buttoncontainer button:nth-child(10){
-    grid-column: 2;
-    grid-row: 4;
-}
-.buttoncontainer button:nth-child(11){
-    grid-column: 3;
-    grid-row: 4;
-} */
 
 .but {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
     border-radius: 60px;
     border: 2px solid white;
     background-color: #e6f8ff;
     font-weight: 600;
     font-size: x-large;
+    -webkit-transition: all 80ms;
+    transition: all 80ms;
+    transform-origin: center;
+    transform: translateZ(0);
 }
 
 .but:hover {
-    background-color: #fff2f2;
+    background-color: #ffdddd;
 }
 
-.but:active {
-    background-color: #e6f8ff;
+.but:active,
+.but.active:active {
+    -webkit-transform: scale(96%);
+    transform: scale(96%);
 }
 
 .display {
