@@ -34,6 +34,7 @@ h1 {
     height: 62.5%;
     align-items: center;
     justify-content: center;
+    user-select: none;
 }
 
 .but {
@@ -124,8 +125,10 @@ h1 {
 footer {
     position: fixed;
     bottom: 5px;
-    right: 10px;
-    text-align: right;
-    font-size: x-large;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    font-size: large;
     color: #a7a7a7;
+    user-select: none;
 }
