@@ -39,6 +39,7 @@ h1 {
 
 .but {
     height: 100%;
+    touch-action: manipulation;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -47,19 +48,15 @@ h1 {
     background-color: #e6f8ff;
     font-weight: 600;
     font-size: x-large;
-    -webkit-transition: all 80ms;
-    transition: all 80ms;
+    -webkit-transition: all 90ms;
+    transition: all 90ms;
     transform-origin: center;
     transform: translateZ(0);
 }
 
-.but:hover,
-.but.active {
-    background-color: #ffdddd;
-}
-
 .but:active,
 .but.active:active {
+    background-color: #ffdddd;
     -webkit-transform: scale(96%);
     transform: scale(96%);
 }
