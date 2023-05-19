@@ -21,7 +21,7 @@ Here are some screenshots of the app:
 
 ## Link
 
-You can view the live demo of the app by clicking [here](sohamw03.github.io).
+You can view the live demo of the app by clicking [here](https://sohamw03.github.io/calculator/calc.html).
 
 ## Technologies Used
 
