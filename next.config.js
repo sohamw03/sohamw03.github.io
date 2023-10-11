@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+    assetPrefix: assetPrefix,
+    basePath: basePath,
+};
 
-module.exports = nextConfig
+const assetPrefix = `/`;
+const basePath = `/`;
+
+module.exports = nextConfig;
