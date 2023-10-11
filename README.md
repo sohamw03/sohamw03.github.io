@@ -1,36 +1,36 @@
-# Minimalistic HTML, CSS, and JS App
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This is a simple, minimalistic web application built using HTML, CSS, and JavaScript. The app has a sleek, visually appealing design and is easy to use. 
+## Getting Started
 
-## Features
+First, run the development server:
 
-The app has the following features:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- Responsive layout that looks great on all devices
-- Simple, easy-to-use interface
-- Built using vanilla HTML, CSS, and JS
-- Minimalistic design that emphasizes content
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Screenshots
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-Here are some screenshots of the app:
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-### Main Page
+## Learn More
 
-![image](https://user-images.githubusercontent.com/102748742/236441831-094d8d2b-c2d9-4a18-86e5-5473ceb5f12c.png)
+To learn more about Next.js, take a look at the following resources:
 
-## Link
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can view the live demo of the app by clicking [here](https://sohamw03.github.io/calculator/calc.html).
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Technologies Used
+## Deploy on Vercel
 
-This app was built using the following technologies:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- HTML
-- CSS
-- JavaScript
-
-## Contributing
-
-If you would like to contribute to this project, please submit a pull request. All contributions are welcome!
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
