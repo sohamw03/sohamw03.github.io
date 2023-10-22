@@ -4,19 +4,19 @@ const isGithubActions = process.env.GITHUB_ACTIONS || false;
 
 let assetPrefix = ``;
 let basePath = `/`;
-
+let nextConfig;
 if (isGithubActions) {
   // trim off `<owner>/`
   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
   assetPrefix = `/`;
   basePath = `/`;
-  const nextConfig = {
+  nextConfig = {
     assetPrefix: assetPrefix,
     basePath: basePath,
     output: "export",
   };
 } else {
-  const nextConfig = {
+  nextConfig = {
     output: "export",
   };
 }
