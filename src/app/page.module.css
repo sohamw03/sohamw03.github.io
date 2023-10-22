@@ -1,0 +1,61 @@
+.main {
+    padding: 0 3rem;
+}
+
+.main>*:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.about {
+    display: flex;
+    margin: 2rem 0;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #2e3c51;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    background-image: radial-gradient(50% 75% at 50% 0%, #131f33 20%, rgba(19, 30, 49, 0) 100%);
+}
+
+.aboutdesc {
+    width: 50%;
+    text-align: center;
+    color: #808c9c;
+}
+
+.divider {
+    background-color: #808c9c;
+    height: 0.2rem;
+    border-radius: 10rem;
+    border: none;
+    margin: 0.5rem 0;
+}
+
+.projects {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    position: relative;
+    display: inline-block;
+    flex-grow: 1;
+    border: 1px solid #2e3c51;
+    border-radius: 15px;
+    padding: 0.5rem;
+    max-width: calc((100vw - 8rem)/5);
+    cursor: pointer;
+}
+
+.card>h6,
+.card>p {
+    margin: 0.5rem;
+}
+
+.cardlink {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
