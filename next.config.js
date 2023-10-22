@@ -2,8 +2,8 @@
 
 const isGithubActions = process.env.GITHUB_ACTIONS || false;
 
-const assetPrefix = ``;
-const basePath = `/`;
+let assetPrefix = ``;
+let basePath = `/`;
 
 if (isGithubActions) {
   // trim off `<owner>/`
@@ -15,10 +15,10 @@ if (isGithubActions) {
     basePath: basePath,
     output: "export",
   };
+} else {
+  const nextConfig = {
+    output: "export",
+  };
 }
-
-const nextConfig = {
-  output: "export",
-};
 
 module.exports = nextConfig;
