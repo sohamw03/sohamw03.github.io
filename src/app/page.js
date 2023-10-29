@@ -5,14 +5,14 @@ const ProjectsData = [
   {
     name: "Blogging Website",
     description: "Featuring articles related to Programming and Technology",
-    imageSrc: "/e-commerce.jpg",
+    imageSrc: "/blog_website.png",
     href: "https://i-coder-henna.vercel.app/",
   },
   {
-    name: "E-Commerce",
-    description: "This is a project about...",
-    imageSrc: "/e-commerce.jpg",
-    href: "",
+    name: "Text Utility Website",
+    description: "Simple and easy-to-use text tools with a minimalistic design",
+    imageSrc: "/text_utility_website.png",
+    href: "https://react-textutils-five.vercel.app/",
   },
   {
     name: "E-Commerce",
