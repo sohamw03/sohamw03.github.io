@@ -28,6 +28,25 @@ const ProjectsData = [
   },
 ];
 
+const SkillBuckets = [
+  {
+    name: "Frontend",
+    skills: "HTML CSS Javascript React.JS Next.JS",
+  },
+  {
+    name: "Backend",
+    skills: "Django Node.JS Express.JS",
+  },
+  {
+    name: "Databases",
+    skills: "MySQL MongoDB PostgreSQL",
+  },
+  {
+    name: "DevOps",
+    skills: "AWS GCP Terraform Docker Git Linux",
+  },
+];
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -50,7 +69,7 @@ export default function Home() {
       <div className={styles.projects}>
         {ProjectsData.map((project, index) => {
           return (
-            <div key={index} className={styles.card}>
+            <div key={index} className={styles.card} style={{ cursor: "pointer" }}>
               <a href={project.href} target="_blank" className={styles.cardlink}></a>
               <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} />
               <Typography variant="h6" gutterBottom>
@@ -61,10 +80,28 @@ export default function Home() {
           );
         })}
       </div>
+      <Typography variant="h4" gutterBottom>
+        Tech Stack
+      </Typography>
       <div className={styles.skills}>
-        <Typography variant="h4" gutterBottom>
-          Tech Stack
-        </Typography>
+        {SkillBuckets.map((bucket, index) => {
+          return (
+            <div key={index} className={styles.card}>
+              <Typography variant="h6" gutterBottom>
+                {bucket.name}
+              </Typography>
+              <p style={{ fontSize: "14px", color: "#808c9c", display: "flex", gap: "6px" }}>
+                {bucket.skills.split(" ").map((skillchip, jndex) => {
+                  return (
+                    <span key={`${index}${jndex}`} className={styles.skillchip}>
+                      {skillchip}
+                    </span>
+                  );
+                })}
+              </p>
+            </div>
+          );
+        })}
       </div>
       <div className={styles.contact}>
         <Typography variant="h4" gutterBottom>

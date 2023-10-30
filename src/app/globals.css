@@ -1,3 +1,10 @@
+:root {
+  --background-color: #131f33;
+  --primary-color: #808c9c;
+  --secondary-color: #2e3c51;
+  --highlight-color: #5c4a8c;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -24,4 +31,12 @@ img {
   object-fit: cover;
   width: 100%;
   aspect-ratio: 16/9;
+}
+
+::-moz-selection {
+  background: var(--highlight-color);
+}
+
+::selection {
+  background: var(--highlight-color);
 }
