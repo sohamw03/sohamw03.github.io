@@ -1,3 +1,4 @@
+import Contact from "@/components/Contact";
 import { Avatar, Typography } from "@mui/material";
 import styles from "./page.module.css";
 
@@ -63,7 +64,7 @@ export default function Home() {
       </div>
       <main className={styles.main}>
         {/* About Section */}
-        <div className={styles.about}>
+        <section className={styles.about}>
           <Avatar alt="Soham Waghmare" src="/Soham.png" sx={{ width: 128, height: 128, marginBottom: "1rem" }} />
           <Typography variant="h4" gutterBottom>
             Soham Waghmare
@@ -75,12 +76,12 @@ export default function Home() {
           <Typography variant="h6" gutterBottom className={styles.aboutdesc}>
             Welcome to my Tech Odyssey
           </Typography>
-        </div>
+        </section>
         <Typography variant="h4" gutterBottom>
           Projects
         </Typography>
         {/* Projects Section */}
-        <div className={styles.projects}>
+        <section className={styles.projects}>
           {ProjectsData.map((project, index) => {
             return (
               <div key={index} className={styles.card} style={{ cursor: "pointer" }}>
@@ -93,19 +94,19 @@ export default function Home() {
               </div>
             );
           })}
-        </div>
+        </section>
         <Typography variant="h4" gutterBottom>
           Tech Stack
         </Typography>
         {/* Skills Section */}
-        <div className={styles.skills}>
+        <section className={styles.skills}>
           {SkillBuckets.map((bucket, index) => {
             return (
               <div key={index} className={styles.card}>
                 <Typography variant="h6" gutterBottom>
                   {bucket.name}
                 </Typography>
-                <p style={{ fontSize: "14px", color: "#808c9c", display: "flex", gap: "6px" }}>
+                <p style={{ fontSize: "14px", color: "#808c9c", display: "flex", gap: "6px", flexFlow: "wrap" }}>
                   {bucket.skills.split(" ").map((skillchip, jndex) => {
                     return (
                       <span key={`${index}${jndex}`} className={`${styles.skillchip} ${bucket.highlight.includes(skillchip) ? styles.chiplit : ""}`}>
@@ -117,13 +118,9 @@ export default function Home() {
               </div>
             );
           })}
-        </div>
+        </section>
         {/* Contact Section */}
-        <div className={styles.contact}>
-          <Typography variant="h4" gutterBottom>
-            Contact
-          </Typography>
-        </div>
+        <Contact />
       </main>
     </>
   );

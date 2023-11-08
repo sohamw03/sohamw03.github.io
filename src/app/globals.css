@@ -1,8 +1,10 @@
 :root {
   --background-color: #131f33;
+  --ui-background-color: #161e29;
   --primary-color: #808c9c;
   --secondary-color: #2e3c51;
   --highlight-color: #5c4a8c;
+  --border-color: #2e3c51;
 }
 
 * {
