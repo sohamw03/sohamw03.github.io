@@ -133,20 +133,7 @@
 
     .terminal:hover .container::after {
         background-position-x: 100%;
-    }
-
-    @keyframes pulse {
-        0% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 0.5;
-        }
-
-        100% {
-            opacity: 1;
-        }
+        animation: pulse 1.5s infinite ease;
     }
 
     .container {
@@ -157,7 +144,7 @@
 
     .terminal .container::before {
         content: "";
-        background: linear-gradient(133.61deg, #a87ffb 17.33%, #25a6e9 100.47%);
+        background: linear-gradient(117deg, #a87ffb 17%, #25a6e9 101%);
         opacity: var(--before-opacity);
         pointer-events: none;
         position: absolute;
@@ -185,7 +172,6 @@
         position: absolute;
         z-index: -10;
         opacity: 1;
-        animation: pulse 1s infinite ease;
     }
 
     .contact_head_btn {
@@ -233,7 +219,8 @@
 /*-------------------------------------------- Media Queries ------------------------------------------*/
 @media (max-width:34rem) {
     .main {
-        padding: 0 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .about h4 {
@@ -246,3 +233,19 @@
 }
 
 /*-------------------------------------------- Media Queries ------------------------------------------*/
+
+/*-------------------------------------------- Keyframes ------------------------------------------*/
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
