@@ -1,50 +1,106 @@
 "use client";
 import styles from "@/app/page.module.css";
-import { useEffect, useRef } from "react";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
+import { useEffect, useRef, useState } from "react";
 
 export default function Contact() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Capture elements
+  const contactRef = useRef(null);
   const terminalRef = useRef(null);
+  const containerRef = useRef(null);
+  const terminal_overlayRef = useRef(null);
+  const contactHeadBtnRef = useRef(null);
+
+  // Run different functions based on the state of the modal
+  const toggleModal = () => {
+    if (isOpen) {
+      closeModal();
+    } else {
+      openModal();
+    }
+  };
 
   const closeModal = () => {
-    let contact = document.getElementsByClassName(`${styles.contact}`)[0];
-    let container = document.getElementsByClassName(`${styles.container}`)[0];
+    setIsOpen(false);
+    // Gradient opacity of :before of the terminal
+    containerRef.current.style.setProperty("--before-opacity", "0.5");
 
-    contact.style.setProperty("--offset", "3.4rem");
-    container.style.setProperty("--before-opacity", "0.5");
+    // Border pulse animation and background
+    contactRef.current.style.setProperty("--animation-playpause", "paused");
+    terminalRef.current.style.setProperty("--border-x-position", "0%");
+
+    // Modal overlay disappears
+    terminal_overlayRef.current.style.setProperty("--tw-bg-opacity", "0");
+    terminal_overlayRef.current.style.setProperty("pointer-events", "none");
+
+    // Handle borders
+    contactRef.current.style.setProperty("--gradient-inset", "0px");
+    contactHeadBtnRef.current.style.setProperty("--contact_head_btn-border-size", "1px");
   };
 
   const openModal = () => {
-    let contact = document.getElementsByClassName(`${styles.contact}`)[0];
-    let container = document.getElementsByClassName(`${styles.container}`)[0];
+    setIsOpen(true);
+    // Gradient opacity of :before of the terminal
+    containerRef.current.style.setProperty("--before-opacity", "0");
 
-    contact.style.setProperty("--offset", "20rem");
-    container.style.setProperty("--before-opacity", "0");
+    // Border pulse animation and background
+    contactRef.current.style.setProperty("--animation-playpause", "paused");
+    terminalRef.current.style.setProperty("--border-x-position", "0%");
+
+    // Modal overlay appears
+    terminal_overlayRef.current.style.setProperty("--tw-bg-opacity", "0.5");
+    terminal_overlayRef.current.style.setProperty("pointer-events", "auto");
+
+    // Handle borders
+    contactRef.current.style.setProperty("--gradient-inset", "0px");
+    contactHeadBtnRef.current.style.setProperty("--contact_head_btn-border-size", "1px");
   };
 
   useEffect(() => {
-    const terminal = terminalRef.current;
-    // let terminal = document.getElementsByClassName(`${styles.terminal}`)[0];
-    let contact = document.getElementsByClassName(`${styles.contact}`)[0];
-    let container = document.getElementsByClassName(`${styles.container}`)[0];
+    const handleMouseOver = (e) => {
+      e.stopPropagation();
+      if (!isOpen) {
+        contactRef.current.style.setProperty("--offset", "3.8rem");
+        containerRef.current.style.setProperty("--before-opacity", "1");
+        contactRef.current.style.setProperty("--animation-playpause", "running");
+        terminalRef.current.style.setProperty("--border-x-position", "100%");
+        contactRef.current.style.setProperty("--gradient-inset", "-1px");
+        contactHeadBtnRef.current.style.setProperty("--contact_head_btn-border-size", "0px");
+      }
+    };
 
-    terminal.addEventListener("mouseover", () => {
-      contact.style.setProperty("--offset", "3.8rem");
-      container.style.setProperty("--before-opacity", "1");
-    });
-    terminal.addEventListener("mouseout", () => {
-      contact.style.setProperty("--offset", "3.4rem");
-      container.style.setProperty("--before-opacity", "0.5");
-    });
-  }, []);
+    const handleMouseOut = (e) => {
+      e.stopPropagation();
+      if (!isOpen) {
+        contactRef.current.style.setProperty("--offset", "3.4rem");
+        containerRef.current.style.setProperty("--before-opacity", "0.5");
+        contactRef.current.style.setProperty("--animation-playpause", "paused");
+        terminalRef.current.style.setProperty("--border-x-position", "0%");
+        contactRef.current.style.setProperty("--gradient-inset", "0px");
+        contactHeadBtnRef.current.style.setProperty("--contact_head_btn-border-size", "1px");
+      }
+    };
+
+    if (!isOpen) {
+      terminalRef.current.addEventListener("mouseover", handleMouseOver);
+      terminalRef.current.addEventListener("mouseout", handleMouseOut);
+    }
+
+    return () => {
+      terminalRef.current.removeEventListener("mouseover", handleMouseOver);
+      terminalRef.current.removeEventListener("mouseout", handleMouseOut);
+    };
+  }, [isOpen]);
   return (
     <>
-      <section className={styles.contact}>
+      <section className={styles.contact} ref={contactRef} style={{ "--offset": isOpen ? "20rem" : "3.4rem" }}>
         <ClickAwayListener onClickAway={closeModal}>
           <section className={styles.terminal} ref={terminalRef}>
-            <div className={styles.container}>
+            <div className={styles.container} ref={containerRef}>
               <div className={styles.bg}></div>
-              <button className={styles.contact_head_btn} onClick={openModal}>
+              <button className={styles.contact_head_btn} ref={contactHeadBtnRef} onClick={toggleModal}>
                 <h2>Contact me</h2>
                 <span>Spaces: 2</span>
                 <span>UTF-8</span>
@@ -54,7 +110,7 @@ export default function Contact() {
           </section>
         </ClickAwayListener>
       </section>
-      <button className={styles.terminal_overlay} aria-label="Close Private Preview form"></button>
+      <button className={styles.terminal_overlay} ref={terminal_overlayRef} aria-label="Close Private Preview form"></button>
     </>
   );
 }
