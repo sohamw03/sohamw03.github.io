@@ -1,10 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background-color: #131f33;
   --ui-background-color: #161e29;
+  --ui-border-color: #2e3c51;
   --primary-color: #808c9c;
   --secondary-color: #2e3c51;
   --highlight-color: #5c4a8c;
-  --border-color: #2e3c51;
 }
 
 * {
@@ -17,6 +21,9 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: "Google Sans Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-disp: "Google Sans Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-text: "Google Sans Text", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 body {
@@ -41,4 +48,8 @@ img {
 
 ::selection {
   background: var(--highlight-color);
+}
+
+input::placeholder {
+  color: hsl(216 22% 35% / 1);
 }
