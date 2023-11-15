@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         <link rel="stylesheet" href={styles} />
-        <meta property="og:image" content="./6554de43848d20764128d9b8.png">
-<meta property="og:title" content="Portfoli o- Soham">
+        <meta property="og:image" content="./6554de43848d20764128d9b8.png"/>
+<meta property="og:title" content="Portfoli o- Soham"/>
       </Head>
       <body className={inter.className}>{children}</body>
     </html>
