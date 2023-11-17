@@ -1,5 +1,5 @@
 import Contact from "@/components/Contact";
-import { Avatar, Typography } from "@mui/material";
+import { Avatar, Hidden, Typography } from "@mui/material";
 import styles from "./page.module.css";
 
 const ProjectsData = [
@@ -65,7 +65,7 @@ export default function Home() {
       <main className={styles.main}>
         {/* About Section */}
         <section className={styles.about}>
-          <Avatar alt="Soham Waghmare" src="/Soham.png" sx={{ width: 128, height: 128, marginBottom: "1rem" }} />
+          <Avatar alt="Soham Waghmare" src="/soham.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
           <Typography variant="h4" gutterBottom>
             Soham Waghmare
           </Typography>

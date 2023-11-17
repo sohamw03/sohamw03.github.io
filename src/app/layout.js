@@ -2,6 +2,7 @@ import React from "react";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import styles from "./globals.css";
+import { GlobalProvider } from "@/context/GlobalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,12 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         <link rel="stylesheet" href={styles} />
-        <meta property="og:image" content="./6554de43848d20764128d9b8.png"/>
-<meta property="og:title" content="Portfoli o- Soham"/>
+        <meta property="og:image" content="./6554de43848d20764128d9b8.png" />
+        <meta property="og:title" content="Portfolio - Soham" />
       </Head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <GlobalProvider>{children}</GlobalProvider>
+      </body>
     </html>
   );
 }

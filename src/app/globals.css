@@ -51,5 +51,5 @@ img {
 }
 
 input::placeholder {
-  color: hsl(216 22% 35% / 1);
+  color: #45546e;
 }
