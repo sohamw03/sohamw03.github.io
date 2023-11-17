@@ -65,7 +65,7 @@ export default function Home() {
       <main className={styles.main}>
         {/* About Section */}
         <section className={styles.about}>
-          <Avatar alt="Soham Waghmare" src="/soham.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
+          <Avatar alt="Soham Waghmare" src="/soham-photo.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
           <Typography variant="h4" gutterBottom>
             Soham Waghmare
           </Typography>

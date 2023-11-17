@@ -1,12 +1,11 @@
 .redevelopment {
     font-family: var(--font-family-text);
     width: 100%;
-    height: 1.5rem;
     font-size: 0.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: rgba(136, 99, 230, 0.5);
+    text-wrap: wrap;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
 }
 
 .main {
