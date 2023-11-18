@@ -1,5 +1,6 @@
 import Contact from "@/components/Contact";
-import { Avatar, Hidden, Typography } from "@mui/material";
+import SocialLinks from "@/components/SocialLinks";
+import { Avatar, Typography } from "@mui/material";
 import styles from "./page.module.css";
 
 const ProjectsData = [
@@ -73,9 +74,7 @@ export default function Home() {
             A full-stack developer with a passion for crafting dynamic web solutions. Explore my projects and skills to see how I can bring your web development ideas to life.
           </Typography>
           <hr className={styles.divider} style={{ width: "3rem" }} />
-          <Typography variant="h6" gutterBottom className={styles.aboutdesc}>
-            Welcome to my Tech Odyssey
-          </Typography>
+          <SocialLinks />
         </section>
         <Typography variant="h4" gutterBottom>
           Projects

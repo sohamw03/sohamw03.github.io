@@ -100,6 +100,7 @@
     border: 1px solid #2e3c51;
     border-radius: 15px;
     padding: 0.5rem;
+    overflow: hidden;
     /* max-width: calc((100vw - 8rem)/5); */
 }
 
@@ -114,17 +115,19 @@
     height: 100%;
     top: 0;
     left: 0;
+    border-radius: 15px;
 }
 
 .skillchip {
-    padding: 4px;
+    padding: 0.25rem;
     border: 1px solid var(--secondary-color);
     border-radius: 7.5px;
+    line-height: normal;
 }
 
 .chiplit {
     border: 1px solid #8964e8 !important;
-    box-shadow: #8964e8 0px 0px 4px 0px;
+    /* box-shadow: #8964e8 0px 0px 4px 0px; */
 }
 
 /*----------------------------------------------- Utility ---------------------------------------------*/
