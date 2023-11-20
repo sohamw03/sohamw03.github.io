@@ -48,6 +48,9 @@ export default function Contact() {
     contactRef.current.style.setProperty("--border-anim-opacity", "0");
     contactRef.current.style.setProperty("--border-offset", "-1px");
     contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
+
+    // Reset terminal animation data
+    SetTerminalAnimData(() => []);
   };
 
   const openModal = () => {
@@ -67,6 +70,9 @@ export default function Contact() {
     contactRef.current.style.setProperty("--border-anim-opacity", "0");
     contactRef.current.style.setProperty("--border-offset", "0px");
     contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
+
+    // Reset terminal animation data
+    SetTerminalAnimData(() => []);
   };
 
   // Submit form and run animation
