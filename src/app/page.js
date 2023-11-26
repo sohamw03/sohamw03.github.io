@@ -33,13 +33,13 @@ const ProjectsData = [
 const SkillBuckets = [
   {
     name: "Frontend",
-    skills: "HTML CSS Javascript React.JS Next.JS",
-    highlight: ["React.JS", "Next.JS"],
+    skills: "HTML CSS Javascript React.JS Next.JS TailwindCSS Bootstrap MaterialUI JQuery",
+    highlight: ["React.JS", "Next.JS", "TailwindCSS"],
   },
   {
     name: "Backend",
-    skills: "Django Node.JS Express.JS",
-    highlight: ["Django"],
+    skills: "Django Node.JS Express.JS Firebase",
+    highlight: ["Django", "Express.JS", "Firebase"],
   },
   {
     name: "Databases",
@@ -105,7 +105,7 @@ export default function Home() {
                 <Typography variant="h6" gutterBottom>
                   {bucket.name}
                 </Typography>
-                <p style={{ fontSize: "14px", color: "#808c9c", display: "flex", gap: "6px", flexFlow: "wrap" }}>
+                <p style={{ fontSize: "14px", display: "flex", gap: "6px", flexFlow: "wrap" }}>
                   {bucket.skills.split(" ").map((skillchip, jndex) => {
                     return (
                       <span key={`${index}${jndex}`} className={`${styles.skillchip} ${bucket.highlight.includes(skillchip) ? styles.chiplit : ""}`}>

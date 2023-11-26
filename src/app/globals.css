@@ -9,6 +9,7 @@
   --primary-color: #808c9c;
   --secondary-color: #2e3c51;
   --highlight-color: #5c4a8c;
+  --font-primary-color: #bfc7d2;
 }
 
 * {
@@ -27,7 +28,7 @@ body {
 }
 
 body {
-  color: rgb(191 199 210 / 1);
+  color: var(--font-primary-color);
   background: #10151d;
 }
 

@@ -20,15 +20,42 @@ export default function Contact() {
   const containerRef = useRef(null);
   const terminal_overlayRef = useRef(null);
   const contactHeadBtnRef = useRef(null);
+  const formRef = useRef(null);
 
   // Run different functions based on the state of the modal
   const toggleModal = () => {
     setAnimContainerOpen(false);
+
+    // Reset form
+    formRef.current.reset();
+
     if (isOpen) {
       closeModal();
     } else {
       openModal();
     }
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+    // Gradient opacity of :before of the terminal
+    containerRef.current.style.setProperty("--before-opacity", "0");
+
+    // Border pulse animation and background
+    contactRef.current.style.setProperty("--animation-playpause", "paused");
+    terminalRef.current.style.setProperty("--border-x-position", "0%");
+
+    // Modal overlay appears
+    terminal_overlayRef.current.style.setProperty("--tw-bg-opacity", "0.5");
+    terminal_overlayRef.current.style.setProperty("pointer-events", "auto");
+
+    // Handle borders
+    // contactRef.current.style.setProperty("--border-anim-opacity", "0");
+    contactRef.current.style.setProperty("--border-offset", "0px");
+    contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
+
+    // Reset terminal animation data
+    SetTerminalAnimData(() => []);
   };
 
   const closeModal = () => {
@@ -47,28 +74,6 @@ export default function Contact() {
     // Handle borders
     contactRef.current.style.setProperty("--border-anim-opacity", "0");
     contactRef.current.style.setProperty("--border-offset", "-1px");
-    contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
-
-    // Reset terminal animation data
-    SetTerminalAnimData(() => []);
-  };
-
-  const openModal = () => {
-    setIsOpen(true);
-    // Gradient opacity of :before of the terminal
-    containerRef.current.style.setProperty("--before-opacity", "0");
-
-    // Border pulse animation and background
-    contactRef.current.style.setProperty("--animation-playpause", "paused");
-    terminalRef.current.style.setProperty("--border-x-position", "0%");
-
-    // Modal overlay appears
-    terminal_overlayRef.current.style.setProperty("--tw-bg-opacity", "0.5");
-    terminal_overlayRef.current.style.setProperty("pointer-events", "auto");
-
-    // Handle borders
-    contactRef.current.style.setProperty("--border-anim-opacity", "0");
-    contactRef.current.style.setProperty("--border-offset", "0px");
     contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
 
     // Reset terminal animation data
@@ -120,6 +125,7 @@ export default function Contact() {
     }
   };
 
+  // Event listeners
   useEffect(() => {
     const handleMouseOver = (e) => {
       e.stopPropagation();
@@ -129,7 +135,7 @@ export default function Contact() {
         contactRef.current.style.setProperty("--animation-playpause", "running");
         terminalRef.current.style.setProperty("--border-x-position", "100%");
         contactRef.current.style.setProperty("--border-anim-opacity", "1");
-        contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c5100");
+        contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
       }
     };
 
@@ -140,7 +146,7 @@ export default function Contact() {
         containerRef.current.style.setProperty("--before-opacity", "0.5");
         contactRef.current.style.setProperty("--animation-playpause", "paused");
         terminalRef.current.style.setProperty("--border-x-position", "0%");
-        contactRef.current.style.setProperty("--border-anim-opacity", "0");
+        contactRef.current.style.setProperty("--border-anim-opacity", "1");
         contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
       }
     };
@@ -162,13 +168,15 @@ export default function Contact() {
           <section className={styles.terminal} ref={terminalRef}>
             <div className={styles.container} ref={containerRef}>
               <div className={styles.bg}></div>
+              {/* Head button */}
               <button className={styles.contact_head_btn} ref={contactHeadBtnRef} onClick={toggleModal}>
                 <h2>Contact me</h2>
                 <span>Spaces: 2</span>
                 <span>UTF-8</span>
                 <span>▼</span>
               </button>
-              <form className={`${styles.contact_body} p-6 flex items-center flex-wrap justify-stretch gap-x-6 gap-y-4`} onSubmit={handleSubmit}>
+              {/* Form body*/}
+              <form className={`${styles.contact_body} p-6 flex items-center flex-wrap justify-stretch gap-x-6 gap-y-4`} onSubmit={handleSubmit} ref={formRef}>
                 <p>I will try to get back to you at the earliest. Enter your details to contact me.</p>
                 <div className="flex flex-col justify-start">
                   <div className={`${styles.form_control_wrapper} flex items-end gap-2`}>
@@ -200,6 +208,7 @@ export default function Contact() {
                   Send
                 </button>
               </form>
+              {/* Terminal animation body*/}
               <div className={`${styles.contact_body} ${styles.terminal_anim_text} ${AnimContainerOpen ? "p-6" : ""}`} style={{ borderTopWidth: AnimContainerOpen ? "1px" : "0px" }}>
                 {terminalAnimData.map((frame, index) => {
                   return (

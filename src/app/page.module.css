@@ -90,6 +90,22 @@
     font-family: var(--font-family-text);
 }
 
+.skillchip {
+    color: var(--primary-color);
+    padding: 0.25rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 7.5px;
+    line-height: normal;
+    font-weight: 600;
+}
+
+.chiplit {
+    border: 1px solid #8964e8 !important;
+    color: var(--font-primary-color);
+    background-color: rgba(137, 100, 232, 0.2)
+        /* box-shadow: #8964e8 0px 0px 4px 0px; */
+}
+
 /*----------------------------------------------- Skills ---------------------------------------------*/
 
 /*----------------------------------------------- Utility ---------------------------------------------*/
@@ -118,18 +134,6 @@
     border-radius: 15px;
 }
 
-.skillchip {
-    padding: 0.25rem;
-    border: 1px solid var(--secondary-color);
-    border-radius: 7.5px;
-    line-height: normal;
-}
-
-.chiplit {
-    border: 1px solid #8964e8 !important;
-    /* box-shadow: #8964e8 0px 0px 4px 0px; */
-}
-
 /*----------------------------------------------- Utility ---------------------------------------------*/
 
 /*----------------------------------------------- Contact ---------------------------------------------*/
@@ -137,8 +141,9 @@
     --animation-playpause: paused;
     --border-x-position: 0%;
     --border-offset: -1px;
-    --border-anim-opacity: 0;
-    --border-color: #2e3c51;
+    --border-anim-opacity: 1;
+    /* --border-color: #2e3c51; */
+    --border-color: transparent;
     transform: translateY(calc(100% - 3.3rem));
     position: fixed;
     bottom: 0;
@@ -198,7 +203,7 @@
         pointer-events: none;
         position: absolute;
         z-index: -10;
-        opacity: 0;
+        opacity: 1;
         filter: opacity(--border-anim-opacity) !important;
         background-position-x: var(--border-x-position);
         animation: pulse 3s infinite ease;
@@ -369,23 +374,23 @@
 
 @keyframes pulse {
     0% {
-        opacity: 0;
+        opacity: 1;
     }
 
     25% {
-        opacity: 1;
-    }
-
-    50% {
         opacity: 0.2;
     }
 
-    75% {
+    50% {
         opacity: 1;
     }
 
+    75% {
+        opacity: 0.2;
+    }
+
     100% {
-        opacity: 0;
+        opacity: 1;
     }
 }
 
