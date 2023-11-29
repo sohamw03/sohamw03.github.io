@@ -157,8 +157,10 @@ export default function Contact() {
     }
 
     return () => {
-      terminalRef.current.removeEventListener("mouseover", handleMouseOver);
-      terminalRef.current.removeEventListener("mouseout", handleMouseOut);
+      if (terminalRef.current) {
+        terminalRef.current.removeEventListener("mouseover", handleMouseOver);
+        terminalRef.current.removeEventListener("mouseout", handleMouseOut);
+      }
     };
   }, [isOpen]);
   return (

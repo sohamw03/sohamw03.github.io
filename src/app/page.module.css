@@ -108,7 +108,19 @@
 
 /*----------------------------------------------- Skills ---------------------------------------------*/
 
-/*----------------------------------------------- Utility ---------------------------------------------*/
+/*--------------------------------------------Other Projects -----------------------------------------*/
+
+.otherProjects {
+    display: grid;
+    grid-auto-flow: dense;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    margin-bottom: 2rem;
+}
+
+/*--------------------------------------------Other Projects -----------------------------------------*/
+
+/*----------------------------------------------- Utility --------------------------------------------*/
 .card {
     position: relative;
     display: inline-block;
@@ -279,7 +291,7 @@
         opacity: 0;
         transform: translate(-4px);
         transition: transform .3s ease, opacity .3s ease;
-        background-image: url("/warning.svg");
+        background-image: url("/images/warning.svg");
     }
 
     .select_group select {

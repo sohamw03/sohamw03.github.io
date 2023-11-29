@@ -1,39 +1,52 @@
 import Contact from "@/components/Contact";
+import ProjectCard from "@/components/ProjectCard";
 import SocialLinks from "@/components/SocialLinks";
 import { Avatar, Typography } from "@mui/material";
 import styles from "./page.module.css";
 
 const ProjectsData = [
   {
-    name: "Blogging Website",
+    name: "Codegemini Blog",
     description: "Featuring articles related to Programming and Technology",
-    imageSrc: "/blog_website.png",
+    imageSrc: "/images/blog_website.png",
     href: "https://i-coder-henna.vercel.app/",
+    gif: "",
+    techStack: ["Bootstrap", "Django", "PostgreSQL", "Vercel"],
+    github: "https://github.com/sohamw03/Codegemini",
   },
   {
     name: "Text Utility Website",
     description: "Simple and easy-to-use text tools with a minimalistic design",
-    imageSrc: "/text_utility_website.png",
+    imageSrc: "/images/text_utility_website.png",
     href: "https://react-textutils-five.vercel.app/",
+    gif: "",
+    techStack: ["Bootstrap", "React.JS", "Vercel"],
+    github: "https://github.com/sohamw03/ReactTextutils",
   },
   {
     name: "NewsMonkey",
     description: "A simple and fast app that delivers the latest news from various sources in one place.",
-    imageSrc: "/news_website.png",
+    imageSrc: "/images/news_website.png",
     href: "https://github.com/sohamw03/newsapp",
+    gif: "/images/newsmonkey.gif",
+    techStack: ["Bootstrap", "React.JS", "NewsAPI", "Vercel"],
+    github: "https://github.com/sohamw03/newsapp",
   },
   {
     name: "MyAwesomeCart",
     description: "E-Commerce website selling electronics.",
-    imageSrc: "/my_awesome_cart.png",
+    imageSrc: "/images/my_awesome_cart.png",
     href: "https://github.com/sohamw03/MyAwesomeCart",
+    gif: "",
+    techStack: ["Bootstrap", "Django", "Vercel"],
+    github: "https://github.com/sohamw03/MyAwesomeCart",
   },
 ];
 
 const SkillBuckets = [
   {
     name: "Frontend",
-    skills: "HTML CSS Javascript React.JS Next.JS TailwindCSS Bootstrap MaterialUI JQuery",
+    skills: "HTML CSS Javascript React.JS Next.JS Typescript TailwindCSS Bootstrap MaterialUI JQuery",
     highlight: ["React.JS", "Next.JS", "TailwindCSS"],
   },
   {
@@ -53,6 +66,18 @@ const SkillBuckets = [
   },
 ];
 
+const OtherProjectsData = [
+  {
+    name: "",
+    description: "",
+    imageSrc: "",
+    href: "",
+    gif: "",
+    techStack: [""],
+    github: "",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -66,7 +91,7 @@ export default function Home() {
       <main className={styles.main}>
         {/* About Section */}
         <section className={styles.about}>
-          <Avatar alt="Soham Waghmare" src="/soham-photo.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
+          <Avatar alt="Soham Waghmare" src="/images/soham-photo.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
           <Typography variant="h4" gutterBottom>
             Soham Waghmare
           </Typography>
@@ -82,16 +107,7 @@ export default function Home() {
         {/* Projects Section */}
         <section className={styles.projects}>
           {ProjectsData.map((project, index) => {
-            return (
-              <div key={index} className={styles.card} style={{ cursor: "pointer" }}>
-                <a href={project.href} target="_blank" className={styles.cardlink}></a>
-                <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} />
-                <Typography variant="h6" gutterBottom>
-                  {project.name}
-                </Typography>
-                <p style={{ fontSize: "14px", color: "#808c9c" }}>{project.description}</p>
-              </div>
-            );
+            return <ProjectCard key={index} project={project} />;
           })}
         </section>
         <Typography variant="h4" gutterBottom>
@@ -118,6 +134,24 @@ export default function Home() {
             );
           })}
         </section>
+        {/* <Typography variant="h4" gutterBottom>
+          Other Projects
+        </Typography> */}
+        {/* Other Projects Section */}
+        {/* <section className={styles.otherProjects}>
+          {OtherProjectsData.map((project, index) => {
+            return (
+              <div key={index} className={styles.card} style={{ cursor: "pointer" }}>
+                <a href={project.href} target="_blank" className={styles.cardlink}></a>
+                <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} />
+                <Typography variant="h6" gutterBottom>
+                  {project.name}
+                </Typography>
+                <p style={{ fontSize: "14px", color: "#808c9c" }}>{project.description}</p>
+              </div>
+            );
+          })}
+        </section> */}
         {/* Contact Section */}
         <Contact />
       </main>

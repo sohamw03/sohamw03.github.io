@@ -14,7 +14,7 @@ export const metadata = {
     siteName: "Soham's Tech Odyssey : Navigating the Digital Universe",
     title: "Soham's Tech Odyssey : Navigating the Digital Universe",
     description: "Embark on a digital odyssey with Soham as he showcases his remarkable tech journey, innovative creations, and expertise. Explore the universe of code, creativity, and problem-solving on this inspiring tech voyage.",
-    images: "https://sohamw03.github.io/6554de43848d20764128d9b8.png",
+    images: "https://sohamw03.github.io/images/preview.png",
   },
 };
 
