@@ -1,9 +1,23 @@
 language: node_js
-node_js:
-  - "node"
-script:
-  -
-deploy:
-  provider: firebase
-  token:
-    secure: "1//0g_H3HzJnPqjgCgYIARAAGBASNwF-L9IruXIKdOWEWj-gdFStYvLL-VyzvsY4U4oow5Gk_ZCTAhgR2e7xw5H_vVqFfiLOPQDaskA"
+
+stages:
+  - build
+  - deploy
+
+jobs:
+  include:
+    - stage: build
+      script:
+        - npm install
+        - npm run build
+    - stage: deploy
+      script:
+        - firebase deploy
+      deploy:
+        provider: firebase
+        token:
+          secure: "1//0g_H3HzJnPqjgCgYIARAAGBASNwF-L9IruXIKdOWEWj-gdFStYvLL-VyzvsY4U4oow5Gk_ZCTAhgR2e7xw5H_vVqFfiLOPQDaskA"
+        project: "portfolio-8987c"
+      # Optionally, specify a specific Firebase project
+      # project: "your-firebase-project-id"
+
