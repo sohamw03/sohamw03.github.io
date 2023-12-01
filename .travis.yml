@@ -1,3 +1,5 @@
+os: linux
+dist: focal
 language: node_js
 node_js:
   - 18
@@ -21,7 +23,4 @@ jobs:
         token:
           secure: "1//0g_H3HzJnPqjgCgYIARAAGBASNwF-L9IruXIKdOWEWj-gdFStYvLL-VyzvsY4U4oow5Gk_ZCTAhgR2e7xw5H_vVqFfiLOPQDaskA"
         project: "portfolio-8987c"
-      # Optionally, specify a specific Firebase project
-      # project: "your-firebase-project-id"
-
 
