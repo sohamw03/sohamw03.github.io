@@ -17,6 +17,7 @@ jobs:
         - next build
     - stage: deploy
       script:
+        - npm install -g firebase-tools
         - firebase deploy
       deploy:
         provider: firebase
