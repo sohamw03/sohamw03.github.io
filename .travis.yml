@@ -1,10 +1,5 @@
-language: node_js
-node_js:
-  - lts/*
-  - node
-cache:
-  directories:
-    - node_modules
 script:
-  - npm run test
-w
+  - npm run build
+
+after_success:
+  - vercel deploy --prebuilt --token $VERCEL_GIT_TOKEN
