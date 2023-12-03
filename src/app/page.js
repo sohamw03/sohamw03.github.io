@@ -3,6 +3,7 @@ import ProjectCard from "@/components/ProjectCard";
 import SocialLinks from "@/components/SocialLinks";
 import { Avatar, Typography } from "@mui/material";
 import styles from "./page.module.css";
+import Dark from "@/themes/Dark";
 
 const ProjectsData = [
   {
@@ -68,6 +69,33 @@ const SkillBuckets = [
 
 const OtherProjectsData = [
   {
+    name: "Calculator",
+    description: "Minimalistic calculator built with React.JS",
+    imageSrc: "/images/calculator.png",
+    href: "/calculator",
+    gif: "",
+    techStack: ["React.JS"],
+    github: "https://github.com/sohamw03/sohamw03.github.io",
+  },
+  {
+    name: "",
+    description: "",
+    imageSrc: "",
+    href: "",
+    gif: "",
+    techStack: [""],
+    github: "",
+  },
+  {
+    name: "",
+    description: "",
+    imageSrc: "",
+    href: "",
+    gif: "",
+    techStack: [""],
+    github: "",
+  },
+  {
     name: "",
     description: "",
     imageSrc: "",
@@ -79,82 +107,76 @@ const OtherProjectsData = [
 ];
 
 export default function Home() {
-  return (
-    <>
-      <div className={styles.redevelopment}>
-        Redeveloping the website in NextJS. You can track the progress&nbsp;
-        <a href="https://github.com/sohamw03" target="_blank" style={{ textDecoration: "underline" }}>
-          here
-        </a>
-        .
-      </div>
-      <main className={styles.main}>
-        {/* About Section */}
-        <section className={styles.about}>
-          <Avatar alt="Soham Waghmare" src="/images/soham-photo.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
+  if (Dark) {
+    return (
+      <>
+        <Dark />
+        <div className={styles.redevelopment}>
+          Redeveloping the website in NextJS. You can track the progress&nbsp;
+          <a href="https://github.com/sohamw03" target="_blank" style={{ textDecoration: "underline" }}>
+            here
+          </a>
+          .
+        </div>
+        <main className={styles.main}>
+          {/* About Section */}
+          <section className={styles.about}>
+            <Avatar alt="Soham Waghmare" src="/images/soham-photo.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
+            <Typography variant="h4" gutterBottom>
+              Soham Waghmare
+            </Typography>
+            <Typography variant="h6" gutterBottom className={styles.aboutdesc}>
+              A full-stack developer with a passion for crafting dynamic web solutions. Explore my projects and skills to see how I can bring your web development ideas to life.
+            </Typography>
+            <hr className={styles.divider} style={{ width: "3rem" }} />
+            <SocialLinks />
+          </section>
           <Typography variant="h4" gutterBottom>
-            Soham Waghmare
+            Projects
           </Typography>
-          <Typography variant="h6" gutterBottom className={styles.aboutdesc}>
-            A full-stack developer with a passion for crafting dynamic web solutions. Explore my projects and skills to see how I can bring your web development ideas to life.
+          {/* Projects Section */}
+          <section className={styles.projects}>
+            {ProjectsData.map((project, index) => {
+              return <ProjectCard key={index} project={project} />;
+            })}
+          </section>
+          <Typography variant="h4" gutterBottom>
+            Tech Stack
           </Typography>
-          <hr className={styles.divider} style={{ width: "3rem" }} />
-          <SocialLinks />
-        </section>
-        <Typography variant="h4" gutterBottom>
-          Projects
-        </Typography>
-        {/* Projects Section */}
-        <section className={styles.projects}>
-          {ProjectsData.map((project, index) => {
-            return <ProjectCard key={index} project={project} />;
-          })}
-        </section>
-        <Typography variant="h4" gutterBottom>
-          Tech Stack
-        </Typography>
-        {/* Skills Section */}
-        <section className={styles.skills}>
-          {SkillBuckets.map((bucket, index) => {
-            return (
-              <div key={index} className={styles.card}>
-                <Typography variant="h6" gutterBottom>
-                  {bucket.name}
-                </Typography>
-                <p style={{ fontSize: "14px", display: "flex", gap: "6px", flexFlow: "wrap" }}>
-                  {bucket.skills.split(" ").map((skillchip, jndex) => {
-                    return (
-                      <span key={`${index}${jndex}`} className={`${styles.skillchip} ${bucket.highlight.includes(skillchip) ? styles.chiplit : ""}`}>
-                        {skillchip}
-                      </span>
-                    );
-                  })}
-                </p>
-              </div>
-            );
-          })}
-        </section>
-        {/* <Typography variant="h4" gutterBottom>
-          Other Projects
-        </Typography> */}
-        {/* Other Projects Section */}
-        {/* <section className={styles.otherProjects}>
-          {OtherProjectsData.map((project, index) => {
-            return (
-              <div key={index} className={styles.card} style={{ cursor: "pointer" }}>
-                <a href={project.href} target="_blank" className={styles.cardlink}></a>
-                <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} />
-                <Typography variant="h6" gutterBottom>
-                  {project.name}
-                </Typography>
-                <p style={{ fontSize: "14px", color: "#808c9c" }}>{project.description}</p>
-              </div>
-            );
-          })}
-        </section> */}
-        {/* Contact Section */}
-        <Contact />
-      </main>
-    </>
-  );
+          {/* Skills Section */}
+          <section className={styles.skills}>
+            {SkillBuckets.map((bucket, index) => {
+              return (
+                <div key={index} className={styles.card}>
+                  <Typography variant="h6" gutterBottom>
+                    {bucket.name}
+                  </Typography>
+                  <p style={{ fontSize: "14px", display: "flex", gap: "6px", flexFlow: "wrap" }}>
+                    {bucket.skills.split(" ").map((skillchip, jndex) => {
+                      return (
+                        <span key={`${index}${jndex}`} className={`${styles.skillchip} ${bucket.highlight.includes(skillchip) ? styles.chiplit : ""}`}>
+                          {skillchip}
+                        </span>
+                      );
+                    })}
+                  </p>
+                </div>
+              );
+            })}
+          </section>
+          <Typography variant="h4" gutterBottom>
+            Other Projects
+          </Typography>
+          {/* Other Projects Section */}
+          <section className={styles.otherProjects}>
+            {OtherProjectsData.map((project, index) => {
+              return <ProjectCard key={index} project={project} />;
+            })}
+          </section>
+          {/* Contact Section */}
+          <Contact />
+        </main>
+      </>
+    );
+  }
 }
