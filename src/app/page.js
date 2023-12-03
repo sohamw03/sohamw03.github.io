@@ -75,7 +75,7 @@ const OtherProjectsData = [
     href: "/calculator",
     gif: "",
     techStack: ["React.JS"],
-    github: "https://github.com/sohamw03/sohamw03.github.io",
+    github: "https://github.com/sohamw03/sohamw03.github.io/tree/main/src/app/calculator",
   },
   {
     name: "",
