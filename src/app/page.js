@@ -75,7 +75,7 @@ const OtherProjectsData = [
     href: "https://note-gemini.vercel.app/",
     gif: "",
     techStack: ["Bootstrap", "React.JS", "Node.JS", "MongoDB", "Vercel"],
-    github: "",
+    github: "https://github.com/sohamw03/noteGemini",
   },
   {
     name: "Calculator",
