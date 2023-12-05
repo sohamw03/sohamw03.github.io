@@ -69,22 +69,22 @@ const SkillBuckets = [
 
 const OtherProjectsData = [
   {
+    name: "noteGemini",
+    description: "noteGemini - Your notes in the cloud",
+    imageSrc: "/images/note_gemini.png",
+    href: "https://note-gemini.vercel.app/",
+    gif: "",
+    techStack: ["Bootstrap", "React.JS", "Node.JS", "MongoDB", "Vercel"],
+    github: "",
+  },
+  {
     name: "Calculator",
     description: "Minimalistic calculator built with React.JS",
     imageSrc: "/images/calculator.png",
     href: "/calculator",
     gif: "",
-    techStack: ["React.JS"],
+    techStack: ["React.JS", "GithubPages"],
     github: "https://github.com/sohamw03/sohamw03.github.io/tree/main/src/app/calculator",
-  },
-  {
-    name: "",
-    description: "",
-    imageSrc: "",
-    href: "",
-    gif: "",
-    techStack: [""],
-    github: "",
   },
   {
     name: "",
