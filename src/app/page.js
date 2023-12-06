@@ -1,9 +1,10 @@
 import Contact from "@/components/Contact";
 import ProjectCard from "@/components/ProjectCard";
 import SocialLinks from "@/components/SocialLinks";
+import Dark from "@/themes/Dark";
 import { Avatar, Typography } from "@mui/material";
 import styles from "./page.module.css";
-import Dark from "@/themes/Dark";
+import AboutContactButton from "@/components/Oneoffs/AboutContactButton";
 
 const ProjectsData = [
   {
@@ -118,8 +119,15 @@ export default function Home() {
           </a>
           .
         </div>
-        <main className={styles.main}>
+        <main className={`${styles.main} relative`}>
           {/* About Section */}
+          {/* Navbar */}
+          <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
+            <AboutContactButton />
+            <a role="button" href="https://docs.google.com/document/d/17vNcYgsPYtbuzHkVQa5j9Ls9v8tDyPX8/edit?usp=sharing&ouid=103693720663226708800&rtpof=true&sd=true" target="_blank" className={`${styles.button} ${styles.button_primary} hover:bg-white focus:bg-white active:bg-white`} style={{ WebkitTapHighlightColor: "transparent" }}>
+              Resume
+            </a>
+          </nav>
           <section className={styles.about}>
             <Avatar alt="Soham Waghmare" src="/images/soham-photo.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
             <Typography variant="h4" gutterBottom>

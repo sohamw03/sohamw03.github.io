@@ -7,12 +7,12 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 export default function Contact() {
   // Global Context
-  const { time, updateTime } = useContext(GlobalContext);
+  const { time, updateTime, toggleModalButtonRef } = useContext(GlobalContext);
 
-  const [isOpen, setIsOpen] = useState(false);
   const [AnimContainerOpen, setAnimContainerOpen] = useState(false);
   const [contactOffset, setContactOffset] = useState("3.3rem");
   const [terminalAnimData, SetTerminalAnimData] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Capture elements
   const contactRef = useRef(null);
@@ -37,7 +37,7 @@ export default function Contact() {
   };
 
   const openModal = () => {
-    setIsOpen(true);
+    setIsOpen((prev) => true);
     // Gradient opacity of :before of the terminal
     containerRef.current.style.setProperty("--before-opacity", "0");
 
@@ -59,7 +59,7 @@ export default function Contact() {
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    setIsOpen((prev) => false);
     // Gradient opacity of :before of the terminal
     containerRef.current.style.setProperty("--before-opacity", "0.5");
 
@@ -166,7 +166,7 @@ export default function Contact() {
   return (
     <>
       <section className={styles.contact} ref={contactRef} style={{ transform: isOpen ? "none" : `translateY(calc(100% - ${contactOffset}))` }}>
-        <ClickAwayListener onClickAway={closeModal}>
+        <ClickAwayListener mouseEvent={isOpen ? "onClick" : false} touchEvent={isOpen ? "onTouchStart" : false} onClickAway={closeModal}>
           <section className={styles.terminal} ref={terminalRef}>
             <div className={styles.container} ref={containerRef}>
               <div className={styles.bg}></div>
@@ -206,7 +206,7 @@ export default function Contact() {
                     <input id="request-msg" type="text" name="message" maxLength="128" className={`${styles.form_control} flex-1 py-2 -mb-1`} placeholder="{Enter}" required />
                   </div>
                 </div>
-                <button type="submit" title="Submit" className={`${styles.button_primary} ${styles.button} flex-shrink opacity-1 -translate-x-1 pointer-events-auto hover:bg-white`}>
+                <button type="submit" title="Send" className={`${styles.button_primary} ${styles.button} flex-shrink opacity-1 -translate-x-1 pointer-events-auto hover:bg-white`}>
                   Send
                 </button>
               </form>
@@ -226,6 +226,7 @@ export default function Contact() {
         </ClickAwayListener>
       </section>
       <button className={styles.terminal_overlay} ref={terminal_overlayRef} aria-label="Close Private Preview form"></button>
+      <button onClick={toggleModal} ref={toggleModalButtonRef} className="fixed top-0 pointer-events-none hidden"></button>
     </>
   );
 }

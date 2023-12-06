@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 
 export const GlobalContext = createContext();
 
@@ -25,7 +25,13 @@ export function GlobalProvider({ children }) {
     );
   };
 
-  const values = { time, updateTime };
+  const toggleModalButtonRef = useRef(null);
+
+  const values = {
+    time,
+    updateTime,
+    toggleModalButtonRef,
+  };
 
   return <GlobalContext.Provider value={values}>{children}</GlobalContext.Provider>;
 }

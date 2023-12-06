@@ -30,6 +30,7 @@ body {
 body {
   color: var(--font-primary-color);
   background: #10151d;
+  background-image: radial-gradient(50% 25% at 50% 0%, #131f33 20%, rgba(19, 30, 49, 0) 100%);
 }
 
 a {

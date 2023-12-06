@@ -23,16 +23,20 @@
 .about {
     display: flex;
     margin: 2rem 0;
+    margin-top: 0;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #2e3c51;
+    justify-content: center;
+    /* border: 1px solid #2e3c51; */
     border-radius: 0.5rem;
     padding: 2rem;
-    background-image: radial-gradient(50% 75% at 50% 0%, #131f33 20%, rgba(19, 30, 49, 0) 100%);
+    padding-top: 0;
+    /* background-image: radial-gradient(50% 75% at 50% 0%, #131f33 20%, rgba(19, 30, 49, 0) 100%); */
+    height: calc(100vh - 2rem - 29px);
 
     .aboutdesc {
         font-family: var(--font-family-text);
-        width: 50%;
+        max-width: 50rem;
         font-weight: normal;
         text-align: center;
         color: #808c9c;
@@ -50,6 +54,7 @@
 .about h4 {
     font-family: var(--font-family-disp);
     margin: 0;
+    margin-bottom: 1rem;
 }
 
 /*----------------------------------------------- About -----------------------------------------------*/
@@ -378,6 +383,10 @@
     .aboutdesc {
         width: 95% !important;
     }
+
+    .navBtns {
+        justify-content: center!important;
+    }
 }
 
 /*-------------------------------------------- Media Queries ------------------------------------------*/
@@ -435,4 +444,36 @@
     transition-property: color, border-color, transform, opacity, background-color;
     transition-duration: .3s;
     transition-timing-function: ease;
+}
+
+.button_outline {
+    border-width: 1px;
+    border-color: rgb(46 60 81);
+    background-color: rgb(16 21 29);
+    color: rgb(191 199 210);
+    --tw-otln-opacity: 0;
+    transition: all .3s ease;
+}
+
+.button_outline::before {
+    content: "";
+    background-color: rgb(168 127 251/var(--tw-otln-opacity));
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transition: all .3s ease;
+}
+
+.button_outline:hover {
+    --tw-otln-opacity: 0.097;
+    border-color: #a87ffb;
+}
+
+.button_outline:active {
+    --tw-otln-opacity: 0.2;
+    border-color: #a87ffb;
+}
+
+.button_outline:focus {
+    border-color: #a87ffb;
 }
