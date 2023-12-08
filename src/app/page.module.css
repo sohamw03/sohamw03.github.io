@@ -33,6 +33,7 @@
     padding-top: 0;
     /* background-image: radial-gradient(50% 75% at 50% 0%, #131f33 20%, rgba(19, 30, 49, 0) 100%); */
     height: calc(100vh - 2rem - 29px);
+    height: calc(100svh - 2rem - 29px);
 
     .aboutdesc {
         font-family: var(--font-family-text);
@@ -385,7 +386,7 @@
     }
 
     .navBtns {
-        justify-content: center!important;
+        justify-content: center !important;
     }
 }
 
