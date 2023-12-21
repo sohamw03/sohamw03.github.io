@@ -31,7 +31,7 @@ const ProjectsData = [
     description: "A simple and fast app that delivers the latest news from various sources in one place.",
     imageSrc: "/images/news_website.png",
     href: "https://github.com/sohamw03/newsapp",
-    gif: "/images/newsmonkey.gif",
+    gif: "/images/newsmonkey.webp",
     techStack: ["Bootstrap", "React.JS", "NewsAPI", "Vercel"],
     github: "https://github.com/sohamw03/newsapp",
   },
@@ -130,7 +130,7 @@ export default function Home() {
           </nav>
           {/* About Section */}
           <section className={styles.about}>
-            <Avatar alt="Soham Waghmare" src="/images/soham-photo.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
+            <img alt="Soham Waghmare" src="/images/soham-photo.png" className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none" loading="lazy" />
             <Typography variant="h4" gutterBottom>
               Soham Waghmare
             </Typography>

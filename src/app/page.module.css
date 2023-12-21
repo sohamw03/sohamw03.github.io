@@ -19,23 +19,13 @@
     content: "";
     animation: dotScroll 16s linear infinite;
     background-image: radial-gradient(circle, #2e3c51 var(--dot-size), transparent 0);
-    background-size: 150px 150px;
-    background-position: 5px 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    background-size: 150px 175px;
+    background-position: 15px 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
     position: absolute;
     inset: 0;
     z-index: -10;
-}
-
-@keyframes dotScroll {
-    0% {
-        background-position-y: 140px
-    }
-
-    to {
-        background-position-y: 0
-    }
 }
 
 .main h4 {
@@ -74,6 +64,10 @@
         border: none;
         margin: 0.5rem 0;
     }
+}
+
+.about * {
+    backdrop-filter: blur(10px);
 }
 
 .about h4 {
@@ -273,6 +267,7 @@
         font-size: 13px;
         font-family: var(--font-family-text);
         -webkit-tap-highlight-color: transparent;
+        user-select: none;
     }
 
     .contact_head_btn h2 {
@@ -405,6 +400,11 @@
         padding-right: 1rem;
     }
 
+    .main::after {
+        background-size: 100px 100px;
+        background-position: 0 0;
+    }
+
     .about h4 {
         text-align: center;
     }
@@ -444,6 +444,16 @@
     }
 }
 
+@keyframes dotScroll {
+    0% {
+        background-position-y: 140px
+    }
+
+    to {
+        background-position-y: 0
+    }
+}
+
 /*-------------------------------------------- Keyframes ------------------------------------------*/
 
 /*----------------------------------------- Utility Classes --------------------------------------*/
@@ -473,6 +483,7 @@
     transition-property: color, border-color, transform, opacity, background-color;
     transition-duration: .3s;
     transition-timing-function: ease;
+    user-select: none;
 }
 
 .button_outline {

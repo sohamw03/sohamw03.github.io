@@ -32,7 +32,7 @@ export default function ProjectCard(props) {
         </span>
       );
     } else {
-      return <img src={`/images/icons/${tech.toLowerCase()}_icon.png`} className="pointer-events-none select-none rounded-full m-0 p-0 aspect-square" alt={`${tech}`} key={index} style={{ width: "27px", height: "27px" }} />;
+      return <img src={`/images/icons/${tech.toLowerCase()}_icon.png`} className="pointer-events-none select-none rounded-full m-0 p-0 aspect-square" alt={`${tech}`} key={index} style={{ width: "27px", height: "27px" }} loading="lazy"/>;
     }
   };
 
@@ -41,21 +41,21 @@ export default function ProjectCard(props) {
     if (project.gif !== "") {
       setTimeout(() => {
         imgRef.current.src = project.gif;
-      }, 500);
+      }, 300);
     }
   };
   const onLeave = (e) => {
     if (project.gif !== "") {
       setTimeout(() => {
         imgRef.current.src = project.imageSrc;
-      }, 6000);
+      }, 10000);
     }
   };
   return (
     <div className={styles.card}>
-      <div className="relative cursor-pointer" onMouseOver={onHover} onMouseOut={onLeave} onTouchStart={onHover} onTouchEnd={onLeave}>
+      <div className="relative cursor-pointer" onMouseOver={onHover} onMouseOut={onLeave} onTouchStartCapture={onHover} onTouchEndCapture={onLeave}>
         <a href={project.href} target="_blank" className={styles.cardlink}></a>
-        <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} ref={imgRef} />
+        <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} ref={imgRef} loading="lazy"/>
       </div>
       <div className="flex justify-between items-center mt-4 ms-2 me-2">
         <div className={`flex flex-row gap-2 justify-start items-center pointer-events-none`}>
