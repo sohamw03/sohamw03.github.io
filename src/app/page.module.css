@@ -12,6 +12,30 @@
     padding: 0 3rem;
     z-index: 1;
     padding-bottom: 10rem;
+    --dot-size: 2px;
+}
+
+.main::after {
+    content: "";
+    animation: dotScroll 16s linear infinite;
+    background-image: radial-gradient(circle, #2e3c51 var(--dot-size), transparent 0);
+    background-size: 150px 150px;
+    background-position: 5px 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+}
+
+@keyframes dotScroll {
+    0% {
+        background-position-y: 140px
+    }
+
+    to {
+        background-position-y: 0
+    }
 }
 
 .main h4 {
@@ -67,6 +91,7 @@
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     margin-bottom: 2rem;
+    background-color: #10151d;
 }
 
 .card h6 {
@@ -86,6 +111,7 @@
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     margin-bottom: 2rem;
+    background-color: #10151d;
 }
 
 .skills h6 {
@@ -122,6 +148,7 @@
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     margin-bottom: 2rem;
+    background-color: #10151d;
 }
 
 /*--------------------------------------------Other Projects -----------------------------------------*/
@@ -245,6 +272,7 @@
         color: rgb(191 199 210);
         font-size: 13px;
         font-family: var(--font-family-text);
+        -webkit-tap-highlight-color: transparent;
     }
 
     .contact_head_btn h2 {

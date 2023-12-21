@@ -1,10 +1,11 @@
-import Contact from "@/components/Contact";
+import Contact from "@/components/Contact/Contact";
+import AboutContactButton from "@/components/Oneoffs/AboutContactButton";
 import ProjectCard from "@/components/ProjectCard";
 import SocialLinks from "@/components/SocialLinks";
 import Dark from "@/themes/Dark";
-import { Avatar, Typography } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
-import AboutContactButton from "@/components/Oneoffs/AboutContactButton";
 
 const ProjectsData = [
   {
@@ -120,7 +121,6 @@ export default function Home() {
           .
         </div>
         <main className={`${styles.main} relative`}>
-          {/* About Section */}
           {/* Navbar */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
@@ -128,6 +128,7 @@ export default function Home() {
               Resume
             </a>
           </nav>
+          {/* About Section */}
           <section className={styles.about}>
             <Avatar alt="Soham Waghmare" src="/images/soham-photo.png" sx={{ width: 128, height: 128, marginBottom: "1rem", pointerEvents: "none" }} />
             <Typography variant="h4" gutterBottom>

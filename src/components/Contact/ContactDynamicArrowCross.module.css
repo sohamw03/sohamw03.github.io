@@ -1,0 +1,36 @@
+.ContactDynamicArrowCross {
+    display: inline-block;
+    width: 1rem;
+    --scale: 0.5;
+    --translate-before: -3px, 1px;
+    --translate-after: 3px, 1px;
+}
+
+.ContactDynamicArrowCross::before,
+.ContactDynamicArrowCross::after {
+    position: absolute;
+    right: 1.5rem;
+    background-color: rgb(191 199 210);
+    content: "";
+    top: 50%;
+    width: 12px;
+    height: 1.2px;
+    transform-origin: center;
+    transition: transform .3s ease .3s;
+}
+
+.ContactDynamicArrowCross::before {
+    transform: rotate(45deg) scaleX(var(--scale)) translate(var(--translate-before));
+}
+
+.ContactDynamicArrowCross::after {
+    transform: rotate(-45deg) scaleX(var(--scale)) translate(var(--translate-after));
+}
+
+/* .isCross .ContactDynamicArrowCross::before {
+    transform: rotate(45deg) scaleX(1) translate(-3px, 1px) !important;
+}
+
+.isCross .ContactDynamicArrowCross::after {
+    transform: rotate(-45deg) scaleX(1) translate(3px, 1px) !important;
+} */
