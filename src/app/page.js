@@ -1,15 +1,15 @@
 import Contact from "@/components/Contact/Contact";
+import Navbar from "@/components/Navbar/Navbar";
 import AboutContactButton from "@/components/Oneoffs/AboutContactButton";
 import ProjectCard from "@/components/ProjectCard";
 import SocialLinks from "@/components/SocialLinks";
 import Dark from "@/themes/Dark";
-import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
 
 const ProjectsData = [
   {
-    name: "Codegemini Blog",
+    name: "Codegemini",
     description: "Featuring articles related to Programming and Technology",
     imageSrc: "/images/blog_website.png",
     href: "https://i-coder-henna.vercel.app/",
@@ -49,8 +49,8 @@ const ProjectsData = [
 const SkillBuckets = [
   {
     name: "Frontend",
-    skills: "HTML CSS Javascript React.JS Next.JS Typescript TailwindCSS Bootstrap MaterialUI JQuery",
-    highlight: ["React.JS", "Next.JS", "TailwindCSS"],
+    skills: "React.JS Next.JS Typescript TailwindCSS shadcn/ui MaterialUI JQuery Bootstrap HTML CSS Javascript",
+    highlight: ["React.JS", "Next.JS", "TailwindCSS", "shadcn/ui"],
   },
   {
     name: "Backend",
@@ -64,8 +64,8 @@ const SkillBuckets = [
   },
   {
     name: "DevOps",
-    skills: "AWS GCP Terraform Docker Git Linux",
-    highlight: ["AWS", "GCP", "Git", "Linux"],
+    skills: "AWS GCP Terraform Docker Git Linux Ansible Jenkins Vercel GithubPages Cloudflare",
+    highlight: ["AWS", "GCP", "Git", "Linux", "Vercel", "GithubPages", "Cloudflare"],
   },
 ];
 
@@ -111,17 +111,18 @@ const OtherProjectsData = [
 export default function Home() {
   if (Dark) {
     return (
-      <>
+      <div className={styles.home}>
+        <Navbar />
         <Dark />
-        <div className={styles.redevelopment}>
-          Redeveloping the website in NextJS. You can track the progress&nbsp;
-          <a href="https://github.com/sohamw03" target="_blank" style={{ textDecoration: "underline" }}>
-            here
-          </a>
-          .
-        </div>
         <main className={`${styles.main} relative`}>
-          {/* Navbar */}
+          <div className={styles.redevelopment}>
+            Redeveloping the website in NextJS. You can track the progress&nbsp;
+            <a href="https://github.com/sohamw03" target="_blank" style={{ textDecoration: "underline" }}>
+              here
+            </a>
+            .
+          </div>
+          {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
             <a role="button" href="https://docs.google.com/document/d/17vNcYgsPYtbuzHkVQa5j9Ls9v8tDyPX8/edit?usp=sharing&ouid=103693720663226708800&rtpof=true&sd=true" target="_blank" className={`${styles.button} ${styles.button_primary} hover:bg-white focus:bg-white active:bg-white`} style={{ WebkitTapHighlightColor: "transparent" }}>
@@ -185,7 +186,7 @@ export default function Home() {
           {/* Contact Section */}
           <Contact />
         </main>
-      </>
+      </div>
     );
   }
 }

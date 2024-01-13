@@ -32,7 +32,7 @@ export default function ProjectCard(props) {
         </span>
       );
     } else {
-      return <img src={`/images/icons/${tech.toLowerCase()}_icon.png`} className="pointer-events-none select-none rounded-full m-0 p-0 aspect-square" alt={`${tech}`} key={index} style={{ width: "27px", height: "27px" }} loading="lazy"/>;
+      return <img src={`/images/icons/${tech.toLowerCase()}_icon.png`} className="pointer-events-none select-none rounded-full m-0 p-0 aspect-square" alt={`${tech}`} key={index} style={{ width: "27px", height: "27px" }} loading="lazy" />;
     }
   };
 
@@ -52,25 +52,31 @@ export default function ProjectCard(props) {
     }
   };
   return (
-    <div className={styles.card}>
-      <div className="relative cursor-pointer" onMouseOver={onHover} onMouseOut={onLeave} onTouchStartCapture={onHover} onTouchEndCapture={onLeave}>
-        <a href={project.href} target="_blank" className={styles.cardlink}></a>
-        <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} ref={imgRef} loading="lazy"/>
-      </div>
-      <div className="flex justify-between items-center mt-4 ms-2 me-2">
-        <div className={`flex flex-row gap-2 justify-start items-center pointer-events-none`}>
-          {project.techStack.map((tech, index) => {
-            return renderIcon(tech, index);
-          })}
+    <>
+      {project.name !== "" ? (
+        <div className={styles.card}>
+          <div className="relative cursor-pointer" onMouseOver={onHover} onMouseOut={onLeave} onTouchStartCapture={onHover} onTouchEndCapture={onLeave}>
+            <a href={project.href} target="_blank" className={styles.cardlink}></a>
+            <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} ref={imgRef} loading="lazy" />
+          </div>
+          <div className="flex justify-between items-center mt-4 ms-2 me-2">
+            <div className={`flex flex-row gap-2 justify-start items-center pointer-events-none`}>
+              {project.techStack.map((tech, index) => {
+                return renderIcon(tech, index);
+              })}
+            </div>
+            <a className="rounded-full" href={project.github} target="_blank">
+              <GitHub className="text-[#808c9c] transition-colors hover:text-[#bfc7d2] cursor-pointer" />
+            </a>
+          </div>
+          <Typography variant="h6" gutterBottom>
+            {project.name}
+          </Typography>
+          <p style={{ fontSize: "14px", color: "#808c9c" }}>{project.description}</p>
         </div>
-        <a className="rounded-full" href={project.github} target="_blank">
-          <GitHub className="text-[#808c9c] transition-colors hover:text-[#bfc7d2] cursor-pointer" />
-        </a>
-      </div>
-      <Typography variant="h6" gutterBottom>
-        {project.name}
-      </Typography>
-      <p style={{ fontSize: "14px", color: "#808c9c" }}>{project.description}</p>
-    </div>
+      ) : (
+        <div className={styles.card} style={{ border: "none" }}></div>
+      )}
+    </>
   );
 }
