@@ -18,34 +18,34 @@ export default function Navbar() {
         </a>
       </div>
       <div className={`flex flex-col flex-1 items-center *:transition-all`}>
-        <Tooltip title="Chat" disableInteractive>
+        <Tooltip title="Chat" disableInteractive placement="right">
           <button className="hover:bg-slate-800 rounded-full aspect-square w-4/6">
             <ChatOutlinedIcon className="text-slate-600" />
           </button>
         </Tooltip>
       </div>
       <div className="flex flex-col items-center gap-4">
-        <Tooltip title="Gmail" enterTouchDelay={1} disableInteractive>
+        <Tooltip title="Gmail" enterTouchDelay={1} disableInteractive placement="right">
           <a className="rounded-full" href="mailto:waghmare.22111255@viit.ac.in">
             <EmailIcon className="text-slate-500 transition-colors hover:text-slate-400" fontSize="medium"></EmailIcon>
           </a>
         </Tooltip>
-        <Tooltip title="GitHub" enterTouchDelay={1} disableInteractive>
+        <Tooltip title="GitHub" enterTouchDelay={1} disableInteractive placement="right">
           <a className="rounded-full" href="https://github.com/sohamw03" target="_blank">
             <GitHubIcon className="text-slate-500 transition-colors hover:text-slate-400" fontSize="medium"></GitHubIcon>
           </a>
         </Tooltip>
-        <Tooltip title="LinkedIn" enterTouchDelay={1} disableInteractive>
+        <Tooltip title="LinkedIn" enterTouchDelay={1} disableInteractive placement="right">
           <a className="rounded-full" href="https://www.linkedin.com/in/soham-waghmare" target="_blank">
             <LinkedInIcon className="text-slate-500 transition-colors hover:text-slate-400" fontSize="medium"></LinkedInIcon>
           </a>
         </Tooltip>
-        <Tooltip title="Instagram" enterTouchDelay={1} disableInteractive>
+        <Tooltip title="Instagram" enterTouchDelay={1} disableInteractive placement="right">
           <a className="rounded-full" href="https://www.instagram.com/sohamwaghmare_ig" target="_blank">
             <InstagramIcon className="text-slate-500 transition-colors hover:text-slate-400" fontSize="medium"></InstagramIcon>
           </a>
         </Tooltip>
-        <Tooltip title="YouTube" enterTouchDelay={1} disableInteractive>
+        <Tooltip title="YouTube" enterTouchDelay={1} disableInteractive placement="right">
           <a className="rounded-full" href="https://www.youtube.com/@sohamwaghmare" target="_blank">
             <YouTubeIcon className="text-slate-500 transition-colors hover:text-slate-400" fontSize="medium"></YouTubeIcon>
           </a>
