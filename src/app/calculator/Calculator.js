@@ -3,6 +3,7 @@ import Light from "@/themes/Light";
 import { useEffect, useRef, useState } from "react";
 import style from "./calculator.module.css";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
+import { Tooltip } from "@mui/material";
 
 const ButtonData = ["7", "8", "9", "÷", "4", "5", "6", "×", "1", "2", "3", "-", "AC", "0", "=", "+"];
 
@@ -190,10 +191,18 @@ export default function Calculator() {
           })}
         </div>
       </div>
-      <footer className={style.footer}>
-        <span>&copy; Soham Waghmare</span>
-        <KeyboardIcon />
-      </footer>
+      <footer className={style.footer}>&copy; Soham Waghmare</footer>
+      <Tooltip title="You can use your keyboard to enter values." placement="left" arrow disableInteractive>
+        <KeyboardIcon
+          sx={{
+            position: "fixed",
+            top: 15,
+            right: 20,
+            fontSize: "2.5rem",
+            cursor: "pointer",
+          }}
+        />
+      </Tooltip>
     </>
   );
 }
