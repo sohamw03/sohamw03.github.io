@@ -50,17 +50,17 @@ const SkillBuckets = [
   {
     name: "Frontend",
     skills: "React.JS Next.JS Typescript TailwindCSS shadcn/ui MaterialUI JQuery Bootstrap HTML CSS Javascript",
-    highlight: ["React.JS", "Next.JS", "TailwindCSS", "shadcn/ui"],
+    highlight: ["React.JS", "Next.JS","Typescript"],
   },
   {
     name: "Backend",
     skills: "Django Node.JS Express.JS Firebase",
-    highlight: ["Django", "Express.JS", "Firebase"],
+    highlight: ["Django", "Node.JS", "Firebase"],
   },
   {
     name: "Databases",
     skills: "MySQL MongoDB PostgreSQL",
-    highlight: ["MongoDB"],
+    highlight: ["MongoDB", "PostgreSQL"],
   },
   {
     name: "DevOps",
