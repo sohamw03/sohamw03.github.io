@@ -125,7 +125,7 @@ export default function Home() {
           {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
-            <a role="button" href="https://docs.google.com/document/d/17vNcYgsPYtbuzHkVQa5j9Ls9v8tDyPX8/edit?usp=sharing&ouid=103693720663226708800&rtpof=true&sd=true" target="_blank" className={`${styles.button} ${styles.button_primary} hover:bg-white focus:bg-white active:bg-white`} style={{ WebkitTapHighlightColor: "transparent" }}>
+            <a role="button" href="https://drive.google.com/file/d/16Z4h6CExEKCT9bU90iYz0kIGHLpcXlkQ/view?usp=sharing" target="_blank" className={`${styles.button} ${styles.button_primary} hover:bg-white focus:bg-white active:bg-white`} style={{ WebkitTapHighlightColor: "transparent" }}>
               Resume
             </a>
           </nav>
