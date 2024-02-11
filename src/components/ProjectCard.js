@@ -1,9 +1,8 @@
 "use client";
 import styles from "@/app/page.module.css";
-import { faBootstrap, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
+import { faBootstrap, faCloudflare, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import GitHub from "@mui/icons-material/GitHub";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import { default as GitHub, default as GitHubIcon } from "@mui/icons-material/GitHub";
 import { Typography } from "@mui/material";
 import { useRef } from "react";
 
@@ -13,27 +12,35 @@ export default function ProjectCard(props) {
 
   // Icon Renderer
   const renderIcon = (tech, index) => {
-    if (tech === "Bootstrap") {
-      return <FontAwesomeIcon key={index} icon={faBootstrap} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+    let returnIcon = <></>;
+    switch (tech) {
+      case "Bootstrap":
+        returnIcon = <FontAwesomeIcon key={index} icon={faBootstrap} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        break;
+      case "React.JS":
+        returnIcon = <FontAwesomeIcon key={index} icon={faReact} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        break;
+      case "Node.JS":
+        returnIcon = <FontAwesomeIcon key={index} icon={faNodeJs} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        break;
+      case "GithubPages":
+        returnIcon = <GitHubIcon key={index} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
+        break;
+      case "Cloudflare":
+        returnIcon = <FontAwesomeIcon key={index} icon={faCloudflare} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
+        break;
+      case "NewsAPI":
+        returnIcon = (
+          <span key={index} className={`${styles.skillchip} pointer-events-none select-none`}>
+            {tech}
+          </span>
+        );
+        break;
+      default:
+        returnIcon = <img src={`/images/icons/${tech.toLowerCase()}_icon.png`} className="pointer-events-none select-none rounded-full m-0 p-0 aspect-square" alt={`${tech}`} key={index} style={{ width: "27px", height: "27px" }} loading="lazy" />;
+        break;
     }
-    if (tech === "React.JS") {
-      return <FontAwesomeIcon key={index} icon={faReact} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
-    }
-    if (tech === "Node.JS") {
-      return <FontAwesomeIcon key={index} icon={faNodeJs} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
-    }
-    if (tech === "GithubPages") {
-      return <GitHubIcon key={index} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
-    }
-    if (tech === "NewsAPI") {
-      return (
-        <span key={index} className={`${styles.skillchip} pointer-events-none select-none`}>
-          {tech}
-        </span>
-      );
-    } else {
-      return <img src={`/images/icons/${tech.toLowerCase()}_icon.png`} className="pointer-events-none select-none rounded-full m-0 p-0 aspect-square" alt={`${tech}`} key={index} style={{ width: "27px", height: "27px" }} loading="lazy" />;
-    }
+    return returnIcon;
   };
 
   // Event Handlers

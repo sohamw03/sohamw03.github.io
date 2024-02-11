@@ -9,6 +9,15 @@ import styles from "./page.module.css";
 
 const ProjectsData = [
   {
+    name: "GeminiWear",
+    description: "Flagship E-Commerce website for GeminiWear, a clothing brand.",
+    imageSrc: "/images/gemini-wear.webp",
+    href: "https://geminiwear.sohamw.tech",
+    gif: "",
+    techStack: ["shadcnui", "Next.JS", "MongoDB", "Vercel", "Cloudflare"],
+    github: "https://github.com/sohamw03/geminiwear",
+  },
+  {
     name: "Codegemini",
     description: "Featuring articles related to Programming and Technology",
     imageSrc: "/images/blog_website.png",
@@ -35,22 +44,13 @@ const ProjectsData = [
     techStack: ["Bootstrap", "React.JS", "NewsAPI", "Vercel"],
     github: "https://github.com/sohamw03/newsapp",
   },
-  {
-    name: "MyAwesomeCart",
-    description: "E-Commerce website selling electronics.",
-    imageSrc: "/images/my_awesome_cart.png",
-    href: "https://github.com/sohamw03/MyAwesomeCart",
-    gif: "",
-    techStack: ["Bootstrap", "Django", "Vercel"],
-    github: "https://github.com/sohamw03/MyAwesomeCart",
-  },
 ];
 
 const SkillBuckets = [
   {
     name: "Frontend",
     skills: "React.JS Next.JS Typescript TailwindCSS shadcn/ui MaterialUI JQuery Bootstrap HTML CSS Javascript",
-    highlight: ["React.JS", "Next.JS","Typescript"],
+    highlight: ["React.JS", "Next.JS", "Typescript"],
   },
   {
     name: "Backend",
@@ -71,15 +71,6 @@ const SkillBuckets = [
 
 const OtherProjectsData = [
   {
-    name: "noteGemini",
-    description: "noteGemini - Your notes in the cloud",
-    imageSrc: "/images/note_gemini.png",
-    href: "https://note-gemini.vercel.app/",
-    gif: "",
-    techStack: ["Bootstrap", "React.JS", "Node.JS", "MongoDB", "Vercel"],
-    github: "https://github.com/sohamw03/noteGemini",
-  },
-  {
     name: "Calculator",
     description: "Minimalistic calculator built with React.JS",
     imageSrc: "/images/calculator.png",
@@ -89,13 +80,22 @@ const OtherProjectsData = [
     github: "https://github.com/sohamw03/sohamw03.github.io/tree/main/src/app/calculator",
   },
   {
-    name: "",
-    description: "",
-    imageSrc: "",
-    href: "",
+    name: "noteGemini",
+    description: "noteGemini - Your notes in the cloud",
+    imageSrc: "/images/note_gemini.png",
+    href: "https://note-gemini.vercel.app/",
     gif: "",
-    techStack: [""],
-    github: "",
+    techStack: ["Bootstrap", "React.JS", "Node.JS", "MongoDB", "Vercel"],
+    github: "https://github.com/sohamw03/noteGemini",
+  },
+  {
+    name: "MyAwesomeCart",
+    description: "E-Commerce website selling electronics.",
+    imageSrc: "/images/my_awesome_cart.png",
+    href: "https://github.com/sohamw03/MyAwesomeCart",
+    gif: "",
+    techStack: ["Bootstrap", "Django", "Vercel"],
+    github: "https://github.com/sohamw03/MyAwesomeCart",
   },
   {
     name: "",
@@ -117,7 +117,7 @@ export default function Home() {
         <main className={`${styles.main} relative`}>
           <div className={styles.redevelopment}>
             Redeveloping the website in NextJS. You can track the progress&nbsp;
-            <a href="https://github.com/sohamw03" target="_blank" style={{ textDecoration: "underline" }}>
+            <a href="https://github.com/sohamw03/sohamw03.github.io" target="_blank" style={{ textDecoration: "underline" }}>
               here
             </a>
             .
