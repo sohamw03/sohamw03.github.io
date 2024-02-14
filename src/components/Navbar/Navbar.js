@@ -8,8 +8,41 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
+  const clipboardRef = useRef(null);
+  const [copyToClipboard, setCopyToClipboard] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [gmailTooltip, setGmailTooltip] = useState("Gmail");
+  useEffect(() => {
+    function checkDeviceType() {
+      const userAgent = navigator.userAgent;
+      const platform = window.navigator.platform;
+
+      // Combined and refined device detection logic
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent) || (platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+      setIsDesktop(!isMobile);
+    }
+
+    checkDeviceType();
+  }, []);
+
+  const handleClick = (text) => {
+    if (isDesktop) {
+      const textToCopy = `${text}`; // Set your desired text to copy
+      const success = navigator.clipboard.writeText(textToCopy);
+      setCopyToClipboard(success);
+      if (success) {
+        setGmailTooltip(() => "Copied!");
+        setTimeout(() => {
+          setGmailTooltip(() => "Gmail");
+        }, 3000);
+      }
+    }
+  };
+
   return (
     <nav className={`${styles.navbar} flex flex-col w-full`}>
       <div className={`text-slate-400 text-4xl font-semibold my-4 w-full`}>
@@ -25,10 +58,16 @@ export default function Navbar() {
         </Tooltip>
       </div>
       <div className="flex flex-col items-center gap-4">
-        <Tooltip title="Gmail" enterTouchDelay={1} disableInteractive placement="right">
-          <a className="rounded-full" href="mailto:waghmare.22111255@viit.ac.in">
-            <EmailIcon className="text-slate-500 transition-colors hover:text-slate-400" fontSize="medium"></EmailIcon>
-          </a>
+        <Tooltip title={`${gmailTooltip}`} enterTouchDelay={1} disableInteractive placement="right">
+          {!isDesktop ? (
+            <a className="rounded-full" href="mailto:sohamwaghmare2021@gmail.com">
+              <EmailIcon className="text-slate-500 transition-colors hover:text-slate-400" fontSize="medium"></EmailIcon>
+            </a>
+          ) : (
+            <div ref={clipboardRef} onClick={() => handleClick("sohamwaghmare2021@gmail.com")} className="cursor-pointer">
+              <EmailIcon className="text-slate-500 transition-colors hover:text-slate-400" fontSize="medium"></EmailIcon>
+            </div>
+          )}
         </Tooltip>
         <Tooltip title="GitHub" enterTouchDelay={1} disableInteractive placement="right">
           <a className="rounded-full" href="https://github.com/sohamw03" target="_blank">
