@@ -1,7 +1,7 @@
 import Contact from "@/components/Contact/Contact";
 import Navbar from "@/components/Navbar/Navbar";
 import AboutContactButton from "@/components/Oneoffs/AboutContactButton";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import SocialLinks from "@/components/SocialLinks";
 import Dark from "@/themes/Dark";
 import Typography from "@mui/material/Typography";
@@ -10,37 +10,33 @@ import styles from "./page.module.css";
 const ProjectsData = [
   {
     name: "GeminiWear",
-    description: "Flagship E-Commerce website for GeminiWear, a clothing brand.",
-    imageSrc: "/images/gemini-wear.webp",
+    description: "Experience the epitome of fashion with an exclusive E-Commerce store for a premium clothing brand.",
+    imageSrcs: ["/images/gemini-wear.webp"],
     href: "https://geminiwear.sohamw.tech",
-    gif: "",
     techStack: ["shadcnui", "Next.JS", "MongoDB", "Vercel", "Cloudflare"],
     github: "https://github.com/sohamw03/geminiwear",
   },
   {
     name: "Codegemini",
     description: "Featuring articles related to Programming and Technology",
-    imageSrc: "/images/blog_website.png",
+    imageSrcs: ["/images/blog_website.png"],
     href: "https://i-coder-henna.vercel.app/",
-    gif: "",
     techStack: ["Bootstrap", "Django", "PostgreSQL", "Vercel"],
     github: "https://github.com/sohamw03/Codegemini",
   },
   {
     name: "Text Utility Website",
     description: "Simple and easy-to-use text tools with a minimalistic design",
-    imageSrc: "/images/text_utility_website.png",
+    imageSrcs: ["/images/text_utility_website.png"],
     href: "https://react-textutils-five.vercel.app/",
-    gif: "",
     techStack: ["Bootstrap", "React.JS", "Vercel"],
     github: "https://github.com/sohamw03/ReactTextutils",
   },
   {
     name: "NewsMonkey",
     description: "A simple and fast app that delivers the latest news from various sources in one place.",
-    imageSrc: "/images/news_website.png",
+    imageSrcs: ["/images/news_website.png", "/images/newsmonkey.webp"],
     href: "https://github.com/sohamw03/newsapp",
-    gif: "/images/newsmonkey.webp",
     techStack: ["Bootstrap", "React.JS", "NewsAPI", "Vercel"],
     github: "https://github.com/sohamw03/newsapp",
   },
@@ -73,36 +69,32 @@ const OtherProjectsData = [
   {
     name: "Calculator",
     description: "Minimalistic calculator built with React.JS",
-    imageSrc: "/images/calculator.png",
+    imageSrcs: ["/images/calculator.png"],
     href: "/calculator",
-    gif: "",
     techStack: ["React.JS", "GithubPages"],
     github: "https://github.com/sohamw03/sohamw03.github.io/tree/main/src/app/calculator",
   },
   {
     name: "noteGemini",
     description: "noteGemini - Your notes in the cloud",
-    imageSrc: "/images/note_gemini.png",
+    imageSrcs: ["/images/note_gemini.png"],
     href: "https://note-gemini.vercel.app/",
-    gif: "",
     techStack: ["Bootstrap", "React.JS", "Node.JS", "MongoDB", "Vercel"],
     github: "https://github.com/sohamw03/noteGemini",
   },
   {
     name: "MyAwesomeCart",
     description: "E-Commerce website selling electronics.",
-    imageSrc: "/images/my_awesome_cart.png",
+    imageSrcs: ["/images/my_awesome_cart.png"],
     href: "https://github.com/sohamw03/MyAwesomeCart",
-    gif: "",
     techStack: ["Bootstrap", "Django", "Vercel"],
     github: "https://github.com/sohamw03/MyAwesomeCart",
   },
   {
     name: "",
     description: "",
-    imageSrc: "",
+    imageSrcs: [""],
     href: "",
-    gif: "",
     techStack: [""],
     github: "",
   },

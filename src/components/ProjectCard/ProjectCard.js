@@ -4,11 +4,17 @@ import { faBootstrap, faCloudflare, faNodeJs, faReact } from "@fortawesome/free-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { default as GitHub, default as GitHubIcon } from "@mui/icons-material/GitHub";
 import { Typography } from "@mui/material";
-import { useRef } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useRef, useState } from "react";
+import { usePrevNextButtons } from "./EmblaCarouselArrowButtons";
+import Autoplay from "embla-carousel-autoplay";
+import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
 
 export default function ProjectCard(props) {
   const { project } = props;
   const imgRef = useRef(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start" }, [Autoplay({ delay: 6000 })]);
+  const [grabCursor, setGrabCursor] = useState("cursor-grab");
 
   // Icon Renderer
   const renderIcon = (tech, index) => {
@@ -43,28 +49,52 @@ export default function ProjectCard(props) {
     return returnIcon;
   };
 
-  // Event Handlers
-  const onHover = (e) => {
-    if (project.gif !== "") {
-      setTimeout(() => {
-        imgRef.current.src = project.gif;
-      }, 300);
-    }
+  // Open New Page
+  const OpenNewPage = (href) => {
+    window.open(href, "_blank");
   };
-  const onLeave = (e) => {
-    if (project.gif !== "") {
-      setTimeout(() => {
-        imgRef.current.src = project.imageSrc;
-      }, 10000);
-    }
-  };
+
+  // Embla Carousel
+  const onButtonClick = useCallback((emblaApi) => {
+    const { autoplay } = emblaApi.plugins();
+    if (!autoplay) return;
+    if (autoplay.options.stopOnInteraction !== false) autoplay.stop();
+  }, []);
+
+  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi, onButtonClick);
+
   return (
     <>
       {project.name !== "" ? (
         <div className={styles.card}>
-          <div className="relative cursor-pointer" onMouseOver={onHover} onMouseOut={onLeave} onTouchStartCapture={onHover} onTouchEndCapture={onLeave}>
-            <a href={project.href} target="_blank" className={styles.cardlink}></a>
-            <img src={project.imageSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px" }} ref={imgRef} loading="lazy" />
+          <div className={`relative ${grabCursor}`} onMouseDown={() => setGrabCursor("cursor-grabbing")} onMouseUp={() => setGrabCursor("cursor-grab")} onClick={() => OpenNewPage(project.href)}>
+            {/* <a href={project.href} target="_blank" className={styles.cardlink}></a> */}
+            <div className="overflow-hidden rounded-[7.5px]" ref={emblaRef}>
+              <div className="flex -ml-4">
+                {project.imageSrcs.map((imageSrc, index) => {
+                  return (
+                    <img //
+                      key={index}
+                      className="min-w-0 pl-4 relative w-full object-cover"
+                      src={imageSrc}
+                      alt={`${project.name}`}
+                      style={{ borderRadius: "7.5px", flex: "0 0 100%" }}
+                      ref={imgRef}
+                      loading="lazy"
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <div className={styles.embla__dots}>
+            {scrollSnaps.map((_, index) => (
+              <DotButton //
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+                className={`${styles.embla__dot} ${index === selectedIndex ? styles["embla__dot--selected"] : ""}`}
+              />
+            ))}
           </div>
           <div className="flex justify-between items-center mt-4 ms-2 me-2">
             <div className={`flex flex-row gap-2 justify-start items-center pointer-events-none`}>
@@ -76,8 +106,10 @@ export default function ProjectCard(props) {
               <GitHub className="text-[#808c9c] transition-colors hover:text-[#bfc7d2] cursor-pointer" />
             </a>
           </div>
-          <Typography variant="h6" gutterBottom>
-            {project.name}
+          <Typography variant="h6" sx={{ cursor: "pointer" }} gutterBottom>
+            <a href={project.href} target="_blank" style={{ all: "unset" }}>
+              {project.name}
+            </a>
           </Typography>
           <p style={{ fontSize: "14px", color: "#808c9c" }}>{project.description}</p>
         </div>
