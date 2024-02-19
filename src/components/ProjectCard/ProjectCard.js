@@ -13,7 +13,8 @@ import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
 export default function ProjectCard(props) {
   const { project } = props;
   const imgRef = useRef(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start" }, [Autoplay({ delay: 6000 })]);
+  const vidRef = useRef(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", duration: 10, dragThreshold: 1 }, project.mediaSrcs.length > 1 ? [Autoplay({ delay: 6000 })] : []);
   const [grabCursor, setGrabCursor] = useState("cursor-grab");
 
   // Icon Renderer
@@ -61,6 +62,26 @@ export default function ProjectCard(props) {
     if (autoplay.options.stopOnInteraction !== false) autoplay.stop();
   }, []);
 
+  // Play or Pause Video when slide changes
+  const playOrPause = useCallback((emblaApi) => {
+    const selectedIndex = emblaApi.selectedScrollSnap();
+    const element = emblaApi.slideNodes()[selectedIndex];
+    if (element.tagName === "VIDEO") {
+      if (element.paused) {
+        console.log("Playing Video");
+        element.play();
+      }
+    } else {
+      emblaApi.slideNodes().forEach((node) => {
+        if (node.tagName === "VIDEO" && !node.paused) {
+          console.log("Pausing Video");
+          node.pause();
+        }
+      });
+    }
+  }, []);
+  emblaApi?.on("select", playOrPause);
+
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi, onButtonClick);
 
   return (
@@ -68,21 +89,36 @@ export default function ProjectCard(props) {
       {project.name !== "" ? (
         <div className={styles.card}>
           <div className={`relative ${grabCursor}`} onMouseDown={() => setGrabCursor("cursor-grabbing")} onMouseUp={() => setGrabCursor("cursor-grab")} onClick={() => OpenNewPage(project.href)}>
-            {/* <a href={project.href} target="_blank" className={styles.cardlink}></a> */}
             <div className="overflow-hidden rounded-[7.5px]" ref={emblaRef}>
-              <div className="flex -ml-4">
-                {project.imageSrcs.map((imageSrc, index) => {
-                  return (
-                    <img //
-                      key={index}
-                      className="min-w-0 pl-4 relative w-full object-cover"
-                      src={imageSrc}
-                      alt={`${project.name}`}
-                      style={{ borderRadius: "7.5px", flex: "0 0 100%" }}
-                      ref={imgRef}
-                      loading="lazy"
-                    />
-                  );
+              <div className="flex">
+                {project.mediaSrcs.map((mediaSrc, index) => {
+                  if (/^\/(.*)\/.*\.(.*)$/.exec(mediaSrc)[1] === "videos") {
+                    // If the image is a video
+                    return (
+                      <video //
+                        key={index}
+                        src={mediaSrc}
+                        className="min-w-0 relative w-full object-cover overflow-hidden"
+                        alt={`${project.name}`}
+                        style={{ borderRadius: "7.5px", flex: "0 0 100%" }}
+                        ref={vidRef}
+                        loop
+                        muted
+                        playsInline></video>
+                    );
+                  } else {
+                    return (
+                      <img //
+                        key={index}
+                        className="min-w-0 relative w-full object-cover overflow-hidden"
+                        src={mediaSrc}
+                        alt={`${project.name}`}
+                        style={{ borderRadius: "7.5px", flex: "0 0 100%" }}
+                        ref={imgRef}
+                        loading="lazy"
+                      />
+                    );
+                  }
                 })}
               </div>
             </div>

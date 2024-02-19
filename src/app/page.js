@@ -11,7 +11,7 @@ const ProjectsData = [
   {
     name: "GeminiWear",
     description: "Experience the epitome of fashion with an exclusive E-Commerce store for a premium clothing brand.",
-    imageSrcs: ["/images/gemini-wear.webp"],
+    mediaSrcs: ["/images/gemini-wear.webp"],
     href: "https://geminiwear.sohamw.tech",
     techStack: ["shadcnui", "Next.JS", "MongoDB", "Vercel", "Cloudflare"],
     github: "https://github.com/sohamw03/geminiwear",
@@ -19,7 +19,7 @@ const ProjectsData = [
   {
     name: "Codegemini",
     description: "Featuring articles related to Programming and Technology",
-    imageSrcs: ["/images/blog_website.png"],
+    mediaSrcs: ["/images/blog_website.png"],
     href: "https://i-coder-henna.vercel.app/",
     techStack: ["Bootstrap", "Django", "PostgreSQL", "Vercel"],
     github: "https://github.com/sohamw03/Codegemini",
@@ -27,7 +27,7 @@ const ProjectsData = [
   {
     name: "Text Utility Website",
     description: "Simple and easy-to-use text tools with a minimalistic design",
-    imageSrcs: ["/images/text_utility_website.png"],
+    mediaSrcs: ["/images/text_utility_website.png"],
     href: "https://react-textutils-five.vercel.app/",
     techStack: ["Bootstrap", "React.JS", "Vercel"],
     github: "https://github.com/sohamw03/ReactTextutils",
@@ -35,7 +35,7 @@ const ProjectsData = [
   {
     name: "NewsMonkey",
     description: "A simple and fast app that delivers the latest news from various sources in one place.",
-    imageSrcs: ["/images/news_website.png", "/images/newsmonkey.webp"],
+    mediaSrcs: ["/images/news_website.png", "/videos/newsmonkey.mp4"],
     href: "https://github.com/sohamw03/newsapp",
     techStack: ["Bootstrap", "React.JS", "NewsAPI", "Vercel"],
     github: "https://github.com/sohamw03/newsapp",
@@ -69,7 +69,7 @@ const OtherProjectsData = [
   {
     name: "Calculator",
     description: "Minimalistic calculator built with React.JS",
-    imageSrcs: ["/images/calculator.png"],
+    mediaSrcs: ["/images/calculator.png"],
     href: "/calculator",
     techStack: ["React.JS", "GithubPages"],
     github: "https://github.com/sohamw03/sohamw03.github.io/tree/main/src/app/calculator",
@@ -77,7 +77,7 @@ const OtherProjectsData = [
   {
     name: "noteGemini",
     description: "noteGemini - Your notes in the cloud",
-    imageSrcs: ["/images/note_gemini.png"],
+    mediaSrcs: ["/images/note_gemini.png"],
     href: "https://note-gemini.vercel.app/",
     techStack: ["Bootstrap", "React.JS", "Node.JS", "MongoDB", "Vercel"],
     github: "https://github.com/sohamw03/noteGemini",
@@ -85,7 +85,7 @@ const OtherProjectsData = [
   {
     name: "MyAwesomeCart",
     description: "E-Commerce website selling electronics.",
-    imageSrcs: ["/images/my_awesome_cart.png"],
+    mediaSrcs: ["/images/my_awesome_cart.png"],
     href: "https://github.com/sohamw03/MyAwesomeCart",
     techStack: ["Bootstrap", "Django", "Vercel"],
     github: "https://github.com/sohamw03/MyAwesomeCart",
@@ -93,7 +93,7 @@ const OtherProjectsData = [
   {
     name: "",
     description: "",
-    imageSrcs: [""],
+    mediaSrcs: [""],
     href: "",
     techStack: [""],
     github: "",

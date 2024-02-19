@@ -1,3 +1,4 @@
+import FancyCursor from "@/components/FancyCursor";
 import { GlobalProvider } from "@/context/GlobalContext";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -91,7 +92,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <GlobalProvider>{children}</GlobalProvider>
+        <GlobalProvider>
+          {/* <FancyCursor /> */}
+          {children}
+        </GlobalProvider>
       </body>
     </html>
   );
