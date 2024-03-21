@@ -107,7 +107,7 @@ export default function Contact() {
         data[key] = data[key].trim();
         logAnim(
           <>
-            "{key}": <span className="text-[#62a1d6]">"{data[key]}"</span>
+            &nbsp;&nbsp;"{key}": <span className="text-[#62a1d6]">"{data[key]}"</span>
           </>
         );
       }
