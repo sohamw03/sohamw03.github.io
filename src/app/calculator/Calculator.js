@@ -40,7 +40,7 @@ export default function Calculator() {
   }
 
   const equal = () => {
-    console.log(ipContent);
+    // console.log(ipContent);
     if (!ipContent) {
       setOutputContent((prev) => "0");
       return;
@@ -66,7 +66,7 @@ export default function Calculator() {
       return;
     }
     const key = e.key;
-    console.log(key);
+    // console.log(key);
 
     let index = ButtonData.indexOf(key);
     switch (key) {

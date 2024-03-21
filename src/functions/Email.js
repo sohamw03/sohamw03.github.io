@@ -7,12 +7,12 @@ export default async function email(data) {
       headers: { "Content-Type": "application/json" },
     });
     const responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     if (response.status === 200 && response.ok) {
       return true;
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return false;
   }
 }

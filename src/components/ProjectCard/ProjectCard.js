@@ -68,13 +68,13 @@ export default function ProjectCard(props) {
     const element = emblaApi.slideNodes()[selectedIndex];
     if (element.tagName === "VIDEO") {
       if (element.paused) {
-        console.log("Playing Video");
+        // console.log("Playing Video");
         element.play();
       }
     } else {
       emblaApi.slideNodes().forEach((node) => {
         if (node.tagName === "VIDEO" && !node.paused) {
-          console.log("Pausing Video");
+          // console.log("Pausing Video");
           node.pause();
         }
       });
