@@ -113,7 +113,7 @@ export default function Contact() {
       }
       logAnim("}");
     }, 1000);
-    const mailResponse = await email(data);
+    const mailResponse = await email({ ...data, api_secret_key: process.env.NEXT_PUBLIC_API_SECRET_KEY });
     console.log(mailResponse);
     if (mailResponse) {
       setTimeout(() => {
