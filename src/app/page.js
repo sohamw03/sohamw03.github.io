@@ -128,7 +128,7 @@ export default function Home() {
               Soham Waghmare
             </Typography>
             <Typography variant="h6" gutterBottom className={styles.aboutdesc}>
-              A full-stack developer with a passion for crafting dynamic web solutions. Explore my projects and skills to see how I can bring your web development ideas to life.
+              An alchemist of code, weaving innovative solutions into the digital fabric. Explore my projects and expertise to uncover the unique blend of creativity and mastery that fuels my craft.
             </Typography>
             <hr className={styles.divider} style={{ width: "3rem" }} />
             <SocialLinks />
