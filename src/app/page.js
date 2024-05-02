@@ -50,7 +50,7 @@ const SkillBuckets = [
   },
   {
     name: "Backend",
-    skills: "Django Node.JS Express.JS Firebase",
+    skills: "Django Flask Node.JS Express.JS Firebase",
     highlight: ["Django", "Node.JS", "Firebase"],
   },
   {
