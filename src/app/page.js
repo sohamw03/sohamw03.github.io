@@ -9,36 +9,40 @@ import styles from "./page.module.css";
 
 const ProjectsData = [
   {
+    name: "GramLearn",
+    description: "Master English effortlessly with GramLearn: Your conversational grammar coach, now with offline RAG-based LLM pipeline.",
+    mediaSrcs: ["/images/gramlearn-1-opt.png", "/images/gramlearn-2-opt.png"],
+    href: "https://gramlearn.vercel.app",
+    techStack: ["Ollama", "Flask", "FAISS", "Langchain", "Next.JS", "Vercel", "Cloudflare"],
+    github: "https://github.com/sohamw03/GramLearn",
+    lang: ["Py", "Ts", "Js", "CSS"],
+  },
+  {
     name: "GeminiWear",
     description: "Experience the epitome of fashion with an exclusive E-Commerce store for a premium clothing brand.",
     mediaSrcs: ["/images/gemini-wear.webp"],
     href: "https://geminiwear.sohamw.tech",
     techStack: ["shadcnui", "Next.JS", "MongoDB", "Vercel", "Cloudflare"],
     github: "https://github.com/sohamw03/geminiwear",
+    lang: ["Js", "Ts", "CSS"],
   },
   {
     name: "Codegemini",
     description: "Featuring articles related to Programming and Technology",
-    mediaSrcs: ["/images/blog_website.png"],
+    mediaSrcs: ["/images/blog_website-opt.png"],
     href: "https://i-coder-henna.vercel.app/",
     techStack: ["Bootstrap", "Django", "PostgreSQL", "Vercel"],
     github: "https://github.com/sohamw03/Codegemini",
+    lang: ["Py", "Js", "HTML", "CSS"],
   },
   {
     name: "Text Utility Website",
     description: "Simple and easy-to-use text tools with a minimalistic design",
-    mediaSrcs: ["/images/text_utility_website.png"],
+    mediaSrcs: ["/images/text_utility_website-opt.png"],
     href: "https://react-textutils-five.vercel.app/",
     techStack: ["Bootstrap", "React.JS", "Vercel"],
     github: "https://github.com/sohamw03/ReactTextutils",
-  },
-  {
-    name: "NewsMonkey",
-    description: "A simple and fast app that delivers the latest news from various sources in one place.",
-    mediaSrcs: ["/images/news_website.png", "/videos/newsmonkey.mp4"],
-    href: "https://github.com/sohamw03/newsapp",
-    techStack: ["Bootstrap", "React.JS", "NewsAPI", "Vercel"],
-    github: "https://github.com/sohamw03/newsapp",
+    lang: ["Js", "CSS"],
   },
 ];
 
@@ -60,43 +64,47 @@ const SkillBuckets = [
   },
   {
     name: "DevOps",
-    skills: "AWS GCP Terraform Docker Git Linux Ansible Jenkins Vercel GithubPages Cloudflare",
-    highlight: ["AWS", "GCP", "Git", "Linux", "Vercel", "GithubPages", "Cloudflare"],
+    skills: "AWS Azure GCP Terraform Docker Git Linux Bash Ansible Jenkins Vercel GithubPages Cloudflare",
+    highlight: ["AWS", "Azure", "GCP", "Git", "Linux", "Bash", "TravisCI", "Vercel", "GithubPages", "Cloudflare"],
   },
 ];
 
 const OtherProjectsData = [
   {
+    name: "NewsMonkey",
+    description: "A simple and fast app that delivers the latest news from various sources in one place.",
+    mediaSrcs: ["/images/news_website-opt.png", "/videos/newsmonkey-opt.mp4"],
+    href: "https://github.com/sohamw03/newsapp",
+    techStack: ["Bootstrap", "React.JS", "NewsAPI", "Vercel"],
+    github: "https://github.com/sohamw03/newsapp",
+    lang: ["Js", "CSS"],
+  },
+  {
     name: "Calculator",
     description: "Minimalistic calculator built with React.JS",
-    mediaSrcs: ["/images/calculator.png"],
+    mediaSrcs: ["/images/calculator-opt.png"],
     href: "/calculator",
     techStack: ["React.JS", "GithubPages"],
     github: "https://github.com/sohamw03/sohamw03.github.io/tree/main/src/app/calculator",
+    lang: ["Js", "CSS"],
   },
   {
     name: "noteGemini",
     description: "noteGemini - Your notes in the cloud",
-    mediaSrcs: ["/images/note_gemini.png"],
+    mediaSrcs: ["/images/note_gemini-opt.png"],
     href: "https://note-gemini.vercel.app/",
     techStack: ["Bootstrap", "React.JS", "Node.JS", "MongoDB", "Vercel"],
     github: "https://github.com/sohamw03/noteGemini",
+    lang: ["Js", "Ts", "CSS"],
   },
   {
     name: "MyAwesomeCart",
     description: "E-Commerce website selling electronics.",
-    mediaSrcs: ["/images/my_awesome_cart.png"],
+    mediaSrcs: ["/images/my_awesome_cart-opt.png"],
     href: "https://github.com/sohamw03/MyAwesomeCart",
     techStack: ["Bootstrap", "Django", "Vercel"],
     github: "https://github.com/sohamw03/MyAwesomeCart",
-  },
-  {
-    name: "",
-    description: "",
-    mediaSrcs: [""],
-    href: "",
-    techStack: [""],
-    github: "",
+    lang: ["Py", "Js", "HTML", "CSS"],
   },
 ];
 
@@ -129,6 +137,8 @@ export default function Home() {
             </Typography>
             <Typography variant="h6" gutterBottom className={styles.aboutdesc}>
               An alchemist of code, weaving innovative solutions into the digital fabric. Explore my projects and expertise to uncover the unique blend of creativity and mastery that fuels my craft.
+              <br />
+              <abbr title="Retrieval Augmented Generation">RAG</abbr> • <abbr title="Large Language Models">LLM</abbr> • Chatbots • DevOps • Cloud • Fullstack
             </Typography>
             <hr className={styles.divider} style={{ width: "3rem" }} />
             <SocialLinks />

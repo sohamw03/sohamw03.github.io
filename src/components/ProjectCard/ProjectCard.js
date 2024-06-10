@@ -3,11 +3,10 @@ import styles from "@/app/page.module.css";
 import { faBootstrap, faCloudflare, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { default as GitHub, default as GitHubIcon } from "@mui/icons-material/GitHub";
-import { Typography } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
+import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useRef, useState } from "react";
-import { usePrevNextButtons } from "./EmblaCarouselArrowButtons";
-import Autoplay from "embla-carousel-autoplay";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
 
 export default function ProjectCard(props) {
@@ -22,23 +21,30 @@ export default function ProjectCard(props) {
     let returnIcon = <></>;
     switch (tech) {
       case "Bootstrap":
-        returnIcon = <FontAwesomeIcon key={index} icon={faBootstrap} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        returnIcon = <FontAwesomeIcon key={index} icon={faBootstrap} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
         break;
       case "React.JS":
-        returnIcon = <FontAwesomeIcon key={index} icon={faReact} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        returnIcon = <FontAwesomeIcon key={index} icon={faReact} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
         break;
       case "Node.JS":
-        returnIcon = <FontAwesomeIcon key={index} icon={faNodeJs} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        returnIcon = <FontAwesomeIcon key={index} icon={faNodeJs} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
         break;
       case "GithubPages":
-        returnIcon = <GitHubIcon key={index} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
+        returnIcon = <GitHubIcon key={index} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
         break;
       case "Cloudflare":
-        returnIcon = <FontAwesomeIcon key={index} icon={faCloudflare} style={{ color: "#bfc7d2", pointerEvents: "none", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
+        returnIcon = <FontAwesomeIcon key={index} icon={faCloudflare} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
         break;
       case "NewsAPI":
         returnIcon = (
           <span key={index} className={`${styles.skillchip} pointer-events-none select-none`}>
+            {tech}
+          </span>
+        );
+        break;
+      case "FAISS":
+        returnIcon = (
+          <span key={index} className={`${styles.skillchip} pointer-events-none  select-none`}>
             {tech}
           </span>
         );
@@ -133,16 +139,21 @@ export default function ProjectCard(props) {
             ))}
           </div>
           <div className="flex justify-between items-center mt-4 ms-2 me-2">
-            <div className={`flex flex-row gap-2 justify-start items-center pointer-events-none`}>
+            <div className={`flex flex-row gap-2 justify-start items-center`}>
               {project.techStack.map((tech, index) => {
-                return renderIcon(tech, index);
+                return (
+                  <Tooltip title={tech} enterTouchDelay={1} disableInteractive>
+                    <div className="cursor-pointer">{renderIcon(tech, index)}</div>
+                  </Tooltip>
+                );
               })}
             </div>
             <a className="rounded-full" href={project.github} target="_blank">
               <GitHub className="text-[#808c9c] transition-colors hover:text-[#bfc7d2] cursor-pointer" />
             </a>
           </div>
-          <Typography variant="h6" sx={{ cursor: "pointer" }} gutterBottom>
+          <p style={{ fontSize: "16px", color: "#808c9c", fontWeight: "bold" }}>{project.lang.join(" • ")}</p>
+          <Typography variant="h6" sx={{ cursor: "pointer" }} gutterBottom className="hover:underline">
             <a href={project.href} target="_blank" style={{ all: "unset" }}>
               {project.name}
             </a>
