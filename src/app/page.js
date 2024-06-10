@@ -63,9 +63,9 @@ const SkillBuckets = [
     highlight: ["MongoDB", "PostgreSQL"],
   },
   {
-    name: "DevOps",
-    skills: "AWS Azure GCP Terraform Docker Git Linux Bash Ansible Jenkins Vercel GithubPages Cloudflare",
-    highlight: ["AWS", "Azure", "GCP", "Git", "Linux", "Bash", "TravisCI", "Vercel", "GithubPages", "Cloudflare"],
+    name: "DevOps & Tools",
+    skills: "AWS Azure GCP Terraform Docker Git Linux Bash Ansible Jenkins Vercel GithubPages Cloudflare NeoVim",
+    highlight: ["AWS", "Azure", "GCP", "Git", "Linux", "Bash", "TravisCI", "Vercel", "GithubPages", "Cloudflare", "NeoVim"],
   },
 ];
 
