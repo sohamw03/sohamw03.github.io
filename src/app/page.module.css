@@ -38,7 +38,7 @@
     z-index: 1;
     flex: 1;
     padding: 0 3rem;
-    padding-top: 1.8rem;
+    /* padding-top: 1.8rem; */
     padding-bottom: 10rem;
     --dot-size: 2px;
     height: 100svh;
@@ -77,8 +77,8 @@
     padding-top: 0;
     /* background-image: radial-gradient(50% 75% at 50% 0%, #131f33 20%, rgba(19, 30, 49, 0) 100%); */
     background-image: radial-gradient(50% 65% at 50% 0%, #131f33 20%, rgba(19, 30, 49, 0) 100%);
-    height: calc(100vh - 2rem - 29px);
-    height: calc(100svh - 2rem - 29px);
+    height: calc(100vh - 0.2rem - 29px);
+    height: calc(100svh - 0.2rem - 29px);
 
     .aboutdesc {
         font-family: var(--font-family-text);
@@ -242,6 +242,19 @@
 }
 
 /*--------------------------------------------Other Projects -----------------------------------------*/
+
+/*-----------------------------------------------Experience-------------------------------------------*/
+
+.experience {
+    display: grid;
+    grid-auto-flow: dense;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    margin-bottom: 2rem;
+    background-color: #10151d;
+}
+
+/*-----------------------------------------------Experience-------------------------------------------*/
 
 /*----------------------------------------------- Utility --------------------------------------------*/
 .card {

@@ -1,4 +1,5 @@
 import Contact from "@/components/Contact/Contact";
+import Experience from "@/components/Experience/Experience";
 import Navbar from "@/components/Navbar/Navbar";
 import AboutContactButton from "@/components/Oneoffs/AboutContactButton";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
@@ -115,13 +116,13 @@ export default function Home() {
         <Navbar />
         <Dark />
         <main className={`${styles.main} relative`}>
-          <div className={styles.redevelopment}>
+          {/* <div className={styles.redevelopment}>
             Redeveloping the website in NextJS. You can track the progress&nbsp;
             <a href="https://github.com/sohamw03/sohamw03.github.io" target="_blank" style={{ textDecoration: "underline" }}>
               here
             </a>
             .
-          </div>
+          </div> */}
           {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
@@ -184,6 +185,13 @@ export default function Home() {
             {OtherProjectsData.map((project, index) => {
               return <ProjectCard key={index} project={project} />;
             })}
+          </section>
+          <Typography variant="h4" gutterBottom>
+            Experience
+          </Typography>
+          {/* Other Projects Section */}
+          <section className={styles.experience}>
+            <Experience />
           </section>
           {/* Contact Section */}
           <Contact />

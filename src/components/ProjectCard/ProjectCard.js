@@ -142,7 +142,7 @@ export default function ProjectCard(props) {
             <div className={`flex flex-row gap-2 justify-start items-center`}>
               {project.techStack.map((tech, index) => {
                 return (
-                  <Tooltip title={tech} enterTouchDelay={1} disableInteractive>
+                  <Tooltip key={index} title={tech} enterTouchDelay={1} disableInteractive>
                     <div className="cursor-pointer">{renderIcon(tech, index)}</div>
                   </Tooltip>
                 );
