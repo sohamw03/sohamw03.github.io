@@ -13,7 +13,7 @@ const achievements = [
   },
   {
     name: "Secured Indian Copyright for the project 'GramLearn'",
-    desc: "ROC : SW-18883/2024",
+    desc: "Diary No : 32145/2023-CO/SW",
     mediaSrcs: ["/images/Copyright_Office_India_logo.png"],
     href: "https://copyright.gov.in/SearchRoc.aspx",
     pan: false,
