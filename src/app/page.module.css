@@ -256,6 +256,19 @@
 
 /*-----------------------------------------------Experience-------------------------------------------*/
 
+/*----------------------------------------------Achievements------------------------------------------*/
+
+.achievements {
+    display: grid;
+    grid-auto-flow: dense;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    margin-bottom: 2rem;
+    background-color: #10151d;
+}
+
+/*----------------------------------------------Achievements------------------------------------------*/
+
 /*----------------------------------------------- Utility --------------------------------------------*/
 .card {
     position: relative;
@@ -631,4 +644,23 @@
 
 .button_outline:focus {
     border-color: #a87ffb;
+}
+
+.vertical_pan {
+    object-position: 0% 0%;
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        object-position: 0% 0%;
+    }
+
+    25% {
+        object-position: 0% 0%;
+    }
+
+    100% {
+        object-position: 0% 100%;
+    }
 }

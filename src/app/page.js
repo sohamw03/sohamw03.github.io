@@ -1,3 +1,4 @@
+import Achievements from "@/components/Achievements/Achievements";
 import Contact from "@/components/Contact/Contact";
 import Experience from "@/components/Experience/Experience";
 import Navbar from "@/components/Navbar/Navbar";
@@ -123,6 +124,7 @@ export default function Home() {
             </a>
             .
           </div> */}
+
           {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
@@ -130,6 +132,7 @@ export default function Home() {
               Resume
             </a>
           </nav>
+
           {/* About Section */}
           <section className={styles.about}>
             <img alt="Soham Waghmare" src="/images/soham-photo.png" className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none" loading="lazy" />
@@ -144,19 +147,21 @@ export default function Home() {
             <hr className={styles.divider} style={{ width: "3rem" }} />
             <SocialLinks />
           </section>
+
+          {/* Projects Section */}
           <Typography variant="h4" gutterBottom>
             Projects
           </Typography>
-          {/* Projects Section */}
           <section className={styles.projects}>
             {ProjectsData.map((project, index) => {
               return <ProjectCard key={index} project={project} />;
             })}
           </section>
+
+          {/* Skills Section */}
           <Typography variant="h4" gutterBottom>
             Tech Stack
           </Typography>
-          {/* Skills Section */}
           <section className={styles.skills}>
             {SkillBuckets.map((bucket, index) => {
               return (
@@ -177,22 +182,33 @@ export default function Home() {
               );
             })}
           </section>
+
+          {/* Other Projects Section */}
           <Typography variant="h4" gutterBottom>
             Other Projects
           </Typography>
-          {/* Other Projects Section */}
           <section className={styles.otherProjects}>
             {OtherProjectsData.map((project, index) => {
               return <ProjectCard key={index} project={project} />;
             })}
           </section>
+
+          {/* Experience Section */}
           <Typography variant="h4" gutterBottom>
             Experience
           </Typography>
-          {/* Other Projects Section */}
           <section className={styles.experience}>
             <Experience />
           </section>
+
+          {/* Achievements Section */}
+          <Typography variant="h4" gutterBottom>
+            Achievements
+          </Typography>
+          <section className={styles.achievements}>
+            <Achievements />
+          </section>
+
           {/* Contact Section */}
           <Contact />
         </main>

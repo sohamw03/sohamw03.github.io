@@ -1,5 +1,6 @@
 "use client";
 import styles from "@/app/page.module.css";
+import { OpenNewPage } from "@/functions/utils";
 import { faBootstrap, faCloudflare, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { default as GitHub, default as GitHubIcon } from "@mui/icons-material/GitHub";
@@ -56,11 +57,6 @@ export default function ProjectCard(props) {
     return returnIcon;
   };
 
-  // Open New Page
-  const OpenNewPage = (href) => {
-    window.open(href, "_blank");
-  };
-
   // Embla Carousel
   const onButtonClick = useCallback((emblaApi) => {
     const { autoplay } = emblaApi.plugins();
@@ -99,6 +95,7 @@ export default function ProjectCard(props) {
               <div className="flex">
                 {project.mediaSrcs.map((mediaSrc, index) => {
                   if (/^\/(.*)\/.*\.(.*)$/.exec(mediaSrc)[1] === "videos") {
+                    // regex extracts folder name and file extension
                     // If the image is a video
                     return (
                       <video //
