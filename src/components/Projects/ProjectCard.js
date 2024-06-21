@@ -8,7 +8,7 @@ import { Tooltip, Typography } from "@mui/material";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useRef, useState } from "react";
-import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
+import { DotButton, useDotButton } from "../EmblaCarousel/EmblaCarouselDotButton";
 
 export default function ProjectCard(props) {
   const { project } = props;

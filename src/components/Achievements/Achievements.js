@@ -1,41 +1,13 @@
 "use client";
 import styles from "@/app/page.module.css";
+import { AchievementsData } from "@/data";
 import { OpenNewPage } from "@/functions/utils";
 import { Typography } from "@mui/material";
-
-const achievements = [
-  {
-    name: "Completed all 4 milestones of Google Cloud Facilitator Program",
-    desc: "781a159c-a1f5-49aa-9331-8c084cf1abc1",
-    mediaSrcs: ["/images/GCSKB-opt.png"],
-    href: "https://www.cloudskillsboost.google/public_profiles/781a159c-a1f5-49aa-9331-8c084cf1abc1",
-    pan: true,
-  },
-  {
-    name: "Secured Indian Copyright for the project 'GramLearn'",
-    desc: "Diary No : 32145/2023-CO/SW",
-    mediaSrcs: ["/images/Copyright_Office_India_logo.png"],
-    href: "https://copyright.gov.in/SearchRoc.aspx",
-    pan: false,
-  },
-  {
-    name: "",
-    desc: "",
-    mediaSrcs: ["", ""],
-    href: "",
-  },
-  {
-    name: "",
-    desc: "",
-    mediaSrcs: ["", ""],
-    href: "",
-  },
-];
 
 export default function Achievements() {
   return (
     <>
-      {achievements.map((achievement, index) => {
+      {AchievementsData.map((achievement, index) => {
         return achievement.name !== "" ? (
           <div key={index} className={`${styles.card}`}>
             <div className={`relative cursor-pointer`} onClick={() => OpenNewPage(achievement.href)}>

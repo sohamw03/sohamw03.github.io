@@ -1,17 +1,4 @@
-"use client";
-
-const experience = [
-  {
-    date: "Jun 2023 - Aug 2023",
-    // Add this https://www.linkedin.com/company/yozu/
-    title: "YoZu — Web developer and Cloud Summer Intern",
-    content: `
-Spearheaded collaboration efforts at a startup, orchestrating a team to conceptualize and execute the design and development of the company’s website with chatbot utilizing ReactJS.
-Integrated the chatbot with 48 backend APIs and executed Google Authentication to fortify the Login/Signup processes for enhanced security.
-Oversaw the hosting of the website on AWS EC2 with SSL encryption, CI/CD, taking charge of managing AWS cloud servers, encompassing backup strategies and seamless migration processes.
-Managed domain and DNS configuration via Cloudflare to optimize website performance and bolster security measures.`,
-  },
-];
+import { ExperienceData } from "@/data";
 
 export default function Experience() {
   return (
@@ -21,7 +8,7 @@ export default function Experience() {
           <div className="w-full max-w-3xl mx-auto">
             <div className="-my-6">
               {/* <!-- Item #1 --> */}
-              {experience.map((exp, index) => {
+              {ExperienceData.map((exp, index) => {
                 return (
                   <div key={index} className="relative pl-8 sm:pl-32 py-6 group">
                     {/* <!-- Vertical line (::before) ~ Date ~ Title ~ Circle marker (::after) --> */}
