@@ -10,7 +10,7 @@ export default function FancyCursor() {
   const [cursorBorderStyle, setCursorBorderStyle] = useState({
     backgroundColor: "unset",
     mixBlendMode: "unset",
-    size: "50px",
+    size: "40px",
   });
 
   // Create references for the cursor elements using the useRef hook
