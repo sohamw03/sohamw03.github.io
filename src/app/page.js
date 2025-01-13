@@ -6,7 +6,7 @@ import AboutContactButton from "@/components/Oneoffs/AboutContactButton";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import Skills from "@/components/Skills/Skills";
 import SocialLinks from "@/components/SocialLinks";
-import { OtherProjectsData, ProjectsData } from "@/data";
+import { AIProjectsData, WebProjectsData } from "@/data";
 import Dark from "@/themes/Dark";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
@@ -21,19 +21,25 @@ export default function Home() {
           {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
-            <a role="button" href="https://drive.google.com/file/d/1yepcoYtjcCt8m1tf__6P5H5-ydg2OzEv/view?usp=drivesdk" target="_blank" className={`${styles.button} ${styles.button_primary} hover:bg-white focus:bg-white active:bg-white`} style={{ WebkitTapHighlightColor: "transparent" }}>
+            {/* <a role="button" href="https://drive.google.com/file/d/1yepcoYtjcCt8m1tf__6P5H5-ydg2OzEv/view?usp=drivesdk" target="_blank" className={`${styles.button} ${styles.button_primary} hover:bg-white focus:bg-white active:bg-white`} style={{ WebkitTapHighlightColor: "transparent" }}>
               Resume
-            </a>
+            </a> */}
           </nav>
 
           {/* About Section */}
           <section className={styles.about}>
-            <img alt="Soham Waghmare" src="/images/soham-photo.png" className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none" loading="lazy" />
+            <img
+              alt="Soham Waghmare"
+              src="/images/soham-photo.png"
+              className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none"
+              loading="lazy"
+            />
             <Typography variant="h4" gutterBottom>
               Soham Waghmare
             </Typography>
             <Typography variant="h6" gutterBottom className={styles.aboutdesc}>
-              An alchemist of code, weaving innovative solutions into the digital fabric. Explore my projects and expertise to uncover the unique blend of creativity and mastery that fuels my craft.
+              An alchemist of code, weaving innovative solutions into the digital fabric. Explore my projects and expertise to uncover the unique blend of
+              creativity and mastery that fuels my craft.
               <br />
               <abbr title="Retrieval Augmented Generation">RAG</abbr> • <abbr title="Large Language Models">LLM</abbr> • Chatbots • Fullstack • Cloud • DevOps
             </Typography>
@@ -43,10 +49,10 @@ export default function Home() {
 
           {/* Projects Section */}
           <Typography variant="h4" gutterBottom>
-            Projects
+            AI Projects
           </Typography>
           <section className={styles.projects}>
-            {ProjectsData.map((project, index) => {
+            {AIProjectsData.map((project, index) => {
               return <ProjectCard key={index} project={project} />;
             })}
           </section>
@@ -59,12 +65,12 @@ export default function Home() {
             <Skills />
           </section>
 
-          {/* Other Projects Section */}
+          {/* Web Projects Section */}
           <Typography variant="h4" gutterBottom>
-            Other Projects
+            Web Projects
           </Typography>
           <section className={styles.otherProjects}>
-            {OtherProjectsData.map((project, index) => {
+            {WebProjectsData.map((project, index) => {
               return <ProjectCard key={index} project={project} />;
             })}
           </section>

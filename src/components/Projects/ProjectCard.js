@@ -14,7 +14,10 @@ export default function ProjectCard(props) {
   const { project } = props;
   const imgRef = useRef(null);
   const vidRef = useRef(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", duration: 10, dragThreshold: 1 }, project.mediaSrcs.length > 1 ? [Autoplay({ delay: 6000 })] : []);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { align: "start", duration: 10, dragThreshold: 1 },
+    project.mediaSrcs.length > 1 ? [Autoplay({ delay: 6000 })] : [],
+  );
   const [grabCursor, setGrabCursor] = useState("cursor-grab");
 
   // Icon Renderer
@@ -22,36 +25,71 @@ export default function ProjectCard(props) {
     let returnIcon = <></>;
     switch (tech) {
       case "Bootstrap":
-        returnIcon = <FontAwesomeIcon key={index} icon={faBootstrap} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        returnIcon = (
+          <FontAwesomeIcon
+            key={index}
+            icon={faBootstrap}
+            style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }}
+            size="xl"
+          />
+        );
         break;
       case "React.JS":
-        returnIcon = <FontAwesomeIcon key={index} icon={faReact} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        returnIcon = (
+          <FontAwesomeIcon
+            key={index}
+            icon={faReact}
+            style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }}
+            size="xl"
+          />
+        );
         break;
       case "Node.JS":
-        returnIcon = <FontAwesomeIcon key={index} icon={faNodeJs} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} size="xl" />;
+        returnIcon = (
+          <FontAwesomeIcon
+            key={index}
+            icon={faNodeJs}
+            style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }}
+            size="xl"
+          />
+        );
         break;
       case "GithubPages":
         returnIcon = <GitHubIcon key={index} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
         break;
       case "Cloudflare":
-        returnIcon = <FontAwesomeIcon key={index} icon={faCloudflare} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
+        returnIcon = (
+          <FontAwesomeIcon
+            key={index}
+            icon={faCloudflare}
+            style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }}
+          />
+        );
         break;
       case "NewsAPI":
+      case "VGG16":
+      case "YOLO":
+      case "FaceNet":
+      case "Dlib":
+      case "OpenAI":
+      case "FAISS":
         returnIcon = (
           <span key={index} className={`${styles.skillchip} pointer-events-none select-none`}>
             {tech}
           </span>
         );
         break;
-      case "FAISS":
-        returnIcon = (
-          <span key={index} className={`${styles.skillchip} pointer-events-none  select-none`}>
-            {tech}
-          </span>
-        );
-        break;
       default:
-        returnIcon = <img src={`/images/icons/${tech.toLowerCase()}_icon.png`} className="pointer-events-none select-none rounded-full m-0 p-0 aspect-square" alt={`${tech}`} key={index} style={{ width: "27px", height: "27px" }} loading="lazy" />;
+        returnIcon = (
+          <img
+            src={`/images/icons/${tech.toLowerCase()}_icon.png`}
+            className="pointer-events-none select-none rounded-full m-0 p-0 aspect-square"
+            alt={`${tech}`}
+            key={index}
+            style={{ width: "27px", height: "27px" }}
+            loading="lazy"
+          />
+        );
         break;
     }
     return returnIcon;
@@ -90,7 +128,12 @@ export default function ProjectCard(props) {
     <>
       {project.name !== "" ? (
         <div className={styles.card}>
-          <div className={`relative ${grabCursor}`} onMouseDown={() => setGrabCursor("cursor-grabbing")} onMouseUp={() => setGrabCursor("cursor-grab")} onClick={() => OpenNewPage(project.href)}>
+          <div
+            className={`relative ${grabCursor}`}
+            onMouseDown={() => setGrabCursor("cursor-grabbing")}
+            onMouseUp={() => setGrabCursor("cursor-grab")}
+            onClick={() => OpenNewPage(project.href)}
+          >
             <div className="overflow-hidden rounded-[7.5px]" ref={emblaRef}>
               <div className="flex">
                 {project.mediaSrcs.map((mediaSrc, index) => {
@@ -98,7 +141,7 @@ export default function ProjectCard(props) {
                     // regex extracts folder name and file extension
                     // If the image is a video
                     return (
-                      <video //
+                      <video
                         key={index}
                         src={mediaSrc}
                         className="min-w-0 relative w-full object-cover overflow-hidden"
@@ -107,11 +150,12 @@ export default function ProjectCard(props) {
                         ref={vidRef}
                         loop
                         muted
-                        playsInline></video>
+                        playsInline
+                      ></video>
                     );
                   } else {
                     return (
-                      <img //
+                      <img
                         key={index}
                         className="min-w-0 relative w-full object-cover overflow-hidden"
                         src={mediaSrc}
