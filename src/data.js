@@ -13,7 +13,7 @@ export const AIProjectsData = [
     description: "Medicinal Leaf Recognition System. A ground up VGG16-based model for identifying medicinal leaves.",
     mediaSrcs: ["/images/sanjeevani.png"],
     href: "https://sanjeevani-blush.vercel.app/",
-    techStack: ["VGG16", "Next.JS", "Render"],
+    techStack: ["VGG16", "Django", "Next.JS", "Render"],
     github: "https://github.com/Neurexa/Sanjeevani",
     lang: ["Py", "Js", "CSS"],
   },
