@@ -48,7 +48,7 @@
 .main::after {
     content: "";
     /* animation: dotScroll 16s linear infinite; */
-    background-image: radial-gradient(circle, #2e3c51 var(--dot-size), transparent 0);
+    /* background-image: radial-gradient(circle, #2e3c51 var(--dot-size), transparent 0); */
     background-size: 150px 175px;
     background-position: 15px 0;
     margin-left: 1rem;

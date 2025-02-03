@@ -71,7 +71,7 @@ export const WebProjectsData = [
     name: "GeminiWear",
     description: "Experience the epitome of fashion with an exclusive E-Commerce store for a premium clothing brand.",
     mediaSrcs: ["/images/gemini-wear.webp"],
-    href: "https://geminiwear.sohamw.tech",
+    href: "https://geminiwear.vercel.app",
     techStack: ["shadcnui", "Next.JS", "MongoDB", "Vercel", "Cloudflare"],
     github: "https://github.com/sohamw03/geminiwear",
     lang: ["Ts", "Js", "CSS"],
