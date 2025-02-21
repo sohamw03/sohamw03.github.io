@@ -67,7 +67,7 @@ export default function Home() {
 
           {/* Web Projects Section */}
           <Typography variant="h4" gutterBottom>
-            Web Projects
+            Full-Stack Projects
           </Typography>
           <section className={styles.otherProjects}>
             {WebProjectsData.map((project, index) => {
