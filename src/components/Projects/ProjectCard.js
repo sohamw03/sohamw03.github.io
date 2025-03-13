@@ -11,7 +11,7 @@ import { useCallback, useRef, useState } from "react";
 import { DotButton, useDotButton } from "../EmblaCarousel/EmblaCarouselDotButton";
 
 export default function ProjectCard(props) {
-  const { project } = props;
+  const { project, sx } = props;
   const imgRef = useRef(null);
   const vidRef = useRef(null);
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -127,7 +127,7 @@ export default function ProjectCard(props) {
   return (
     <>
       {project.name !== "" ? (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${sx}`}>
           <div
             className={`relative ${grabCursor}`}
             onMouseDown={() => setGrabCursor("cursor-grabbing")}
