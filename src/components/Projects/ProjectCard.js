@@ -93,10 +93,10 @@ export default function ProjectCard(props) {
             <div className="overflow-hidden rounded-[7.5px]" ref={emblaRef}>
               <div className="flex">
                 {project.mediaSrcs.map((mediaSrc, index) => {
-                  if (/^\/(.*)\/.*\.(.*)$/.exec(mediaSrc)[1] === "videos") {
+                  if (mediaSrc.startsWith("v_")) {
                     // regex extracts folder name and file extension
-                    // If the image is a video
-                    return <video key={index} src={mediaSrc} className="min-w-0 relative w-full object-cover overflow-hidden" alt={`${project.name}`} style={{ borderRadius: "7.5px", flex: "0 0 100%" }} ref={vidRef} loop muted playsInline></video>;
+                    // If the media is a video
+                    return <video key={index} src={mediaSrc.slice(2)} className="min-w-0 relative w-full object-cover overflow-hidden" alt={`${project.name}`} style={{ borderRadius: "7.5px", flex: "0 0 100%" }} ref={vidRef} loop muted playsInline></video>;
                   } else {
                     return <img key={index} className="min-w-0 relative w-full object-cover overflow-hidden" src={mediaSrc} alt={`${project.name}`} style={{ borderRadius: "7.5px", flex: "0 0 100%" }} ref={imgRef} loading="lazy" />;
                   }

@@ -30,7 +30,7 @@ export const AIProjectsData = [
     name: "Flight Booking Chatbot",
     description:
       "An intelligent CLI chatbot that facilitates flight searches and bookings, leveraging advanced function-calling techniques and LLMs, integrating RapidAPI.",
-    mediaSrcs: ["/images/flight-booking.png", "https://mf2b7odna5.ufs.sh/f/1bDUZFytIqU3WLrWvpomyKG0erIXHpogBUw4C32dSAa76vcu"],
+    mediaSrcs: ["/images/flight-booking.png", "v_https://mf2b7odna5.ufs.sh/f/1bDUZFytIqU3WLrWvpomyKG0erIXHpogBUw4C32dSAa76vcu"],
     href: "https://github.com/sohamw03/function-calling-flights",
     techStack: ["LangChain", "Ollama", "OpenAI"],
     github: "https://github.com/sohamw03/function-calling-flights",
@@ -115,7 +115,7 @@ export const WebProjectsData = [
   {
     name: "NewsMonkey",
     description: "A simple and fast app that delivers the latest news from various sources in one place.",
-    mediaSrcs: ["/images/news_website-opt.png", "https://mf2b7odna5.ufs.sh/f/1bDUZFytIqU3QBmpvNcsYtNVX7kOCFcPDy90diHgwnlZaGfE"],
+    mediaSrcs: ["/images/news_website-opt.png", "v_https://mf2b7odna5.ufs.sh/f/1bDUZFytIqU3QBmpvNcsYtNVX7kOCFcPDy90diHgwnlZaGfE"],
     href: "https://github.com/sohamw03/newsapp",
     techStack: ["Bootstrap", "React.JS", "NewsAPI", "Vercel"],
     github: "https://github.com/sohamw03/newsapp",
