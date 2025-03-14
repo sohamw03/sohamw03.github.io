@@ -143,7 +143,7 @@ export const WebProjectsData = [
     name: "MyAwesomeCart",
     description: "E-Commerce website selling electronics.",
     mediaSrcs: ["/images/my_awesome_cart-opt.png"],
-    href: "https://github.com/sohamw03/MyAwesomeCart",
+    href: "https://my-awesome-cart-theta.vercel.app/shop",
     techStack: ["Bootstrap", "Django", "Vercel"],
     github: "https://github.com/sohamw03/MyAwesomeCart",
     lang: ["Py", "Js", "HTML", "CSS"],
