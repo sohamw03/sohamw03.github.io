@@ -4,9 +4,10 @@ import Experience from "@/components/Experience/Experience";
 import Navbar from "@/components/Navbar/Navbar";
 import AboutContactButton from "@/components/Oneoffs/AboutContactButton";
 import ProjectCard from "@/components/Projects/ProjectCard";
+import ProjectOverflowCard from "@/components/Projects/ProjectOverflowCard";
 import Skills from "@/components/Skills/Skills";
 import SocialLinks from "@/components/SocialLinks";
-import { AIProjectsData, WebProjectsData } from "@/data";
+import { AIProjectsData, WebProjectsData, WebProjectsOverflowData } from "@/data";
 import Dark from "@/themes/Dark";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
@@ -28,20 +29,12 @@ export default function Home() {
 
           {/* About Section */}
           <section className={styles.about}>
-            <img
-              alt="Soham Waghmare"
-              src="/images/soham-photo.png"
-              className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none"
-              loading="lazy"
-            />
+            <img alt="Soham Waghmare" src="/images/soham-photo.png" className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none" loading="lazy" />
             <Typography variant="h4" gutterBottom>
               Soham Waghmare
             </Typography>
             <Typography variant="h6" gutterBottom className={styles.aboutdesc}>
-              An alchemist of code, weaving innovative solutions into the digital fabric. Explore my projects and expertise to uncover the unique blend of
-              creativity and mastery that fuels my craft.
-              <br />
-              <abbr title="Retrieval Augmented Generation">RAG</abbr> • <abbr title="Large Language Models">LLM</abbr> • Chatbots • Fullstack • Cloud • DevOps
+              GenerativeAI • Deep Learning • Cloud
             </Typography>
             <hr className={styles.divider} style={{ width: "3rem" }} />
             <SocialLinks />
@@ -73,6 +66,7 @@ export default function Home() {
             {WebProjectsData.map((project, index) => {
               return <ProjectCard key={index} project={project} />;
             })}
+            <ProjectOverflowCard projects={WebProjectsOverflowData} />
           </section>
 
           {/* Experience Section */}

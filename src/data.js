@@ -28,9 +28,8 @@ export const AIProjectsData = [
   },
   {
     name: "Flight Booking Chatbot",
-    description:
-      "An intelligent CLI chatbot that facilitates flight searches and bookings, leveraging advanced function-calling techniques and LLMs, integrating RapidAPI.",
-    mediaSrcs: ["/images/flight-booking.png", "v_https://mf2b7odna5.ufs.sh/f/1bDUZFytIqU3WLrWvpomyKG0erIXHpogBUw4C32dSAa76vcu"],
+    description: "An intelligent CLI chatbot that facilitates flight searches and bookings, leveraging advanced function-calling techniques and LLMs, integrating RapidAPI.",
+    mediaSrcs: ["/images/flight-booking.jpg", "v_https://mf2b7odna5.ufs.sh/f/1bDUZFytIqU3WLrWvpomyKG0erIXHpogBUw4C32dSAa76vcu"],
     href: "https://github.com/sohamw03/function-calling-flights",
     techStack: ["LangChain", "Ollama", "OpenAI"],
     github: "https://github.com/sohamw03/function-calling-flights",
@@ -41,32 +40,46 @@ export const AIProjectsData = [
 export const SkillBuckets = [
   {
     name: "AI",
-    skills: "Langchain FAISS Ollama OpenCV spaCy Whisper Transformers",
-    highlight: ["Langchain", "FAISS", "Ollama", "spaCy", "Whisper", "Transformers", "OpenCV"],
+    skills: "Transformers Langchain Ollama Whisper OpenCV PyTorch CNN",
+    highlight: ["Transformers", "Langchain", "Ollama", "Whisper", "OpenCV", "PyTorch"],
   },
-  {
-    name: "Frontend",
-    skills: "React.JS Next.JS Typescript TailwindCSS shadcn/ui MaterialUI JQuery Bootstrap HTML CSS Javascript",
-    highlight: ["React.JS", "Next.JS", "Typescript", "TailwindCSS", "shadcn/ui", "MaterialUI"],
-  },
+  // {
+  //   name: "Frontend",
+  //   skills: "React.JS Next.JS Typescript TailwindCSS shadcn/ui MaterialUI JQuery Bootstrap HTML CSS Javascript",
+  //   highlight: ["React.JS", "Next.JS", "Typescript", "TailwindCSS", "shadcn/ui", "MaterialUI"],
+  // },
   {
     name: "Backend",
-    skills: "Django Flask FastAPI ExpressJS Firebase",
-    highlight: ["Django", "Flask", "FastAPI", "NodeJS", "Firebase"],
+    skills: "Flask FastAPI SocketIO WebRTC",
+    highlight: ["Flask", "FastAPI", "SocketIO", "WebRTC"],
   },
   {
     name: "Databases",
-    skills: "MongoDB PostgreSQL MySQL SQLite3",
-    highlight: ["MongoDB", "PostgreSQL"],
+    skills: "FAISS MongoDB PostgreSQL MySQL SQLite3",
+    highlight: ["FAISS", "MongoDB", "PostgreSQL", "SQLite3"],
   },
   {
-    name: "DevOps & Tools",
-    skills: "AWS Azure GCP Terraform Docker Git Linux Bash Ansible Jenkins Vercel GithubPages Cloudflare NeoVim",
-    highlight: ["AWS", "Azure", "GCP", "Git", "Linux", "Bash", "TravisCI", "Vercel", "GithubPages", "Cloudflare", "NeoVim"],
+    name: "Cloud",
+    skills: "AWS Azure GCP Vercel Render",
+    highlight: ["AWS", "Azure", "GCP"],
+  },
+  {
+    name: "Tools & DevOps",
+    skills: "NeoVim Git Docker Linux Bash Terraform Ansible Jenkins",
+    highlight: ["NeoVim", "Git", "Docker", "Linux", "Bash"],
   },
 ];
 
 export const WebProjectsData = [
+  {
+    name: "GeminiMeetings",
+    description: "Seamless collaboration for devs and productive teams. Using WebRTC and Socket.IO for real-time communication.",
+    mediaSrcs: ["/images/geminimeetings.png"],
+    href: "https://geminimeetings.vercel.app/",
+    techStack: ["Next.JS", "WebRTC", "SocketIO", "Vercel"],
+    github: "https://github.com/sohamw03/geminimeetings",
+    lang: ["Ts", "Js", "CSS"],
+  },
   {
     name: "GeminiWear",
     description: "Experience the epitome of fashion with an exclusive E-Commerce store for a premium clothing brand.",
@@ -85,15 +98,8 @@ export const WebProjectsData = [
     github: "https://github.com/sohamw03/formbuddy",
     lang: ["Ts", "Js", "CSS"],
   },
-  {
-    name: "GeminiMeetings",
-    description: "Seamless collaboration for devs and productive teams. Using WebRTC and Socket.IO for real-time communication.",
-    mediaSrcs: ["/images/geminimeetings.png"],
-    href: "https://geminimeetings.vercel.app/",
-    techStack: ["Next.JS", "WebRTC", "SocketIO", "Vercel"],
-    github: "https://github.com/sohamw03/geminimeetings",
-    lang: ["Ts", "Js", "CSS"],
-  },
+];
+export const WebProjectsOverflowData = [
   {
     name: "Codegemini",
     description: "Featuring articles related to Programming and Technology",

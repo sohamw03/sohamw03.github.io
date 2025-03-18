@@ -1,14 +1,14 @@
 "use client";
 
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
-import styles from "../../app/page.module.css";
-import { Tooltip } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { Tooltip } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import styles from "../../app/page.module.css";
 
 export default function Navbar() {
   const clipboardRef = useRef(null);
