@@ -3,7 +3,7 @@ import styles from "@/app/page.module.css";
 import { OpenNewPage, renderIcon } from "@/functions/utils";
 import GitHub from "@mui/icons-material/GitHub";
 import { Divider, Tooltip, Typography } from "@mui/material";
-import { useRef } from "react";
+import React, { useRef } from "react";
 
 export default function ProjectOverflowCard(props) {
   const { projects, sx } = props;
@@ -15,10 +15,10 @@ export default function ProjectOverflowCard(props) {
         <Typography variant="h5" className="ps-2 pt-2">
           Others
         </Typography>
-        {projects.map((project, index) => (
-          <>
-            <Divider key={index} variant="fullWidth" className="bg-[var(--ui-border-color)] mt-2 mb-3" />
-            <div key={index} className="mb-3 last:mb-0 cursor-pointer p-2 rounded-lg" onClick={() => OpenNewPage(project.href)}>
+        {projects.map((project, projectIndex) => (
+          <React.Fragment key={`${project.name}-${projectIndex}`}>
+            <Divider variant="fullWidth" className="bg-[var(--ui-border-color)] mt-2 mb-3" />
+            <div className="mb-3 last:mb-0 cursor-pointer p-2 rounded-lg" onClick={() => OpenNewPage(project.href)}>
               <div className="flex justify-between items-center mb-2">
                 <Typography className="font-bold hover:underline">
                   <a href={project.href} target="_blank" style={{ all: "unset" }}>
@@ -42,7 +42,7 @@ export default function ProjectOverflowCard(props) {
                 })}
               </div>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>
