@@ -1,6 +1,6 @@
 export default async function email(data) {
   try {
-    const response = await fetch("https://mail-edge-function.vercel.app/api/mail", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/mail`, {
       mode: "cors",
       method: "POST",
       body: JSON.stringify(data),

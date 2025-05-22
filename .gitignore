@@ -35,9 +35,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-mail_edge_function
+mail_edge_function/
+backend/
 
-out
+out/
 
 .vscode/
 public/.mediaignore/
