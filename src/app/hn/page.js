@@ -11,7 +11,7 @@ export default function HNPage() {
   useEffect(() => {
     async function fetchArticles() {
       try {
-        const response = await fetch("http://localhost:8000/api/hn-articles");
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hn-articles`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
