@@ -20,7 +20,7 @@ export default function ArticleCard(props) {
             </div>
           </div>
           <p style={{ fontSize: "16px", color: "#c2c8d0", fontWeight:"500", cursor: "pointer" }} className="hover:underline mt-2 sm:mt-3">
-            <a href={project.href} target="_blank" style={{ all: "unset" }}>
+            <a href={project.href} target="_blank" className="article-link" style={{ all: "unset" }}>
               {project.name}
             </a>
           </p>

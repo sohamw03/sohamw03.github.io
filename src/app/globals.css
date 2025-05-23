@@ -57,3 +57,7 @@ img {
 input::placeholder {
   color: #45546e;
 }
+
+.article-link:visited {
+  color: purple !important; /* Or any color you prefer for visited links */
+}
