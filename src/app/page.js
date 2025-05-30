@@ -1,3 +1,4 @@
+// src/app/page.js
 import Achievements from "@/components/Achievements/Achievements";
 import Contact from "@/components/Contact/Contact";
 import Experience from "@/components/Experience/Experience";
@@ -11,20 +12,19 @@ import { AIProjectsData, WebProjectsData, WebProjectsOverflowData } from "@/data
 import Dark from "@/themes/Dark";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
+import FireflyAnimation from '@/components/FireflyAnimation/FireflyAnimation'; // Import FireflyAnimation
 
 export default function Home() {
-  if (Dark) {
+  if (Dark) { // Assuming Dark theme is the default or active theme
     return (
       <div className={styles.home}>
+        <FireflyAnimation /> {/* Add FireflyAnimation component here */}
         <Navbar />
-        <Dark />
+        <Dark /> {/* This component might be for theme switching or specific dark mode styles */}
         <main className={`${styles.main} relative`}>
           {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
-            {/* <a role="button" href="https://drive.google.com/file/d/1yepcoYtjcCt8m1tf__6P5H5-ydg2OzEv/view?usp=drivesdk" target="_blank" className={`${styles.button} ${styles.button_primary} hover:bg-white focus:bg-white active:bg-white`} style={{ WebkitTapHighlightColor: "transparent" }}>
-              Resume
-            </a> */}
           </nav>
 
           {/* About Section */}
@@ -91,4 +91,6 @@ export default function Home() {
       </div>
     );
   }
+  // Fallback or other theme logic can go here if necessary
+  return null; // Or some default non-dark mode page
 }
