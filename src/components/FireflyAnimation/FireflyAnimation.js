@@ -1,3 +1,5 @@
+"use client";
+
 // src/components/FireflyAnimation/FireflyAnimation.js
 import React, { useEffect, useRef } from 'react';
 import styles from './FireflyAnimation.module.css';
