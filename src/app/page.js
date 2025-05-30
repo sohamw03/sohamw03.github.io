@@ -1,4 +1,3 @@
-// src/app/page.js
 import Achievements from "@/components/Achievements/Achievements";
 import Contact from "@/components/Contact/Contact";
 import Experience from "@/components/Experience/Experience";

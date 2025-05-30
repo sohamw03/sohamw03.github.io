@@ -1,4 +1,4 @@
-// src/components/FireflyAnimation/FireflyAnimation.js
+"use client";
 import React, { useEffect, useRef } from 'react';
 import styles from './FireflyAnimation.module.css';
 
@@ -9,7 +9,7 @@ const FireflyAnimation = () => {
   const mousePosRef = useRef({ x: 0, y: 0 });
   const animationFrameIdRef = useRef(null); // To store requestAnimationFrame ID
 
-  const numFireflies = 100; // Default number of fireflies
+  const numFireflies = 80; // Default number of fireflies
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -33,7 +33,7 @@ const FireflyAnimation = () => {
 
       getRandomColor() {
         const colors = [
-          'var(--primary-color)', // Use CSS variables
+          'var(--primary-color)',
           'var(--secondary-color)',
           'var(--highlight-color)',
           'var(--font-primary-color)'

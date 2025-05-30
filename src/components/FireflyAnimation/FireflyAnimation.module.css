@@ -1,18 +1,12 @@
-/* src/components/FireflyAnimation/FireflyAnimation.module.css */
 .canvasContainer {
-    position: fixed; /* Changed from relative to fixed for full-screen background */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* max-width: 800px; /* Removed max-width */
-    /* max-height: 600px; /* Removed max-height */
-    /* border: 1px solid var(--ui-border-color); /* Border might not be needed for a background */
-    /* margin-bottom: 20px; /* Removed margin */
-    background-color: var(--background-color); /* Use existing CSS variable */
     overflow: hidden;
-    /* box-shadow: 0 0 15px rgba(92, 74, 140, 0.3); /* Optional: can be kept or removed */
-    z-index: -1; /* Ensure it's behind other content */
+    box-shadow: 0 0 15px rgba(92, 74, 140, 0.3);
+    z-index: -1;
 }
 
 .fireflyCanvas {
@@ -20,6 +14,3 @@
     width: 100%;
     height: 100%;
 }
-
-/* Styles for body, #controls, #numFirefliesSlider, #numFirefliesValue are removed
-   as they are not needed for the component version or are handled globally. */
