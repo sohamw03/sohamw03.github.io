@@ -43,6 +43,7 @@
     --dot-size: 2px;
     height: 100svh;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 .main::after {
@@ -97,7 +98,7 @@
     }
 }
 
-.about * {
+.about > *:not(.divider) {
     backdrop-filter: blur(10px);
     padding: 0.1rem 0.4rem;
     box-sizing: unset;
@@ -384,7 +385,7 @@
         display: flex;
         align-items: center;
         text-align: left;
-        padding: 1rem 1.5rem;
+        padding: 1rem;
         gap: 1.5rem;
         color: rgb(191 199 210);
         font-size: 13px;

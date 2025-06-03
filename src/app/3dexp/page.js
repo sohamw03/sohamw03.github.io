@@ -10,15 +10,16 @@ import ProjectSphere from "./ProjectSphere";
 export default function ThreeDExp() {
   return (
     <div className={styles.home}>
-      <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
+      <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12 z-[999999999]`}>
         <AboutContactButton />
       </nav>
       <Navbar />
       <Dark />
       <div className="w-screen h-screen select-none">
+        {" "}
         <Canvas
           camera={{
-            position: [-10, 12, 35],
+            position: [-10, 12, 45],
             fov: 60,
             near: 0.1,
             far: 1000,

@@ -1,6 +1,7 @@
 "use client";
 import styles from "@/app/page.module.css";
 import { GlobalContext } from "@/context/GlobalContext";
+import { parseAnchorLinks } from "@/functions/utils";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import { useContext, useEffect, useRef, useState } from "react";
 import ContactDynamicArrowCross from "./ContactDynamicArrowCross";
@@ -13,7 +14,26 @@ export default function Contact() {
   const [isOpen, setIsOpen] = useState(false); // Chat functionality states
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const terminalAnimRef = useRef(null);
+  // Auto-scroll function with smooth behavior
+  const scrollToBottom = () => {
+    if (terminalAnimRef.current) {
+      terminalAnimRef.current.scrollTo({
+        top: terminalAnimRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+  // Auto-scroll when new messages arrive
+  useEffect(() => {
+    // Small delay to ensure DOM has updated before scrolling
+    const timeoutId = setTimeout(() => {
+      scrollToBottom();
+    }, 10);
+
+    return () => clearTimeout(timeoutId);
+  }, [terminalAnimData, isLoading]);
 
   // Capture elements
   const contactRef = useRef(null);
@@ -59,7 +79,7 @@ export default function Contact() {
         ...prevData,
         {
           time: time,
-          text: "Hi! I'm Soham's AI assistant. Ask me about his work, or say 'send a message to Soham' to contact him directly!",
+          text: "> Hi! I'm Soham's AI assistant. Ask me about his work, or say 'send a message to Soham' to contact him directly!",
         },
       ]);
 
@@ -96,19 +116,28 @@ export default function Contact() {
     SetTerminalAnimData((prevData) => [...prevData, { time: time, text: text }]);
   };
 
-  // Chat functionality
-  const scrollToBottom = () => {
-    if (terminalAnimRef.current) {
-      terminalAnimRef.current.scrollTop = terminalAnimRef.current.scrollHeight;
-    }
+  // Typing indicator component
+  const TypingIndicator = () => {
+    const [dots, setDots] = useState("");
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setDots((prev) => {
+          if (prev === "...") return ".";
+          return prev + ".";
+        });
+      }, 500);
+
+      return () => clearInterval(interval);
+    }, []);
+    return (
+      <p style={{ whiteSpace: "pre-wrap", fontSize: "0.95rem" }}>
+        <span className="text-[#5d6a7d] pointer-events-none select-none">[{time || "--:--:-- --"}]&nbsp;</span>
+        <span className="text-[#a87ffb]">&gt; {dots}</span>
+      </p>
+    );
   };
 
-  // Auto-scroll when terminal data changes
-  useEffect(() => {
-    if (terminalAnimData.length > 0) {
-      scrollToBottom();
-    }
-  }, [terminalAnimData]);
   const sendMessage = async () => {
     if (!input.trim()) return;
 
@@ -118,6 +147,7 @@ export default function Contact() {
 
     const userInput = input;
     setInput("");
+    setIsLoading(true);
 
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat`, {
@@ -140,7 +170,7 @@ export default function Contact() {
 
       // Add assistant's message to terminal
       updateTime();
-      SetTerminalAnimData((prevData) => [...prevData, { time: time, text: assistantResponse }]);
+      SetTerminalAnimData((prevData) => [...prevData, { time: time, text: "> " + assistantResponse }]);
 
       // Update messages state for context
       setMessages((prev) => [...prev, { role: "user", content: userInput }, { role: "assistant", content: assistantResponse }]);
@@ -158,6 +188,8 @@ export default function Contact() {
           ),
         },
       ]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -216,9 +248,9 @@ export default function Contact() {
                 <span>UTF-8</span>
                 <ContactDynamicArrowCross isCross={isOpen} />{" "}
               </button>{" "}
-              {/* Terminal animation body*/}
+              {/* Terminal animation body*/}{" "}
               <div
-                className={`${styles.contact_body} ${styles.terminal_anim_text} p-6`}
+                className={`${styles.contact_body} ${styles.terminal_anim_text} p-4`}
                 style={{
                   borderTopWidth: "1px",
                   maxHeight: "300px",
@@ -228,15 +260,15 @@ export default function Contact() {
                 ref={terminalAnimRef}>
                 {terminalAnimData.map((frame, index) => {
                   return (
-                    <p key={index}>
+                    <p key={index} style={{ whiteSpace: "pre-wrap", fontSize: "0.95rem" }}>
                       <span className="text-[#5d6a7d] pointer-events-none select-none">[{frame.time}]&nbsp;</span>
-                      <span>{frame.text}</span>
+                      {typeof frame.text === "string" ? <span dangerouslySetInnerHTML={{ __html: parseAnchorLinks(frame.text) }}></span> : <span>{frame.text}</span>}
                     </p>
                   );
-                })}{" "}
-                {/* Inline terminal input */}
+                })}
+                {isLoading && <TypingIndicator />} {/* Inline terminal input */}
                 <div className="flex items-center">
-                  <span className="text-[#5d6a7d] pointer-events-none select-none">[{time}]&nbsp;</span>
+                  <span className="text-[#5d6a7d] pointer-events-none select-none">[{time || "--:--:-- --"}]&nbsp;</span>
                   <span className="text-[#a87ffb]">$&nbsp;</span>
                   <input
                     type="text"

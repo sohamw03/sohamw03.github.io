@@ -22,6 +22,20 @@ export const parser = (text) => {
   return text;
 };
 
+// Anchor link parser for portfolio navigation
+export const parseAnchorLinks = (text) => {
+  // Regex for anchor links (starting with #)
+  const anchorLinkRegex = /\[(.*?)\]\((#.*?)\)/g;
+  const anchorLink = text.match(anchorLinkRegex);
+  if (anchorLink) {
+    anchorLink.forEach((match) => {
+      const [name, href] = match.replace("[", "").replace(")", "").split("](");
+      text = text.replace(match, `<a href="${href}" class="text-[#a87ffb] hover:text-[#b794f6] hover:underline cursor-pointer transition-colors">${name}</a>`);
+    });
+  }
+  return text;
+};
+
 // Icon Renderer
 export const renderIcon = (tech, index) => {
   let returnIcon = <></>;

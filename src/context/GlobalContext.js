@@ -1,18 +1,10 @@
 "use client";
-import { createContext, useRef, useState } from "react";
+import { createContext, useRef, useState, useEffect } from "react";
 
 export const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
-  const [time, setTime] = useState(
-    new Date().toLocaleString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true,
-    })
-  );
-
+  const [time, setTime] = useState("");
   // Update time : HH:MM:SS AM/PM
   const updateTime = () => {
     setTime(
@@ -24,6 +16,11 @@ export function GlobalProvider({ children }) {
       })
     );
   };
+
+  // Initialize time on client side only to prevent hydration mismatch
+  useEffect(() => {
+    updateTime();
+  }, []);
 
   const toggleModalButtonRef = useRef(null);
 

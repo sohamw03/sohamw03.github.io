@@ -25,9 +25,8 @@ export default function Home() {
           {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
-          </nav>
-          {/* About Section */}
-          <section className={styles.about}>
+          </nav>          {/* About Section */}
+          <section id="about" className={styles.about}>
             <img alt="Soham Waghmare" src="/images/soham-photo.png" className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none" loading="lazy" />
             <Typography variant="h4" gutterBottom>
               Soham Waghmare
@@ -39,7 +38,7 @@ export default function Home() {
             <SocialLinks />
           </section>
           {/* Projects Section */}
-          <Typography variant="h4" gutterBottom>
+          <Typography id="ai-projects" variant="h4" gutterBottom>
             AI Projects
           </Typography>
           <section className={styles.projects}>
@@ -48,14 +47,14 @@ export default function Home() {
             })}
           </section>
           {/* Skills Section */}
-          <Typography variant="h4" gutterBottom>
+          <Typography id="tech-stack" variant="h4" gutterBottom>
             Tech Stack
           </Typography>
           <section className={styles.skills}>
             <Skills />
           </section>
           {/* Web Projects Section */}
-          <Typography variant="h4" gutterBottom>
+          <Typography id="full-stack-projects" variant="h4" gutterBottom>
             Full-Stack Projects
           </Typography>
           <section className={styles.otherProjects}>
@@ -65,14 +64,14 @@ export default function Home() {
             <ProjectOverflowCard projects={WebProjectsOverflowData} />
           </section>
           {/* Experience Section */}
-          <Typography variant="h4" gutterBottom>
+          <Typography id="experience" variant="h4" gutterBottom>
             Experience
           </Typography>
           <section className={styles.experience}>
             <Experience />
           </section>
           {/* Achievements Section */}
-          <Typography variant="h4" gutterBottom>
+          <Typography id="achievements" variant="h4" gutterBottom>
             Achievements
           </Typography>
           <section className={styles.achievements}>
