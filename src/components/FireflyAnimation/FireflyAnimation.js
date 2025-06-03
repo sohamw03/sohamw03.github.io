@@ -1,6 +1,5 @@
 "use client";
 
-// src/components/FireflyAnimation/FireflyAnimation.js
 import React, { useEffect, useRef } from 'react';
 import styles from './FireflyAnimation.module.css';
 
@@ -11,7 +10,7 @@ const FireflyAnimation = () => {
   const mousePosRef = useRef({ x: 0, y: 0 });
   const animationFrameIdRef = useRef(null);
 
-  const numFireflies = 100;
+  const numFireflies = 75;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -19,17 +18,16 @@ const FireflyAnimation = () => {
     const canvasContainer = canvasContainerRef.current;
 
     class Firefly {
-      constructor() {
-        this.x = Math.random() * canvas.width;
+      constructor() {        this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 1;
-        this.vy = (Math.random() - 0.5) * 1;
-        this.radius = Math.random() * 2 + 1;
+        this.vx = (Math.random() - 0.5) * 0.8;
+        this.vy = (Math.random() - 0.5) * 0.8;
+        this.radius = Math.random() * 1.5 + 0.8;
         this.color = this.getRandomColor();
-        this.speed = Math.random() * 0.5 + 0.5;
-        this.attractionRadius = 150;
-        this.attractionStrength = 0.02;
-        this.glowIntensity = Math.random() * 0.3 + 0.1;
+        this.speed = Math.random() * 0.4 + 0.3;
+        this.attractionRadius = 120;
+        this.attractionStrength = 0.03;
+        this.glowIntensity = Math.random() * 0.2 + 0.08;
       }
 
       getRandomColor() {
@@ -69,10 +67,8 @@ const FireflyAnimation = () => {
           let force = this.attractionStrength * (this.attractionRadius - distance) / this.attractionRadius;
           this.vx += Math.cos(angle) * force;
           this.vy += Math.sin(angle) * force;
-        }
-
-        this.vx += (Math.random() - 0.5) * 0.05;
-        this.vy += (Math.random() - 0.5) * 0.05;
+        }        this.vx += (Math.random() - 0.5) * 0.03;
+        this.vy += (Math.random() - 0.5) * 0.03;
 
         let currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
         if (currentSpeed > this.speed) {
@@ -91,19 +87,19 @@ const FireflyAnimation = () => {
           this.vy *= -1;
           this.y = Math.max(this.radius, Math.min(this.y, canvas.height - this.radius));
         }
-      }
-
-      draw() {
+      }      draw() {
         ctx.shadowColor = this.color;
-        ctx.shadowBlur = this.glowIntensity * 10;
+        ctx.shadowBlur = this.glowIntensity * 8;
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
 
+        ctx.globalAlpha = 0.7;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
 
+        ctx.globalAlpha = 1.0;
         ctx.shadowColor = 'transparent';
         ctx.shadowBlur = 0;
       }
@@ -149,9 +145,9 @@ const FireflyAnimation = () => {
     };
 
     if (canvasContainer && canvas) {
-      canvasContainer.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('resize', resizeCanvas);
-      resizeCanvas(); // Initial setup
+      resizeCanvas();
       // Check if animation is already running to avoid multiple requestAnimationFrames from HMR
       if (!animationFrameIdRef.current) {
         animationFrameIdRef.current = requestAnimationFrame(animate); // Start animation
@@ -159,16 +155,14 @@ const FireflyAnimation = () => {
     }
 
     return () => {
-      if (canvasContainer) {
-        canvasContainer.removeEventListener('mousemove', handleMouseMove);
-      }
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', resizeCanvas);
       if (animationFrameIdRef.current) {
         cancelAnimationFrame(animationFrameIdRef.current);
         animationFrameIdRef.current = null; // Reset ref after cancelling
       }
     };
-  }, [numFireflies]); // numFireflies dependency remains
+  }, []);
 
   return (
     <div ref={canvasContainerRef} id="canvas-container" className={styles.canvasContainer}>

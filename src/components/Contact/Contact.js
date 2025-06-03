@@ -1,7 +1,6 @@
 "use client";
 import styles from "@/app/page.module.css";
 import { GlobalContext } from "@/context/GlobalContext";
-import email from "@/functions/Email";
 import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import { useContext, useEffect, useRef, useState } from "react";
 import ContactDynamicArrowCross from "./ContactDynamicArrowCross";
@@ -9,11 +8,12 @@ import ContactDynamicArrowCross from "./ContactDynamicArrowCross";
 export default function Contact() {
   // Global Context
   const { time, updateTime, toggleModalButtonRef } = useContext(GlobalContext);
-
-  const [AnimContainerOpen, setAnimContainerOpen] = useState(false);
   const [contactOffset, setContactOffset] = useState("3.3rem");
   const [terminalAnimData, SetTerminalAnimData] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // Chat functionality states
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const terminalAnimRef = useRef(null);
 
   // Capture elements
   const contactRef = useRef(null);
@@ -21,14 +21,10 @@ export default function Contact() {
   const containerRef = useRef(null);
   const terminal_overlayRef = useRef(null);
   const contactHeadBtnRef = useRef(null);
-  const formRef = useRef(null);
-
-  // Run different functions based on the state of the modal
+  const chatInputRef = useRef(null); // Run different functions based on the state of the modal
   const toggleModal = () => {
-    setAnimContainerOpen(false);
-
-    // Reset form
-    formRef.current.reset();
+    // Reset chat input
+    setInput("");
 
     if (isOpen) {
       closeModal();
@@ -36,7 +32,6 @@ export default function Contact() {
       openModal();
     }
   };
-
   const openModal = () => {
     // Gradient opacity of :before of the terminal
     containerRef.current.style.setProperty("--before-opacity", "0");
@@ -52,12 +47,27 @@ export default function Contact() {
     // Handle borders
     // contactRef.current.style.setProperty("--border-anim-opacity", "0");
     contactRef.current.style.setProperty("--border-offset", "0px");
-    contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
-
-    // Reset terminal animation data
+    contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51"); // Reset terminal animation data
     SetTerminalAnimData(() => []);
 
     setIsOpen((prev) => true);
+
+    // Add welcome message to terminal after a brief delay
+    setTimeout(() => {
+      updateTime();
+      SetTerminalAnimData((prevData) => [
+        ...prevData,
+        {
+          time: time,
+          text: "Hi! I'm Soham's AI assistant. Ask me about his work, or say 'send a message to Soham' to contact him directly!",
+        },
+      ]);
+
+      // Focus the chat input
+      if (chatInputRef.current) {
+        chatInputRef.current.focus();
+      }
+    }, 100);
   };
 
   const closeModal = () => {
@@ -77,9 +87,6 @@ export default function Contact() {
     contactRef.current.style.setProperty("--border-offset", "-1px");
     contactHeadBtnRef.current.style.setProperty("--border-color", "#2e3c51");
 
-    // Reset terminal animation data
-    SetTerminalAnimData(() => []);
-
     setIsOpen((prev) => false);
   };
 
@@ -89,42 +96,105 @@ export default function Contact() {
     SetTerminalAnimData((prevData) => [...prevData, { time: time, text: text }]);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Chat functionality
+  const scrollToBottom = () => {
+    if (terminalAnimRef.current) {
+      terminalAnimRef.current.scrollTop = terminalAnimRef.current.scrollHeight;
+    }
+  };
 
-    setAnimContainerOpen(true);
+  // Auto-scroll when terminal data changes
+  useEffect(() => {
+    if (terminalAnimData.length > 0) {
+      scrollToBottom();
+    }
+  }, [terminalAnimData]);
+  const sendMessage = async () => {
+    if (!input.trim()) return;
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    // console.log(data);
-    e.target.reset();
+    // Log user message in terminal style immediately
+    updateTime();
+    SetTerminalAnimData((prevData) => [...prevData, { time: time, text: `$ ${input}` }]);
 
-    SetTerminalAnimData(() => []);
-    logAnim("Sending message...");
-    setTimeout(() => {
-      logAnim("{");
-      for (let key in data) {
-        data[key] = data[key].trim();
-        logAnim(
-          <>
-            &nbsp;&nbsp;"{key}": <span className="text-[#62a1d6]">"{data[key]}"</span>
-          </>
-        );
+    const userInput = input;
+    setInput("");
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: [...messages, { role: "user", content: userInput }],
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      logAnim("}");
-    }, 1000);
-    const mailResponse = await email({ ...data, api_secret_key: process.env.NEXT_PUBLIC_API_SECRET_KEY });
-    // console.log(mailResponse);
-    if (mailResponse) {
-      setTimeout(() => {
-        logAnim(
-          <>
-            🎉 <span className="text-[#17b877]">Success!</span> Your message has been sent. Stay tuned for my mail.
-          </>
-        );
-      }, 2000);
-    } else {
-      // console.log("Failed to send mail");
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let assistantResponse = "";
+
+      // Add initial assistant log entry
+      updateTime();
+      SetTerminalAnimData((prevData) => [...prevData, { time: time, text: "", isStreaming: true, streamIndex: prevData.length }]);
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          break;
+        }
+
+        const chunk = decoder.decode(value, { stream: true });
+        assistantResponse += chunk;
+
+        // Update the streaming message in terminal
+        SetTerminalAnimData((prevData) => {
+          const updatedData = [...prevData];
+          const streamingIndex = updatedData.findIndex((item) => item.isStreaming);
+          if (streamingIndex !== -1) {
+            updatedData[streamingIndex] = {
+              ...updatedData[streamingIndex],
+              text: assistantResponse,
+            };
+          }
+          return updatedData;
+        });
+      }
+
+      // Finalize the streaming message
+      SetTerminalAnimData((prevData) => {
+        const updatedData = [...prevData];
+        const streamingIndex = updatedData.findIndex((item) => item.isStreaming);
+        if (streamingIndex !== -1) {
+          updatedData[streamingIndex] = {
+            ...updatedData[streamingIndex],
+            isStreaming: false,
+          };
+        }
+        return updatedData;
+      });
+
+      // Update messages state for context
+      setMessages((prev) => [...prev, { role: "user", content: userInput }, { role: "assistant", content: assistantResponse }]);
+    } catch (error) {
+      console.error("Error in chat:", error);
+      updateTime();
+      SetTerminalAnimData((prevData) => [
+        ...prevData,
+        {
+          time: time,
+          text: (
+            <>
+              <span className="text-[#ff6b6b]">Error:</span> {error.message}
+            </>
+          ),
+        },
+      ]);
     }
   };
 
@@ -176,49 +246,23 @@ export default function Contact() {
         <ClickAwayListener mouseEvent={isOpen ? "onClick" : false} touchEvent={isOpen ? "onTouchStart" : false} onClickAway={closeModal}>
           <section className={styles.terminal} ref={terminalRef}>
             <div className={styles.container} ref={containerRef}>
-              <div className={styles.bg}></div>
-              {/* Head button */}
+              <div className={styles.bg}></div> {/* Head button */}
               <button className={styles.contact_head_btn} ref={contactHeadBtnRef} onClick={toggleModal}>
-                <h2>Contact me</h2>
+                <h2>Chat with AI</h2>
                 <span>Spaces: 2</span>
                 <span>UTF-8</span>
-                <ContactDynamicArrowCross isCross={isOpen} />
-              </button>
-              {/* Form body*/}
-              <form className={`${styles.contact_body} p-6 flex items-center flex-wrap justify-stretch gap-x-6 gap-y-4`} onSubmit={handleSubmit} ref={formRef}>
-                <p>I will try to get back to you at the earliest. Enter your details to contact me.</p>
-                <div className="flex flex-col justify-start">
-                  <div className={`${styles.form_control_wrapper} flex items-end gap-2`}>
-                    <label htmlFor="request-name">Name</label>
-                    <span className="text-[#333e4f]">
-                      ......
-                      <span className="max-md:hidden">.......</span>
-                    </span>
-                    <input id="request-name" type="text" name="name" spellCheck="false" autoComplete="name" autoCapitalize="words" maxLength="128" required className={`${styles.form_control} flex-1 py-2 -mb-1`} placeholder="{Enter}" />
-                  </div>
-                  <div className={`${styles.form_control_wrapper} flex items-end gap-2`}>
-                    <label htmlFor="request-email">Email</label>
-                    <span className="text-[#333e4f]">
-                      .....
-                      <span className="max-md:hidden">.......</span>
-                    </span>
-                    <input id="request-email" type="email" name="email" required maxLength="128" autoComplete="email" className={`${styles.form_control} flex-1 py-2 -mb-1`} placeholder="{Enter}" />
-                  </div>
-                  <div className={`${styles.form_control_wrapper} flex items-end gap-2`}>
-                    <label htmlFor="request-msg">Message</label>
-                    <span className="text-[#333e4f]">
-                      ...
-                      <span className="max-md:hidden">.......</span>
-                    </span>
-                    <input id="request-msg" type="text" name="message" maxLength="128" className={`${styles.form_control} flex-1 py-2 -mb-1`} placeholder="{Enter}" required />
-                  </div>
-                </div>
-                <button type="submit" title="Send" className={`${styles.button_primary} ${styles.button} flex-shrink opacity-1 -translate-x-1 pointer-events-auto hover:bg-white`}>
-                  Send
-                </button>
-              </form>
+                <ContactDynamicArrowCross isCross={isOpen} />{" "}
+              </button>{" "}
               {/* Terminal animation body*/}
-              <div className={`${styles.contact_body} ${styles.terminal_anim_text} ${AnimContainerOpen ? "p-6" : ""}`} style={{ borderTopWidth: AnimContainerOpen ? "1px" : "0px" }}>
+              <div
+                className={`${styles.contact_body} ${styles.terminal_anim_text} p-6`}
+                style={{
+                  borderTopWidth: "1px",
+                  maxHeight: "300px",
+                  overflowY: "auto",
+                  scrollBehavior: "smooth",
+                }}
+                ref={terminalAnimRef}>
                 {terminalAnimData.map((frame, index) => {
                   return (
                     <p key={index}>
@@ -226,7 +270,27 @@ export default function Contact() {
                       <span>{frame.text}</span>
                     </p>
                   );
-                })}
+                })}{" "}
+                {/* Inline terminal input */}
+                <div className="flex items-center">
+                  <span className="text-[#5d6a7d] pointer-events-none select-none">[{time}]&nbsp;</span>
+                  <span className="text-[#a87ffb]">$&nbsp;</span>
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        sendMessage();
+                      }
+                    }}
+                    ref={chatInputRef}
+                    className="flex-1 bg-transparent border-none outline-none text-white font-mono"
+                    placeholder="Type your message..."
+                    style={{ fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace" }}
+                  />
+                </div>
               </div>
             </div>
           </section>
