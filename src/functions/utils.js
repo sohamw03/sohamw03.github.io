@@ -22,10 +22,10 @@ export const parser = (text) => {
   return text;
 };
 
-// Anchor link parser for portfolio navigation
+// Anchor link parser for portfolio navigation in tui chatbot
 export const parseAnchorLinks = (text) => {
   // Regex for anchor links (starting with #)
-  const anchorLinkRegex = /\[(.*?)\]\((#.*?)\)/g;
+  const anchorLinkRegex = /\[(.*?)\]\((.*?)\)/g;
   const anchorLink = text.match(anchorLinkRegex);
   if (anchorLink) {
     anchorLink.forEach((match) => {
