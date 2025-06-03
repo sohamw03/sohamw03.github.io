@@ -1,6 +1,5 @@
 "use client";
 
-import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -49,13 +48,7 @@ export default function Navbar() {
         <a href="/" className="w-full flex justify-center items-center">
           S
         </a>
-      </div>
-      <div className={`flex flex-col flex-1 items-center *:transition-all`}>
-        <Tooltip title="Chat" disableInteractive placement="right">
-          <button className="hover:bg-slate-800 rounded-full aspect-square w-4/6">
-            <ChatOutlinedIcon className="text-slate-600" />
-          </button>
-        </Tooltip>
+      </div>      <div className={`flex flex-col flex-1 items-center *:transition-all`}>
       </div>
       <div className="flex flex-col items-center gap-4">
         <Tooltip title={`${gmailTooltip}`} enterTouchDelay={1} disableInteractive placement="right">

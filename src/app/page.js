@@ -1,3 +1,4 @@
+// src/app/page.js
 import Achievements from "@/components/Achievements/Achievements";
 import Contact from "@/components/Contact/Contact";
 import Experience from "@/components/Experience/Experience";
@@ -11,22 +12,20 @@ import { AIProjectsData, WebProjectsData, WebProjectsOverflowData } from "@/data
 import Dark from "@/themes/Dark";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
+import FireflyAnimation from "@/components/FireflyAnimation/FireflyAnimation"; // Import FireflyAnimation
 
 export default function Home() {
   if (Dark) {
     return (
       <div className={styles.home}>
+        <FireflyAnimation />
         <Navbar />
         <Dark />
         <main className={`${styles.main} relative`}>
           {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />
-            {/* <a role="button" href="https://drive.google.com/file/d/1yepcoYtjcCt8m1tf__6P5H5-ydg2OzEv/view?usp=drivesdk" target="_blank" className={`${styles.button} ${styles.button_primary} hover:bg-white focus:bg-white active:bg-white`} style={{ WebkitTapHighlightColor: "transparent" }}>
-              Resume
-            </a> */}
           </nav>
-
           {/* About Section */}
           <section className={styles.about}>
             <img alt="Soham Waghmare" src="/images/soham-photo.png" className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none" loading="lazy" />
@@ -39,7 +38,6 @@ export default function Home() {
             <hr className={styles.divider} style={{ width: "3rem" }} />
             <SocialLinks />
           </section>
-
           {/* Projects Section */}
           <Typography variant="h4" gutterBottom>
             AI Projects
@@ -49,7 +47,6 @@ export default function Home() {
               return <ProjectCard key={index} project={project} />;
             })}
           </section>
-
           {/* Skills Section */}
           <Typography variant="h4" gutterBottom>
             Tech Stack
@@ -57,7 +54,6 @@ export default function Home() {
           <section className={styles.skills}>
             <Skills />
           </section>
-
           {/* Web Projects Section */}
           <Typography variant="h4" gutterBottom>
             Full-Stack Projects
@@ -68,7 +64,6 @@ export default function Home() {
             })}
             <ProjectOverflowCard projects={WebProjectsOverflowData} />
           </section>
-
           {/* Experience Section */}
           <Typography variant="h4" gutterBottom>
             Experience
@@ -76,19 +71,19 @@ export default function Home() {
           <section className={styles.experience}>
             <Experience />
           </section>
-
           {/* Achievements Section */}
           <Typography variant="h4" gutterBottom>
             Achievements
           </Typography>
           <section className={styles.achievements}>
             <Achievements />
-          </section>
-
+          </section>{" "}
           {/* Contact Section */}
           <Contact />
         </main>
       </div>
     );
   }
+  // Fallback or other theme logic can go here if necessary
+  return null; // Or some default non-dark mode page
 }

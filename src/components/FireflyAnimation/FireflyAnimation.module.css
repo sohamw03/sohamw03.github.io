@@ -1,0 +1,19 @@
+.canvasContainer {
+    position: fixed; /* Changed from relative to fixed for full-screen background */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1; /* Ensure it's behind other content */
+    opacity: 0.8; /* Slightly more visible than before */
+}
+
+.fireflyCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Styles for body, #controls, #numFirefliesSlider, #numFirefliesValue are removed
+   as they are not needed for the component version or are handled globally. */

@@ -99,6 +99,9 @@
 
 .about * {
     backdrop-filter: blur(10px);
+    padding: 0.1rem 0.4rem;
+    box-sizing: unset;
+    border-radius: 100rem;
 }
 
 .about h4 {
@@ -496,6 +499,86 @@
     line-height: 1.25rem;
 }
 
+/* Terminal scrollbar styling */
+.terminal_anim_text {
+    scrollbar-width: thin;
+    scrollbar-color: #4b5563 #1a202c;
+}
+
+.terminal_anim_text::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal_anim_text::-webkit-scrollbar-track {
+    background: #1a202c;
+    border-radius: 3px;
+}
+
+.terminal_anim_text::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 3px;
+}
+
+.terminal_anim_text::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* Chat-specific styles */
+.chat_messages {
+    font-family: JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: #4b5563 #1a202c;
+}
+
+.chat_messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat_messages::-webkit-scrollbar-track {
+    background: #1a202c;
+    border-radius: 3px;
+}
+
+.chat_messages::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 3px;
+}
+
+.chat_messages::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+.message {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(46, 60, 81, 0.3);
+}
+
+.message:last-child {
+    border-bottom: none;
+}
+
+.message_role {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.user_message .message_role {
+    color: #62a1d6;
+}
+
+.assistant_message .message_role {
+    color: #17b877;
+}
+
+.message_content {
+    color: var(--font-primary-color);
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
 .terminal_overlay {
     position: fixed;
     inset: 0;
@@ -509,6 +592,17 @@
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+/* Tool call styling */
+.terminal_anim_text p span[title="tool-call"] {
+    color: #fbbf24;
+    font-weight: 500;
+}
+
+.terminal_anim_text p span[title="tool-result"] {
+    color: #10b981;
+    font-weight: 500;
 }
 
 /*----------------------------------------------- Contact ---------------------------------------------*/

@@ -33,9 +33,9 @@ export default function AboutContactButton() {
               router.push("/3dexp");
             }}>
             <ViewInAr />
-          </button>
+          </button>{" "}
           <button className={`${styles.button} ${styles.button_outline}`} style={{ WebkitTapHighlightColor: "transparent" }} onClick={toggleModal}>
-            Contact
+            Chat
           </button>
         </>
       )}
