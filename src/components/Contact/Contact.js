@@ -131,53 +131,16 @@ export default function Contact() {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json(); // Parse JSON response on error
+        throw new Error(data.response || `HTTP error! status: ${response.status}`);
       }
 
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let assistantResponse = "";
+      const data = await response.json();
+      const assistantResponse = data.response;
 
-      // Add initial assistant log entry
+      // Add assistant's message to terminal
       updateTime();
-      SetTerminalAnimData((prevData) => [...prevData, { time: time, text: "", isStreaming: true, streamIndex: prevData.length }]);
-
-      while (true) {
-        const { done, value } = await reader.read();
-
-        if (done) {
-          break;
-        }
-
-        const chunk = decoder.decode(value, { stream: true });
-        assistantResponse += chunk;
-
-        // Update the streaming message in terminal
-        SetTerminalAnimData((prevData) => {
-          const updatedData = [...prevData];
-          const streamingIndex = updatedData.findIndex((item) => item.isStreaming);
-          if (streamingIndex !== -1) {
-            updatedData[streamingIndex] = {
-              ...updatedData[streamingIndex],
-              text: assistantResponse,
-            };
-          }
-          return updatedData;
-        });
-      }
-
-      // Finalize the streaming message
-      SetTerminalAnimData((prevData) => {
-        const updatedData = [...prevData];
-        const streamingIndex = updatedData.findIndex((item) => item.isStreaming);
-        if (streamingIndex !== -1) {
-          updatedData[streamingIndex] = {
-            ...updatedData[streamingIndex],
-            isStreaming: false,
-          };
-        }
-        return updatedData;
-      });
+      SetTerminalAnimData((prevData) => [...prevData, { time: time, text: assistantResponse }]);
 
       // Update messages state for context
       setMessages((prev) => [...prev, { role: "user", content: userInput }, { role: "assistant", content: assistantResponse }]);
