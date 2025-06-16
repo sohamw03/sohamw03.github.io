@@ -15,7 +15,7 @@ if (isGithubActions) {
 const nextConfig = {
   assetPrefix: assetPrefix,
   basePath: basePath,
-  output: "export",
+  // Removed output: "export" to enable server-side rendering
 };
 
 module.exports = nextConfig;
