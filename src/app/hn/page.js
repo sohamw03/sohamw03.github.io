@@ -36,12 +36,12 @@ export default async function HNPage() {
   }
 
   return (
-    <main className={styles.main}>
-      <div className="px-4 pt-20">
+    <main className={styles.main} style={{ padding: "0.2rem" }}>
+      <div className="px-1">
         {Object.entries(articlesBySource).map(([sourceName, articles]) => (
           <section key={sourceName} className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 text-center">{sourceName}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
+            <h2 className="text-3xl font-semibold mb-6 mt-6 text-center">{sourceName}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[0.4rem] sm:gap-4">
               {articles.map((article, index) => (
                 <ArticleCard
                   key={index}
@@ -52,7 +52,6 @@ export default async function HNPage() {
                     techStack: [],
                     lang: [],
                   }}
-                  sx="mb-4"
                 />
               ))}
             </div>
