@@ -1,35 +1,30 @@
-"use client";
-import { useEffect, useState } from "react";
 import ArticleCard from "@/components/Projects/ArticleCard"; // New component
 import styles from "@/app/page.module.css";
 
-export default function HNPage() {
-  const [articlesBySource, setArticlesBySource] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchArticles() {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hn-articles`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setArticlesBySource(data);
-      } catch (e) {
-        console.error("Failed to fetch articles:", e);
-        setError(e.message);
-      } finally {
-        setLoading(false);
-      }
+async function fetchArticles() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/hn-articles`, {
+      cache: 'no-store' // Ensures fresh data on each request
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.error("Failed to fetch articles:", e);
+    throw e;
+  }
+}
 
-    fetchArticles();
-  }, []);
+export default async function HNPage() {
+  let articlesBySource = {};
+  let error = null;
 
-  if (loading) {
-    return <div className="flex justify-center items-center h-screen">Loading articles...</div>;
+  try {
+    articlesBySource = await fetchArticles();
+  } catch (e) {
+    error = e.message;
   }
 
   if (error) {
