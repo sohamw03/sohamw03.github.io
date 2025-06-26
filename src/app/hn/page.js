@@ -48,7 +48,7 @@ export default async function HNPage() {
                   project={{
                     name: article.title,
                     href: article.link,
-                    mediaSrcs: article.screenshotBase64 ? [`data:image/jpeg;base64,${article.screenshotBase64}`] : [],
+                    mediaSrcs: article.screenshotUrl ? [article.screenshotUrl] : [],
                     techStack: [],
                     lang: [],
                   }}
