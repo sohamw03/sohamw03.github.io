@@ -21,7 +21,7 @@ export default function Home() {
         <FireflyAnimation />
         <Navbar />
         <Dark />
-        <main className={`${styles.main} relative`}>
+        <main id="main-scroll-container" className={`${styles.main} relative`}>
           {/* Action Buttons */}
           <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
             <AboutContactButton />

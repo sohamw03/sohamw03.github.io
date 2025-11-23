@@ -8,10 +8,12 @@ import ContactDynamicArrowCross from "./ContactDynamicArrowCross";
 
 export default function Contact() {
   // Global Context
-  const { time, updateTime, toggleModalButtonRef } = useContext(GlobalContext);
+  const { time, updateTime, toggleModalButtonRef, chatInputRef, isChatOpen, setIsChatOpen } = useContext(GlobalContext);
   const [contactOffset, setContactOffset] = useState("3.3rem");
   const [terminalAnimData, SetTerminalAnimData] = useState([]);
-  const [isOpen, setIsOpen] = useState(false); // Chat functionality states
+  // const [isOpen, setIsOpen] = useState(false); // Chat functionality states
+  const isOpen = isChatOpen;
+  const setIsOpen = setIsChatOpen;
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +43,7 @@ export default function Contact() {
   const containerRef = useRef(null);
   const terminal_overlayRef = useRef(null);
   const contactHeadBtnRef = useRef(null);
-  const chatInputRef = useRef(null); // Run different functions based on the state of the modal
+  // const chatInputRef = useRef(null); // Run different functions based on the state of the modal
   const toggleModal = () => {
     // Reset chat input
     setInput("");

@@ -5,6 +5,7 @@ export const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
   const [time, setTime] = useState("");
+  const [isChatOpen, setIsChatOpen] = useState(false);
   // Update time : HH:MM:SS AM/PM
   const updateTime = () => {
     setTime(
@@ -23,11 +24,15 @@ export function GlobalProvider({ children }) {
   }, []);
 
   const toggleModalButtonRef = useRef(null);
+  const chatInputRef = useRef(null);
 
   const values = {
     time,
     updateTime,
+    isChatOpen,
+    setIsChatOpen,
     toggleModalButtonRef,
+    chatInputRef,
   };
 
   return <GlobalContext.Provider value={values}>{children}</GlobalContext.Provider>;

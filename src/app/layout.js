@@ -1,5 +1,9 @@
 import FancyCursor from "@/components/FancyCursor";
 import { GlobalProvider } from "@/context/GlobalContext";
+import { VimProvider } from "@/context/VimContext";
+import VimManager from "@/components/Vim/VimManager";
+import VimStatusBar from "@/components/Vim/VimStatusBar";
+import VimHints from "@/components/Vim/VimHints";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -93,8 +97,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <GlobalProvider>
-          {/* <FancyCursor /> */}
-          {children}
+          <VimProvider>
+            <VimManager />
+            <VimStatusBar />
+            <VimHints />
+            {/* <FancyCursor /> */}
+            {children}
+          </VimProvider>
         </GlobalProvider>
       </body>
     </html>

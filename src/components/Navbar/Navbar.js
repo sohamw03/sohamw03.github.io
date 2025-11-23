@@ -4,9 +4,11 @@ import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TerminalIcon from "@mui/icons-material/Terminal";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Tooltip } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import { useVim } from "@/context/VimContext";
 import styles from "../../app/page.module.css";
 
 export default function Navbar() {
@@ -14,6 +16,10 @@ export default function Navbar() {
   const [copyToClipboard, setCopyToClipboard] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const [gmailTooltip, setGmailTooltip] = useState("Gmail");
+
+  // Import Vim context
+  const { vimEnabled, toggleVim } = useVim();
+
   useEffect(() => {
     function checkDeviceType() {
       const userAgent = navigator.userAgent;
@@ -48,7 +54,19 @@ export default function Navbar() {
         <a href="/" className="w-full flex justify-center items-center">
           S
         </a>
-      </div>      <div className={`flex flex-col flex-1 items-center *:transition-all`}>
+      </div>
+      <div className={`flex flex-col flex-1 items-center *:transition-all`}>
+        {/* Vim Toggle Button - Only visible on Desktop */}
+        {isDesktop && (
+          <Tooltip title={vimEnabled ? "Disable Vim Mode" : "Enable Vim Mode"} enterTouchDelay={1} disableInteractive placement="right">
+            <div
+              onClick={toggleVim}
+              className={`cursor-pointer p-2 rounded-md transition-all duration-300 ${vimEnabled ? 'bg-[#2e3c51] text-[#a87ffb]' : 'text-slate-500 hover:text-slate-400'}`}
+            >
+              <TerminalIcon fontSize="medium" />
+            </div>
+          </Tooltip>
+        )}
       </div>
       <div className="flex flex-col items-center gap-4">
         <Tooltip title={`${gmailTooltip}`} enterTouchDelay={1} disableInteractive placement="right">
