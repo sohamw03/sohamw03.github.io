@@ -9,6 +9,9 @@ export function VimProvider({ children }) {
   const [message, setMessage] = useState(""); // For feedback messages (like "Pattern not found")
   const [vimEnabled, setVimEnabled] = useState(false);
   const [showKeybinds, setShowKeybinds] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchMatches, setSearchMatches] = useState([]);
+  const [currentMatchIndex, setCurrentMatchIndex] = useState(-1);
 
   const updateMode = (newMode) => setMode(newMode);
   const updateCommand = (newCommand) => setCommand(newCommand);
@@ -40,6 +43,12 @@ export function VimProvider({ children }) {
         toggleVim,
         showKeybinds,
         toggleKeybinds,
+        searchQuery,
+        setSearchQuery,
+        searchMatches,
+        setSearchMatches,
+        currentMatchIndex,
+        setCurrentMatchIndex,
       }}
     >
       {children}

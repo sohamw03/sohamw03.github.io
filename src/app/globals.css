@@ -65,3 +65,15 @@ input::placeholder {
 .article-link:visited {
   color: purple !important; /* Or any color you prefer for visited links */
 }
+
+/* Vim Search Highlights */
+.vim-search-match {
+  background-color: rgba(255, 255, 0, 0.3);
+  transition: background-color 0.2s;
+  border-radius: 2px;
+}
+
+.vim-search-current {
+  background-color: rgba(255, 165, 0, 0.6);
+  box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.4);
+}

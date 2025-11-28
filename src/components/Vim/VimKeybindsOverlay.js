@@ -28,6 +28,8 @@ export default function VimKeybindsOverlay() {
     { keys: "gg / G", desc: "Go to Top / Bottom" },
     { keys: "i", desc: "Insert Mode (AI Chat)" },
     { keys: "f", desc: "Hints Mode (Navigation)" },
+    { keys: "/", desc: "Search" },
+    { keys: "n / N", desc: "Next / Prev Match" },
     { keys: ":", desc: "Command Mode" },
     { keys: "?", desc: "Toggle Help" },
     { keys: "Esc", desc: "Back to Normal Mode" },

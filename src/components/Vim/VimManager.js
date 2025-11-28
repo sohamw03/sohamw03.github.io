@@ -5,7 +5,10 @@ import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/context/GlobalContext";
 
 export default function VimManager() {
-  const { mode, updateMode, command, updateCommand, showMessage, vimEnabled, toggleVim, toggleKeybinds } = useVim();
+  const { 
+    mode, updateMode, command, updateCommand, showMessage, vimEnabled, toggleVim, toggleKeybinds,
+    searchQuery, setSearchQuery, searchMatches, setSearchMatches, currentMatchIndex, setCurrentMatchIndex
+  } = useVim();
   const lastKey = useRef("");
   const router = useRouter();
   const { toggleModalButtonRef, chatInputRef, isChatOpen } = useContext(GlobalContext);
@@ -27,8 +30,92 @@ export default function VimManager() {
     }
   };
 
+  const performSearch = (query) => {
+    if (!query) return;
+    
+    // Clear previous highlights
+    document.querySelectorAll(".vim-search-match").forEach(el => {
+        el.classList.remove("vim-search-match");
+        el.classList.remove("vim-search-current");
+    });
+
+    const matches = [];
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: (node) => {
+            if (
+                node.parentElement && 
+                node.parentElement.offsetParent !== null && // Visible
+                !['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(node.parentElement.tagName) &&
+                node.textContent.toLowerCase().includes(query.toLowerCase())
+            ) {
+                return NodeFilter.FILTER_ACCEPT;
+            }
+            return NodeFilter.FILTER_REJECT;
+        }
+      },
+      false
+    );
+
+    let node;
+    while (node = walker.nextNode()) {
+        matches.push(node.parentElement);
+    }
+
+    // Unique elements
+    const uniqueMatches = [...new Set(matches)];
+
+    setSearchMatches(uniqueMatches);
+    setSearchQuery(query);
+    
+    if (uniqueMatches.length > 0) {
+      setCurrentMatchIndex(0);
+      highlightMatch(uniqueMatches[0], true);
+      showMessage(`Found ${uniqueMatches.length} matches`);
+    } else {
+      setCurrentMatchIndex(-1);
+      showMessage(`Pattern not found: ${query}`);
+    }
+  };
+
+  const highlightMatch = (element, isCurrent = false) => {
+      if (!element) return;
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+      
+      // Remove current class from all
+      document.querySelectorAll(".vim-search-current").forEach(el => el.classList.remove("vim-search-current"));
+      
+      element.classList.add("vim-search-match");
+      if (isCurrent) {
+          element.classList.add("vim-search-current");
+      }
+  };
+
+  const nextMatch = (direction = 1) => {
+      if (searchMatches.length === 0) {
+          showMessage("No search results");
+          return;
+      }
+
+      let newIndex = currentMatchIndex + direction;
+      if (newIndex >= searchMatches.length) newIndex = 0;
+      if (newIndex < 0) newIndex = searchMatches.length - 1;
+
+      setCurrentMatchIndex(newIndex);
+      highlightMatch(searchMatches[newIndex], true);
+      showMessage(`Match ${newIndex + 1}/${searchMatches.length}`);
+  };
+
   const executeCommand = (cmd) => {
-    const cleanCmd = cmd.substring(1).trim(); // Remove ':'
+    const cleanCmd = cmd.substring(1).trim(); // Remove ':' or '/'
+    
+    if (cmd.startsWith("/")) {
+        performSearch(cleanCmd);
+        return;
+    }
+
     const parts = cleanCmd.split(" ");
     const action = parts[0];
     const arg = parts[1];
@@ -174,15 +261,23 @@ export default function VimManager() {
             updateMode("COMMAND");
             updateCommand(":");
             break;
+          case "/":
+             e.preventDefault();
+             updateMode("COMMAND");
+             updateCommand("/");
+             break;
+          case "n":
+             e.preventDefault();
+             nextMatch(1);
+             break;
+          case "N":
+             e.preventDefault();
+             nextMatch(-1);
+             break;
           case "?":
             e.preventDefault();
             toggleKeybinds();
             break;
-          case "/":
-             // Future: Search implementation
-             e.preventDefault();
-             showMessage("Search not implemented yet (Try :)");
-             break;
           default:
             break;
         }
@@ -194,6 +289,8 @@ export default function VimManager() {
           showMessage("");
         } else if (e.key === "Tab") {
           e.preventDefault();
+          if (command.startsWith("/")) return; // No autocomplete for search
+
           const currentInput = command.substring(1); // remove ':'
           const parts = currentInput.split(" ");
 
