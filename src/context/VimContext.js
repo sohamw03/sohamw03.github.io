@@ -8,6 +8,7 @@ export function VimProvider({ children }) {
   const [command, setCommand] = useState("");
   const [message, setMessage] = useState(""); // For feedback messages (like "Pattern not found")
   const [vimEnabled, setVimEnabled] = useState(false);
+  const [showKeybinds, setShowKeybinds] = useState(false);
 
   const updateMode = (newMode) => setMode(newMode);
   const updateCommand = (newCommand) => setCommand(newCommand);
@@ -17,7 +18,14 @@ export function VimProvider({ children }) {
       setTimeout(() => setMessage(""), duration);
     }
   };
-  const toggleVim = () => setVimEnabled((prev) => !prev);
+  const toggleVim = () => {
+    setVimEnabled((prev) => {
+        const newState = !prev;
+        if (newState) setShowKeybinds(true); // Show keybinds when enabling
+        return newState;
+    });
+  };
+  const toggleKeybinds = () => setShowKeybinds((prev) => !prev);
 
   return (
     <VimContext.Provider
@@ -30,6 +38,8 @@ export function VimProvider({ children }) {
         showMessage,
         vimEnabled,
         toggleVim,
+        showKeybinds,
+        toggleKeybinds,
       }}
     >
       {children}

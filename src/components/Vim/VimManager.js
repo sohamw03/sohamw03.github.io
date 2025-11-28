@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/context/GlobalContext";
 
 export default function VimManager() {
-  const { mode, updateMode, command, updateCommand, showMessage, vimEnabled, toggleVim } = useVim();
+  const { mode, updateMode, command, updateCommand, showMessage, vimEnabled, toggleVim, toggleKeybinds } = useVim();
   const lastKey = useRef("");
   const router = useRouter();
   const { toggleModalButtonRef, chatInputRef, isChatOpen } = useContext(GlobalContext);
@@ -173,6 +173,10 @@ export default function VimManager() {
             e.preventDefault();
             updateMode("COMMAND");
             updateCommand(":");
+            break;
+          case "?":
+            e.preventDefault();
+            toggleKeybinds();
             break;
           case "/":
              // Future: Search implementation

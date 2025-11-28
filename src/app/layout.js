@@ -4,6 +4,7 @@ import { VimProvider } from "@/context/VimContext";
 import VimManager from "@/components/Vim/VimManager";
 import VimStatusBar from "@/components/Vim/VimStatusBar";
 import VimHints from "@/components/Vim/VimHints";
+import VimKeybindsOverlay from "@/components/Vim/VimKeybindsOverlay";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -101,6 +102,7 @@ export default function RootLayout({ children }) {
             <VimManager />
             <VimStatusBar />
             <VimHints />
+            <VimKeybindsOverlay />
             {/* <FancyCursor /> */}
             {children}
           </VimProvider>
