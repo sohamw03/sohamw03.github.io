@@ -40,7 +40,7 @@ export const AIProjectsData = [
 export const SkillBuckets = [
   {
     name: "AI",
-    skills: "Langgraph Langchain Transformers  Ollama Whisper OpenCV PyTorch CNN",
+    skills: "Langgraph Langchain Transformers Ollama Whisper OpenCV PyTorch CNN",
     highlight: ["Langgraph", "Transformers", "Langchain", "Ollama", "Whisper", "OpenCV", "PyTorch"],
   },
   // {
