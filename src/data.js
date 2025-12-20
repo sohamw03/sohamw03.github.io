@@ -40,8 +40,8 @@ export const AIProjectsData = [
 export const SkillBuckets = [
   {
     name: "AI",
-    skills: "Transformers Langchain Ollama Whisper OpenCV PyTorch CNN",
-    highlight: ["Transformers", "Langchain", "Ollama", "Whisper", "OpenCV", "PyTorch"],
+    skills: "Langgraph Langchain Transformers  Ollama Whisper OpenCV PyTorch CNN",
+    highlight: ["Langgraph", "Transformers", "Langchain", "Ollama", "Whisper", "OpenCV", "PyTorch"],
   },
   // {
   //   name: "Frontend",
@@ -71,6 +71,16 @@ export const SkillBuckets = [
 ];
 
 export const WebProjectsData = [
+  {
+    name: "WifUI",
+    description: "A blazing fast, lightweight Terminal User Interface (TUI) for managing Wi-Fi connections on Windows. Keyboard-centric and efficient.",
+    mediaSrcs: ["https://raw.githubusercontent.com/sohamw03/wifui/main/images/Animation.gif"],
+    href: "https://sohamw03.github.io/wifui/",
+    techStack: ["Rust", "Ratatui", "Tokio", "Win32 API"],
+    github: "https://github.com/sohamw03/wifui",
+    lang: ["Rust"],
+    showStats: true,
+  },
   {
     name: "GeminiMeetings",
     description: "Seamless collaboration for devs and productive teams. Using WebRTC and Socket.IO for real-time communication.",
@@ -208,3 +218,5 @@ export const AchievementsData = [
     pan: false,
   },
 ];
+
+export const SpotlightProject = WebProjectsData.find((project) => project.name === "WifUI");

@@ -2,10 +2,12 @@
 import styles from "@/app/page.module.css";
 import { OpenNewPage, renderIcon } from "@/functions/utils";
 import { default as GitHub } from "@mui/icons-material/GitHub";
+import StarIcon from "@mui/icons-material/Star";
+import DownloadIcon from "@mui/icons-material/Download";
 import { Tooltip, Typography } from "@mui/material";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { DotButton, useDotButton } from "../EmblaCarousel/EmblaCarouselDotButton";
 
 export default function ProjectCard(props) {
@@ -14,6 +16,40 @@ export default function ProjectCard(props) {
   const vidRef = useRef(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", duration: 10, dragThreshold: 1 }, project.mediaSrcs.length > 1 ? [Autoplay({ delay: 6000 })] : []);
   const [grabCursor, setGrabCursor] = useState("cursor-grab");
+  const [stats, setStats] = useState({ stars: 0, downloads: 0 });
+
+  useEffect(() => {
+    if (project.showStats && project.github) {
+      const parts = project.github.split("/");
+      const owner = parts[parts.length - 2];
+      const repo = parts[parts.length - 1];
+
+      if (owner && repo) {
+        // Fetch Stars
+        fetch(`https://api.github.com/repos/${owner}/${repo}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.stargazers_count) {
+              setStats((prev) => ({ ...prev, stars: data.stargazers_count }));
+            }
+          })
+          .catch((err) => console.error("Failed to fetch stars", err));
+
+        // Fetch Downloads
+        fetch(`https://api.github.com/repos/${owner}/${repo}/releases`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (Array.isArray(data)) {
+              const totalDownloads = data.reduce((acc, release) => {
+                return acc + release.assets.reduce((a, asset) => a + asset.download_count, 0);
+              }, 0);
+              setStats((prev) => ({ ...prev, downloads: totalDownloads }));
+            }
+          })
+          .catch((err) => console.error("Failed to fetch downloads", err));
+      }
+    }
+  }, [project.showStats, project.github]);
 
   // Embla Carousel
   const onButtonClick = useCallback((emblaApi) => {
@@ -82,9 +118,23 @@ export default function ProjectCard(props) {
                 );
               })}
             </div>
-            <a className="rounded-full" href={project.github} target="_blank">
-              <GitHub className="text-[#808c9c] transition-colors hover:text-[#bfc7d2] cursor-pointer" />
-            </a>
+            <div className="flex items-center gap-3">
+              {project.showStats && (
+                <a href={project.github} target="_blank" className="flex gap-3 items-center text-[#808c9c] hover:text-[#bfc7d2] transition-colors no-underline">
+                  <div className="flex items-center gap-1">
+                    <StarIcon fontSize="small" />
+                    <span className="text-sm font-bold">{stats.stars}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <DownloadIcon fontSize="small" />
+                    <span className="text-sm font-bold">{stats.downloads}</span>
+                  </div>
+                </a>
+              )}
+              <a className="rounded-full flex items-center justify-center" href={project.github} target="_blank">
+                <GitHub className="text-[#808c9c] transition-colors hover:text-[#bfc7d2] cursor-pointer" />
+              </a>
+            </div>
           </div>
           <p style={{ fontSize: "16px", color: "#808c9c", fontWeight: "bold" }}>{project.lang.join(" • ")}</p>
           <Typography variant="h6" sx={{ cursor: "pointer" }} gutterBottom className="hover:underline">

@@ -8,7 +8,9 @@ import ProjectCard from "@/components/Projects/ProjectCard";
 import ProjectOverflowCard from "@/components/Projects/ProjectOverflowCard";
 import Skills from "@/components/Skills/Skills";
 import SocialLinks from "@/components/SocialLinks";
-import { AIProjectsData, WebProjectsData, WebProjectsOverflowData } from "@/data";
+import ProjectSpotlight from "@/components/Oneoffs/ProjectSpotlight";
+import ScrollDownArrow from "@/components/Oneoffs/ScrollDownArrow";
+import { AIProjectsData, WebProjectsData, WebProjectsOverflowData, SpotlightProject } from "@/data";
 import Dark from "@/themes/Dark";
 import Typography from "@mui/material/Typography";
 import styles from "./page.module.css";
@@ -23,10 +25,10 @@ export default function Home() {
         <Dark />
         <main id="main-scroll-container" className={`${styles.main} relative`}>
           {/* Action Buttons */}
-          <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12`}>
+          <nav className={`${styles.navBtns} flex flex-row items-center justify-end gap-3 absolute left-0 w-full mt-12 px-12 z-10`}>
             <AboutContactButton />
           </nav>          {/* About Section */}
-          <section id="about" className={styles.about}>
+          <section id="about" className={`${styles.about} relative`}>
             <img alt="Soham Waghmare" src="/images/soham-photo.png" className="w-[128px] h-[128px] mb-4 rounded-full pointer-events-none select-none" loading="lazy" />
             <Typography variant="h4" gutterBottom>
               Soham Waghmare
@@ -36,10 +38,12 @@ export default function Home() {
             </Typography>
             <hr className={styles.divider} style={{ width: "3rem" }} />
             <SocialLinks />
+            <ProjectSpotlight project={SpotlightProject} />
+            <ScrollDownArrow />
           </section>
           {/* Projects Section */}
           <Typography id="ai-projects" variant="h4" gutterBottom>
-            AI Projects
+            ML / GenAI
           </Typography>
           <section className={styles.projects}>
             {AIProjectsData.map((project, index) => {
@@ -55,7 +59,7 @@ export default function Home() {
           </section>
           {/* Web Projects Section */}
           <Typography id="full-stack-projects" variant="h4" gutterBottom>
-            Full-Stack Projects
+            Development
           </Typography>
           <section className={styles.otherProjects}>
             {WebProjectsData.map((project, index) => {

@@ -30,7 +30,7 @@ const SocialLinks = memo(() => {
   }, []);
 
   return (
-    <div className="flex gap-2 mt-2">
+    <div className="flex gap-2 mt-2 relative z-10">
       <Tooltip title={`${gmailTooltip}`} enterTouchDelay={1} disableInteractive>
         {isMobile ? (
           <a className="rounded-full" href="mailto:sohamwaghmare2021@gmail.com">

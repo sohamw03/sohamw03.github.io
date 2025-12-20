@@ -1,5 +1,5 @@
 import styles from "@/app/page.module.css";
-import { faBootstrap, faCloudflare, faNodeJs, faReact } from "@fortawesome/free-brands-svg-icons";
+import { faBootstrap, faCloudflare, faNodeJs, faReact, faRust, faWindows } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { default as GitHubIcon } from "@mui/icons-material/GitHub";
 
@@ -54,6 +54,14 @@ export const renderIcon = (tech, index) => {
       break;
     case "Cloudflare":
       returnIcon = <FontAwesomeIcon key={index} icon={faCloudflare} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
+      break;
+    case "Rust":
+    case "Ratatui":
+    case "Tokio":
+      returnIcon = <FontAwesomeIcon key={index} icon={faRust} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
+      break;
+    case "Win32 API":
+      returnIcon = <FontAwesomeIcon key={index} icon={faWindows} style={{ pointerEvents: "none", color: "#bfc7d2", userSelect: "none", aspectRatio: "1/1", height: "27px" }} />;
       break;
     case "NewsAPI":
     case "VGG16":

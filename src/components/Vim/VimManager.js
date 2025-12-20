@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { GlobalContext } from "@/context/GlobalContext";
 
 export default function VimManager() {
-  const { 
+  const {
     mode, updateMode, command, updateCommand, showMessage, vimEnabled, toggleVim, toggleKeybinds,
     searchQuery, setSearchQuery, searchMatches, setSearchMatches, currentMatchIndex, setCurrentMatchIndex
   } = useVim();
@@ -32,7 +32,7 @@ export default function VimManager() {
 
   const performSearch = (query) => {
     if (!query) return;
-    
+
     // Clear previous highlights
     document.querySelectorAll(".vim-search-match").forEach(el => {
         el.classList.remove("vim-search-match");
@@ -46,7 +46,7 @@ export default function VimManager() {
       {
         acceptNode: (node) => {
             if (
-                node.parentElement && 
+                node.parentElement &&
                 node.parentElement.offsetParent !== null && // Visible
                 !['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(node.parentElement.tagName) &&
                 node.textContent.toLowerCase().includes(query.toLowerCase())
@@ -69,7 +69,7 @@ export default function VimManager() {
 
     setSearchMatches(uniqueMatches);
     setSearchQuery(query);
-    
+
     if (uniqueMatches.length > 0) {
       setCurrentMatchIndex(0);
       highlightMatch(uniqueMatches[0], true);
@@ -83,10 +83,10 @@ export default function VimManager() {
   const highlightMatch = (element, isCurrent = false) => {
       if (!element) return;
       element.scrollIntoView({ behavior: "smooth", block: "center" });
-      
+
       // Remove current class from all
       document.querySelectorAll(".vim-search-current").forEach(el => el.classList.remove("vim-search-current"));
-      
+
       element.classList.add("vim-search-match");
       if (isCurrent) {
           element.classList.add("vim-search-current");
@@ -110,7 +110,7 @@ export default function VimManager() {
 
   const executeCommand = (cmd) => {
     const cleanCmd = cmd.substring(1).trim(); // Remove ':' or '/'
-    
+
     if (cmd.startsWith("/")) {
         performSearch(cleanCmd);
         return;
